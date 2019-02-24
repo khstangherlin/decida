@@ -1,0 +1,7 @@
+MessageDialog
+-------------
+.. image:: _static/MessageDialog.jpg
+.. autoclass:: decida.MessageDialog.MessageDialog
+    :members:
+    :undoc-members:
+    :show-inheritance:

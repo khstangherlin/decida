@@ -1,0 +1,194 @@
+**Installing DeCiDa**
+=====================
+
+If you have pip
+---------------
+
+* issue this command::
+
+    pip install DeCiDa
+
+Note that the scripts that should be installed in
+the python bin directory (dataview, plotter, ...) may not arrive there.
+And the home directory directories may not get set up properly.  If this
+happens, simply download the distribution and copy these from the untarred
+folders.
+
+Otherwise
+---------
+
+Download and prepare the distribution
+-------------------------------------
+
+* unzip/untar the distribution::
+
+    tar xvfz DeCiDa.1.1.3-tar.gz
+
+* cd into the distribution directory::
+
+    cd DeCiDa-1.1.3
+
+* you may want to install the DeCiDa html documentation (in ./doc/html)
+  to an appropriate place for future reference.
+  use a browser to read the documentation, using the url file:// specification
+  to point to the index.html file in the html directory.
+
+* manually modify the wrapper scripts in the distribution
+  ./etc/wrapper directory (run_*), to point to correct tool locations.
+  
+  The wrappers have the following references to other tools.  
+  Adjust these as needed, as required by your local environment.
+
++----------------+-------------------------------+
+| wrapper:       | expected tool location:       |
++================+===============================+
+| run_hspice     | /tools/hspice/bin/hspice      |
++----------------+-------------------------------+
+| run_ngspice    | /opt/local/bin/ngspice        |
++----------------+-------------------------------+
+| run_sspice     | /tools/silvaco/bin/sspice     |
++----------------+-------------------------------+
+| run_spectre    | /tools/cds/bin/spectre        |
++----------------+-------------------------------+
+
+Installing under Anaconda
+-------------------------
+
+    refer to: `Managing packages <https://conda.io/docs/user-guide/tasks/manage-pkgs.html>`_
+
+* be sure that Anaconda python is in your path::
+
+    python
+    >>> import sys; sys.prefix
+
+  you should see a path like the following::
+
+    /Users/<user>/anaconda (MacOs)
+
+    /home/<user>/anaconda (Linux)
+
+* install the distribution::
+
+    conda install DeCiDa
+
+Installing under Enthought Canopy
+---------------------------------
+
+* install in the Canopy Python User Virtual Environment
+
+    refer to: `Installing packages into Canopy <https://support.enthought.com/entries/23389761-Installing-packages-into-Canopy-User-Python-from-the-command-line/>`_, `Canopy python default <https://support.enthought.com/entries/23646538-Make-Canopy-s-Python-be-your-default-Python-i-e-on-the-PATH->`_
+
+* be sure that User python is in your path::
+
+    python
+    >>> import sys; sys.prefix
+
+  you should see a path like one of the following::
+
+    /Users/<user>/Library/Enthought/Canopy_32bit/User (MacOs)
+
+    /home/<user>/Enthought/Canopy_32bit/User (Linux)
+
+
+* install the distribution::
+
+    python setup.py install
+
+* you will find a new directory .DeCiDa in your home directory containing
+  various tool specific scripts, models and other data
+
+* the DeCiDa libraries are installed under site-packages
+
+* the DeCiDa applications are installed in the python bin directory
+  so they should be in the user path (may require a shell rehash)
+
+Installing under (2.7) python
+-----------------------------
+
+* be sure that python2.7 is in your path::
+
+    python
+    >>> import sys; sys.prefix
+
+  you should see a path like one of the following::
+
+    /Library/Frameworks/Python.framework/Versions/2.7 (MacOS)
+
+    /opt/local/lib/python2.7 (Linux)
+
+* install the distribution::
+
+    python setup.py install
+
+Installing as a local library
+-----------------------------
+
+* DeCiDa can also be installed in a user's directory without requiring sysadmin
+  privileges.
+
+* select or make a directory for putting python libraries::
+
+    mkdir ~/python/library
+
+* copy the decida library to the python library in your home directory::
+
+    cp -R ./decida ~/python/library
+
+* edit the python resource file in ./etc/dot (.pythonrc.py).
+  change the pylib definition appropriately to point to ~/python/library
+
+* copy the resource file to your home directory::
+
+    cp ./etc/dot/.pythonrc.py ~/.
+
+* to use decida, import the user package, which imports ~/.pythonrc.py::
+
+    >>> import user
+
+* alternatively, define the PYTHONPATH environment variable to include
+  ~/python/library in the path
+
+* copy the applications to the user home bin directory::
+
+    cp ./bin/* ~/bin
+
+Test the distribution using the distribution tests
+--------------------------------------------------
+
+* test the distribution with one or more individual tests::
+
+    python
+    >>> import decida.test.test_Calc_1
+
+  should display a calculator
+
+    >>> import decida.test.test_Plotterm
+
+  should display a plot and equation-set text-window
+
+* list all of the tests::
+
+     python
+     >>> import decida.test
+     >>> decida.test.test_list()
+
+  should print all of the tests
+
+* do all of the tests::
+
+     python
+     >>> import decida.test.test_all
+
+  this may or may not complete depending on the sequence of closing windows
+
+* the tests can also be run directly in the unzipped/tarred (pre-install) directory::
+
+     cd DeCiDa-1.1.3/decida/test
+     test_DataViewm_4.py
+
+* test the applications installed in the python bin::
+
+     twin
+
+  should display a text-window (text-editor)
+

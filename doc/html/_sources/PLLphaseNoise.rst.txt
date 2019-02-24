@@ -1,0 +1,7 @@
+PLLphaseNoise
+-------------
+.. image:: _static/PLLphaseNoise.jpg
+.. autoclass:: decida.PLLphaseNoise.PLLphaseNoise
+    :members:
+    :undoc-members:
+    :show-inheritance:

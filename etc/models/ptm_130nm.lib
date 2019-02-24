@@ -1,0 +1,25 @@
+.lib tt
+.param __tox_n=3.3e-9 __vth0_n=0.332   __xl_n=0     __xw_n=0     __u0_n=1.34e-02
+.param __tox_p=3.3e-9 __vth0_p=-0.3499 __xl_p=0     __xw_p=0     __u0_p=5.20e-03
+.include ptm_130nm_mos.inc
+.endl
+.lib ss
+.param __tox_n=3.5e-9 __vth0_n=0.340   __xl_n=1e-8  __xw_n=-1e-8 __u0_n=1.20e-02
+.param __tox_p=3.3e-9 __vth0_p=-0.420  __xl_p=1e-8  __xw_p=-1e-8 __u0_p=4.80e-03
+.include ptm_130nm_mos.inc
+.endl
+.lib ff
+.param __tox_n=3.1e-9 __vth0_n=0.312   __xl_n=-1e-8 __xw_n=1e-8  __u0_n=1.42e-02
+.param __tox_p=3.3e-9 __vth0_p=-0.330  __xl_p=-1e-8 __xw_p=1e-8  __u0_p=5.60e-03
+.include ptm_130nm_mos.inc
+.endl
+.lib sf
+.param __tox_n=3.5e-9 __vth0_n=0.340   __xl_n=1e-8  __xw_n=-1e-8 __u0_n=1.20e-02
+.param __tox_p=3.3e-9 __vth0_p=-0.330  __xl_p=-1e-8 __xw_p=1e-8  __u0_p=5.60e-03
+.include ptm_130nm_mos.inc
+.endl
+.lib fs
+.param __tox_n=3.1e-9 __vth0_n=0.312   __xl_n=-1e-8 __xw_n=1e-8  __u0_n=1.42e-02
+.param __tox_p=3.3e-9 __vth0_p=-0.420  __xl_p=1e-8  __xw_p=-1e-8 __u0_p=4.80e-03
+.include ptm_130nm_mos.inc
+.endl

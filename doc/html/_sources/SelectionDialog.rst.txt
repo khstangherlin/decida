@@ -1,0 +1,7 @@
+SelectionDialog
+----------------
+.. image:: _static/SelectionDialog.jpg
+.. autoclass:: decida.SelectionDialog.SelectionDialog
+    :members:
+    :undoc-members:
+    :show-inheritance:

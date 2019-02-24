@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>CanvasIdentify &#8212; decida 1.1.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.1.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Contourx" href="Contourx.html" />
+    <link rel="prev" title="Calc" href="Calc.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="Contourx.html" title="Contourx"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="Calc.html" title="Calc"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">decida 1.1.3 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="decida_classes.html" accesskey="U"><strong>DeCiDa classes</strong></a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="canvasidentify">
+<h1>CanvasIdentify<a class="headerlink" href="#canvasidentify" title="Permalink to this headline">¶</a></h1>
+<img alt="_images/CanvasIdentify.jpg" src="_images/CanvasIdentify.jpg" />
+<dl class="class">
+<dt id="decida.CanvasIdentify.CanvasIdentify">
+<em class="property">class </em><code class="descclassname">decida.CanvasIdentify.</code><code class="descname">CanvasIdentify</code><span class="sig-paren">(</span><em>canvas</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.CanvasIdentify.CanvasIdentify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ItclObjectx.html#decida.ItclObjectx.ItclObjectx" title="decida.ItclObjectx.ItclObjectx"><code class="xref py py-class docutils literal"><span class="pre">decida.ItclObjectx.ItclObjectx</span></code></a>, <code class="xref py py-class docutils literal"><span class="pre">Tkinter.Toplevel</span></code></p>
+<p><strong>synopsis</strong>:</p>
+<blockquote>
+<div><p>Canvas identify class.</p>
+<p><em>CanvasIdentify</em> sets up a pop-up window to report location, curve
+identity, or other information at a canvas position.</p>
+</div></blockquote>
+<p><strong>configuration options</strong>:</p>
+<blockquote>
+<div><p><strong>verbose</strong> (bool, default=False)</p>
+<blockquote>
+<div>enable/disable verbose mode</div></blockquote>
+<p><strong>active</strong> (bool, default=True)</p>
+<blockquote>
+<div>enable/disable identify display</div></blockquote>
+<p><strong>delay</strong> (int, default=150)</p>
+<blockquote>
+<div>number of milliseconds to delay before displaying identification
+message after hovering over associated window.</div></blockquote>
+<p><strong>background</strong> (str, default=&#8221;yellow&#8221;)</p>
+<blockquote>
+<div>help label background</div></blockquote>
+<p><strong>foreground</strong> (str, default=&#8221;black&#8221;)</p>
+<blockquote>
+<div>help label foreground</div></blockquote>
+<p><strong>font</strong> (str, default=&#8221;Lucida 10&#8221;)</p>
+<blockquote>
+<div>help label font</div></blockquote>
+<p><strong>place</strong> (str, default=&#8221;NE&#8221;)</p>
+<blockquote>
+<div>placement of help window with respect to target window.
+One of (&#8220;over&#8221;, &#8220;under&#8221;, &#8220;left&#8221;, &#8220;right&#8221;, &#8220;N&#8221;, &#8220;S&#8221;, &#8220;E&#8221;, &#8220;W&#8221;, &#8220;NE&#8221;, &#8220;SE&#8221;, &#8220;NW&#8221;, &#8220;SW&#8221;)</div></blockquote>
+<p><strong>offset</strong> (int, default=&#8221;10&#8221;)</p>
+<blockquote>
+<div>offset in x, y placement of help window with respect
+to target window</div></blockquote>
+</div></blockquote>
+<p><strong>public methods</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>public methods from <em>ItclObjectx</em></li>
+</ul>
+</div></blockquote>
+<dl class="method">
+<dt id="decida.CanvasIdentify.CanvasIdentify.message_hide">
+<code class="descname">message_hide</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.CanvasIdentify.CanvasIdentify.message_hide" title="Permalink to this definition">¶</a></dt>
+<dd><p>hide the canvas identify window.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.CanvasIdentify.CanvasIdentify.message_show">
+<code class="descname">message_show</code><span class="sig-paren">(</span><em>u</em>, <em>v</em>, <em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.CanvasIdentify.CanvasIdentify.message_show" title="Permalink to this definition">¶</a></dt>
+<dd><p>bind a message to a coordinate.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>u</strong> (canvas coordinate)</p>
+<blockquote>
+<div>canvas horizontal coordinate</div></blockquote>
+<p><strong>v</strong> (canvas coordinate)</p>
+<blockquote>
+<div>canvas vertical coordinate</div></blockquote>
+<p><strong>text</strong> (str)</p>
+<blockquote>
+<div>text to display</div></blockquote>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="Calc.html"
+                        title="previous chapter">Calc</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="Contourx.html"
+                        title="next chapter">Contourx</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/CanvasIdentify.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="Contourx.html" title="Contourx"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="Calc.html" title="Calc"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">decida 1.1.3 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="decida_classes.html" ><strong>DeCiDa classes</strong></a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2013, Richard Booth.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

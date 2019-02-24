@@ -1,0 +1,19 @@
+;###############################################################################
+; NAME:    .cdsinit
+; PURPOSE: ~/.cdsinit
+; DATE:    Mon Jan 16 13:31:45 EST 2006
+; AUTHOR:  Richard Booth
+; -----------------------------------------------------------------------------
+; NOTES:
+;###############################################################################
+printf("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n")
+printf("\n\nsourcing ~/.cdsinit\n\n")
+printf("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n")
+setSkillPath( append( getSkillPath() list( "~/.DeCiDa/skill" )))
+editor = "nedit"
+editor = "gvim"
+hiSetBindKey("Schematics" "<Key>0" "geDeleteNetProbe()")
+load("RVButil.il")
+load("RVBmenu.il")
+load("RVBdcdlines.il")
+load("RVBvtblines.il")

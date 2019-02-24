@@ -1,0 +1,7 @@
+Histogramx
+----------
+.. image:: _static/Histogramx.jpg
+.. autoclass:: decida.Histogramx.Histogramx
+    :members:
+    :undoc-members:
+    :show-inheritance:

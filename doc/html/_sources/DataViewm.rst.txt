@@ -1,0 +1,15 @@
+DataViewm
+---------
+.. image:: _static/DataViewm.jpg
+.. autoclass:: decida.DataViewm.DataViewm
+    :show-inheritance:
+
+.. toctree::
+
+    DataViewm_menus
+    DataViewm_mouse
+    DataViewm_data_removal
+    DataViewm_equationset
+    XYplotm_menus
+    XYplotm_line_parameters
+    XYplotm_annotation

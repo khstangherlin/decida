@@ -1,0 +1,47 @@
+**Setting-up and using DeCiDa (Silvaco SmartSpice Users)**
+===========================================================
+
+First-time setup for Silvaco SmartSpice Users
+---------------------------------------------
+
+The application are found in the python bin directory, after 
+installation (which or whence python to find the bin directory).
+These should be in the path so that simply typing an appication name,
+(calc, for example) should run the application.
+
+The pre-installed tool wrappers are in the distribution
+./etc/wrappers directory.  These are installed to ~/.DeCiDa/bin
+
+These are the two example projects.  The project drive is where SmartSpice is launched.  The scratch drive
+is where DeCiDa writes simulation data.
+
++-----------+--------------+-------------+--------------------------------+------------------------------------+
+| project:  | technology:  | simulator:  | project_drive:                 | scratch_drive:                     |
++===========+==============+=============+================================+====================================+
+| bird      | ptm_130nm    | SmartSpice  | ~/.DeCiDa/projects/bird        | ~/.DeCiDa/projects/bird/scratch    |
++-----------+--------------+-------------+--------------------------------+------------------------------------+
+| trane     | ptm_45nm     | SmartSpice  | ~/.DeCiDa/projects/trane       | ~/.DeCiDa/projects/trane/scratch   |
++-----------+--------------+-------------+--------------------------------+------------------------------------+
+
+
+Generate a starter python script
+--------------------------------
+
+1. create a top-level test-bench schematic in Gateway
+
+   a. check all to detect any issues
+
+   b. in simulation mode, check signals to be saved
+      the schematic must be closed to have a \*.crb file be generated
+
+   c. edit/modify the control file
+
+2. simulation->create netlist
+
+3. close the schematic so that \*.crb file is generated
+
+4. run creat_sspice_script <testbench> (fill in parameters) 
+
+    * creates <testbench>.py
+
+5. modify the python script and use to run simulations

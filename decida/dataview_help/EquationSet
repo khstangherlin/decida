@@ -1,0 +1,79 @@
+
+  dataview help
+
+  Operations -> Equation Set:
+
+  % Constants: (over-ridden by columns with same name)
+        pi           : 3.14159265 ...
+        kb           : Boltzmann constant (J/K)
+        kbev         : Boltzmann constant (ev/K)
+        e0           : permittivity of free space (F/cm)
+        qe           : electron charge (C)
+        tabs         : T(0C) (K)
+
+  % Equation Set Unary Operations:
+        -            : z = -x             :
+        sign         : z = sign(x)        : x > 0 ? 1 : -1
+        reciprocal   : z = reciprocal(x)  : 1/x
+        sqrt         : z = sqrt(x)        :
+        square       : z = square(x)      : x^2
+        abs          : z = abs(x)         :
+        sin          : z = sin(x)         :
+        cos          : z = cos(x)         :
+        tan          : z = tan(x)         :
+        asin         : z = asin(x)        :
+        acos         : z = acos(x)        :
+        atan         : z = atan(x)        :
+        exp          : z = exp(x)         :
+        expm1        : z = expm1(x)       : exp(x) - 1
+        exp2         : z = exp2(x)        : 2^x
+        log          : z = log(x)         :
+        log10        : z = log10(x)       :
+        log2         : z = log2(x)        :
+        log1p        : z = log1p(x)       : ln(x+1)
+        sinh         : z = sinh(x)        :
+        cosh         : z = cosh(x)        :
+        tanh         : z = tanh(x)        :
+        asinh        : z = asinh(x)       :
+        acosh        : z = acosh(x)       :
+        atanh        : z = atanh(x)       :
+        degrees      : z = degrees(x)     : convert radians to degrees
+        radians      : z = radians(x)     : convert degrees to radians
+        deg2rad      : z = deg2rad(x)     : convert degrees to radians
+        rad2deg      : z = rad2deg(x)     : convert radians to degrees
+        rint         : z = rint(x)        : round to nearest integer
+        fix          : z = fix(x)         : round to nearest integer towards 0
+        floor        : z = floor(x)       : round to nearest integer below
+        ceil         : z = ceil(x)        : round to nearest integer above
+        trunc        : z = trunc(x)       : truncate
+        del          : z = del(x)         : difference between successive values
+        not          : z = not(x)         : logical not 
+        !            : z = !x             : logical not
+  % Equation Set Binary Operations:
+        +            : z = x + y          :
+        -            : z = x - y          :
+        *            : z = x * y          :
+        /            : z = x / y          :
+        ^            : z = x ^ y          :
+        true_divide  : z = true_divide(y, x)   :
+        floor_divide : z = floor_divide(y, x)  :
+        fmod         : z = fmod(y, x)     : remainder of division
+        mod          : z = mod(y, x)      : remainder of division
+        rem          : z = rem(y, x)      : remainder of division
+        hypot        : z = hypot(y, x)    :
+        atan2        : z = atan2(y, x)    :
+        max          : z = max(x, y)      :
+        min          : z = min(x, y)      :
+        integ        : z = integ(y, x)    : integration
+        deriv        : z = deriv(y, x)    : derivative
+        ==           : z = x == y         :
+        !=           : z = x != y         :
+        <=           : z = x <= y         :
+        >=           : z = x >= y         :
+        <            : z = x < y          :
+        >            : z = x > y          :
+        &&           : z = x && y         : logical and
+        ||           : z = x || y         : logical or
+        and          : z = and(x, y)      : logical and
+        or           : z = or(x, y)       : logical or
+        xor          : z = xor(x, y)      : logical xor

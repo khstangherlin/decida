@@ -1,0 +1,248 @@
+#!/usr/bin/env python
+################################################################################
+# NAME     : dataview
+# PURPOSE  : view nutmeg, csv, vcsv, ssv, csdf, hspice data
+# AUTHOR   : Richard Booth
+# DATE     : Sat Nov  9 11:01:12 2013
+# -----------------------------------------------------------------------------
+# NOTES    : 
+################################################################################
+from __future__ import print_function
+import sys
+import os.path
+import tkinter.filedialog
+import decida
+from decida.Data import Data
+from decida.XYplotm import XYplotm
+from decida.DataViewm import DataViewm
+#-----------------------------------------------------------------------------
+# usage
+#-----------------------------------------------------------------------------
+def usage() :
+    print("""\
+  usage :
+      dataview data-file ?options? ?data-file2? ?options?
+  options :
+      -h       print help information
+      -xmat    don't use matplotlib
+      -ssv     format is ssv
+      -csv     format is csv
+      -vcsv    format is vcsv
+      -csdf    format is csdf
+      -nutmeg  format is nutmeg
+      -hspice  format is hspice
+      -info    show information about data-file
+      -show    show data in data-file
+      -twin    text-window data
+      -block  <block>   use block number <block> in data-file
+      -cols   <cols>    column list to plot (x, y1, ?y2 ...?)
+      -xaxis   log or lin
+      -yaxis   log or lin
+  files:
+    data-file:
+      column-oriented, space-separated value file: (*.ssv), or
+      column-oriented, comma-separated value file: (*.csv), or
+      column-oriented, comma-separated value file: (*.vcsv), or
+      csdf-format, or
+      nutmeg-format, or
+      hspice-format
+  notes:
+    if more than one data-file is specified, overlay in XYplot,
+    otherwise, use DataView
+    """)
+    exit()
+#-----------------------------------------------------------------------------
+# command-line arguments
+# should be able to plot from multiple files
+#-----------------------------------------------------------------------------
+show_info = False   # print file, format, column names
+show_data = False   # print data
+twin_data = False   # twin data
+
+files    = []
+FileCols = {}
+FileForm = {}
+FileData = {}
+FileBlock = {}
+
+use_matplotlib = True
+file   = None
+format = None
+xaxis  = "lin"
+yaxis  = "lin"
+args   = sys.argv[1:]
+while len(args) > 0 :
+    arg = args.pop(0)
+    if   arg == "-h" or arg == "-help" :
+        usage()
+    elif arg == "-xmat" :
+        use_matplotlib = False
+    elif arg == "-f" :
+        file = None
+    elif arg == "-nutmeg" :
+        format = "nutmeg"
+        if file :
+            FileForm[file] = format
+    elif arg == "-csdf" :
+        format = "csdf"
+        if file :
+            FileForm[file] = format
+    elif arg == "-hspice" :
+        format = "hspice"
+        if file :
+            FileForm[file] = format
+    elif arg == "-csv" :
+        format = "csv"
+        if file :
+            FileForm[file] = format
+    elif arg == "-vcsv" :
+        format = "vcsv"
+        if file :
+            FileForm[file] = format
+    elif arg == "-ssv" :
+        format = "ssv"
+        if file :
+            FileForm[file] = format
+    elif arg == "-info" :
+        show_info = True
+    elif arg == "-show" :
+        show_data = True
+    elif arg == "-twin" :
+        twin_data = True
+    elif arg == "-xaxis" :
+        narg = args.pop(0)
+        if narg.lower() == "log" :
+            xaxis = "log"
+    elif arg == "-yaxis" :
+        narg = args.pop(0)
+        if narg.lower() == "log" :
+            yaxis = "log"
+    elif arg == "-block" :
+        block = int(args.pop(0))
+        if file :
+            FileBlock[file] = block
+        else :
+            print("specify file before block")
+    elif arg == "-cols" :
+        if file :
+            for col in  args.pop(0).split() :
+                FileCols[file].append(col)
+        else :
+            print("specify file before columns")
+    else :
+        file = arg
+        files.append(file)
+        FileCols[file] = []
+        FileForm[file] = format
+        FileBlock[file] = 0
+#-----------------------------------------------------------------------------
+# gather file name if not specified
+#-----------------------------------------------------------------------------
+if len(files) == 0 :
+    file = tkinter.filedialog.askopenfilename(
+        title = "data file?",
+        initialdir = os.getcwd()
+    )
+    if not file:
+        exit()
+    elif not os.path.isfile(file):
+        print("file " + file + " doesn't exist")
+        exit()
+    files.append(file)
+    FileCols[file] = []
+    FileForm[file] = None
+    FileBlock[file] = 0
+#-----------------------------------------------------------------------------
+# find datafile format(s)
+# read data file
+# TBD check format first if specified
+#-----------------------------------------------------------------------------
+useXYplot = (len(files) > 1)
+dvcmd = []
+xycmd = []
+xytitle = ""
+start = True
+errors = False
+for file in files :
+    if not FileForm[file] :
+        FileForm[file] = Data.datafile_format(file)
+    if not FileForm[file] :
+        print("datafile format can't be determined or wasn't specified")
+        exit()
+    elif FileForm[file] not in ("nutmeg", "csdf", "hspice", "csv", "vcsv", "ssv") :
+        print("datafile format \"%s\" is not yet supported" % (FileForm[file]))
+        exit()
+    FileData[file] = Data()
+    FileData[file].read(file, format=FileForm[file], block=FileBlock[file])
+    names = FileData[file].names()
+    title = FileData[file]["title"]
+    if show_info:
+        datacolumns = decida.multiline(" ".join(names), 65)
+        print()
+        print("file (format): %s (%s)" % (file, FileForm[file]))
+        if title != "" :
+            print("title : ", title)
+        print("plot columns: ", " ".join(FileCols[file]))
+        print("data columns: ", datacolumns[0])
+        for line in datacolumns[1:] :
+            print("              ", line)
+    if show_data:
+        FileData[file].show()
+    if twin_data:
+        FileData[file].twin()
+
+    if len(names) == 0 :
+        print("datafile \"%s\" is empty" % (file))
+        errors = True
+
+    if len(FileCols[file]) < 1:
+        xcol = names[0]
+        FileCols[file].append(xcol)
+    if len(FileCols[file]) < 2:
+        if len(names) < 2 :
+            ycol = names[0]
+        else :
+            ycol = names[1]
+        FileCols[file].append(ycol)
+
+    for col in FileCols[file]:
+        if not useXYplot and col == "-next" :
+            continue
+        if col not in names :
+            print(col + " not in data")
+            print(names)
+            errors = True
+
+    if start :
+        start = False
+        xytitle = title
+    if useXYplot:
+        xycmd.append(FileData[file])
+        xycmd.append(" ".join(FileCols[file]))
+    else :
+        cmd = []
+        for col in FileCols[file]:
+            if col == "-next" :
+                if len(cmd) > 0 :
+                    dvcmd.append([" ".join(cmd)])
+                    cmd = []
+            else :
+                cmd.append(col)
+        if len(cmd) > 0 :
+            dvcmd.append([" ".join(cmd)])
+            cmd = []
+if errors or show_info or show_data or twin_data :
+    exit()
+#-----------------------------------------------------------------------------
+# XYplot or DataView
+#-----------------------------------------------------------------------------
+if useXYplot :
+   xy = XYplotm(use_matplotlib=use_matplotlib,
+       command=xycmd, title=xytitle, xaxis=xaxis, yaxis=yaxis
+   )
+else :
+   file = files[0]
+   if len(dvcmd) > 0 :
+       DataViewm(use_matplotlib=use_matplotlib, data=FileData[file], command=dvcmd, title=file)
+   else :
+       DataViewm(use_matplotlib=use_matplotlib, data=FileData[file])

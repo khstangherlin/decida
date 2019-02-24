@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>EquationParser &#8212; decida 1.1.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.1.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Fitter" href="Fitter.html" />
+    <link rel="prev" title="DialogBase" href="DialogBase.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="Fitter.html" title="Fitter"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="DialogBase.html" title="DialogBase"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">decida 1.1.3 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="decida_classes.html" accesskey="U"><strong>DeCiDa classes</strong></a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="equationparser">
+<h1>EquationParser<a class="headerlink" href="#equationparser" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="decida.EquationParser.EquationParser">
+<em class="property">class </em><code class="descclassname">decida.EquationParser.</code><code class="descname">EquationParser</code><span class="sig-paren">(</span><em>equation</em>, <em>postfix=False</em>, <em>varlist=None</em>, <em>debug=False</em>, <em>data_function_format=True</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.EquationParser.EquationParser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">future.types.newobject.newobject</span></code></p>
+<p><strong>synopsis</strong>:</p>
+<blockquote>
+<div><p>Equation parser class.</p>
+<p><em>EquationParser</em> parses a general algebraic equation, involving
+numbers, variables, unary and binary operations, and parentheses.
+It returns a set of simpler, parsed (space-separated) equations with
+only 1, 2, or 3 token right-hand-side expressions: assignments, unary
+operations, binary operations.</p>
+</div></blockquote>
+<p><strong>constructor arguments</strong>:</p>
+<blockquote>
+<div><p><strong>equation</strong> (str)</p>
+<blockquote>
+<div>lhs=rhs string to be parsed</div></blockquote>
+<p><strong>postfix</strong> (bool, default=False)</p>
+<blockquote>
+<div>if True, generate postfix notation, otherwise infix</div></blockquote>
+<p><strong>varlist</strong> (list of str, default=None)</p>
+<blockquote>
+<div>list of variables which are to be treated specially:
+if variable contains meta-character, it is replaced
+with a temporary name, then after parsing, re-replaced.</div></blockquote>
+<p><strong>debug</strong> (bool, default=False)</p>
+<blockquote>
+<div>if True, print out parsing information</div></blockquote>
+<p><strong>data_function_format</strong> (bool, default=True)</p>
+<blockquote>
+<div>if True, print out functions in Data-object-compatible
+format.</div></blockquote>
+</div></blockquote>
+<p><strong>operator precedence</strong> (low to high):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>&amp;&amp; ||
+&lt; &lt;= == != &gt;= &gt;
++ -   (add, sub)
+* / %
++ - ! (unary)
+^
+</pre></div>
+</div>
+<p><strong>example</strong>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">decida.EquationParser</span> <span class="k">import</span> <span class="n">EquationParser</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ep</span> <span class="o">=</span> <span class="n">EquationParser</span><span class="p">(</span><span class="s2">&quot;z =V(1)* sin(x+3.0)*ID(mp2)&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="n">varlist</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;V(1)&quot;</span><span class="p">,</span> <span class="s2">&quot;ID(mp2)&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">eqns</span> <span class="o">=</span> <span class="n">ep</span><span class="o">.</span><span class="n">parse</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">eqn</span> <span class="ow">in</span> <span class="n">eqns</span> <span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nb">print</span> <span class="n">eqn</span>
+<span class="go">zz1003 = x + 3.0</span>
+<span class="go">zz1004 = sin zz1003</span>
+<span class="go">zz1005 = V(1) * zz1004</span>
+<span class="go">z = zz1005 * ID(mp2)</span>
+</pre></div>
+</div>
+<p><strong>public methods</strong>:</p>
+<dl class="method">
+<dt id="decida.EquationParser.EquationParser.ivars">
+<code class="descname">ivars</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.EquationParser.EquationParser.ivars" title="Permalink to this definition">¶</a></dt>
+<dd><p>return list of intermediate variables in the current result.</p>
+<p><strong>results</strong> :</p>
+<blockquote>
+<div><ul class="simple">
+<li>Lists all the intermediate lhsvars created in the set
+of parsed equations.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.EquationParser.EquationParser.parse">
+<code class="descname">parse</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.EquationParser.EquationParser.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>parse the equation and return the result.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>return set of parsed equations with tokenized right-hand-side
+expressions of 1, 2 or 3 (space-separated) tokens.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="DialogBase.html"
+                        title="previous chapter">DialogBase</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="Fitter.html"
+                        title="next chapter">Fitter</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/EquationParser.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="Fitter.html" title="Fitter"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="DialogBase.html" title="DialogBase"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">decida 1.1.3 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="decida_classes.html" ><strong>DeCiDa classes</strong></a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2013, Richard Booth.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

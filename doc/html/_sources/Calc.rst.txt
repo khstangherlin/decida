@@ -1,0 +1,5 @@
+Calc
+----
+.. image:: _static/Calc.jpg
+.. autoclass:: decida.Calc.Calc
+    :show-inheritance:

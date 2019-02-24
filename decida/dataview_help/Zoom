@@ -1,0 +1,37 @@
+
+  dataview help
+
+  Zooming:
+
+  % Zooming in with mouse on plot:
+     1. press mouse-button-1 on one corner of region to zoom in to.
+     2. hold button down, move to opposite corner of region.
+     3. release mouse-button-1.
+     *  axes limits of graph are changed to zoom-in region.
+  % Restoring reference window with mouse on plot:
+     1. press mouse-button-2.
+     *  axes limits of graph are restored to the reference window.
+     *  The reference window is the original plot view, or the set
+         plot view (see next bullet)
+  % Setting reference window to a zoomed-in window:
+     1. Press the "Win 0" button above the plot.
+  % Pressing the buttons at the top of the control panel (next to Save)
+     1. left button: expand the view
+     2. middle button: shrink the view
+     3. right button: restore the view
+  % Key-bindings:
+     1. <Key-F> : autoscale the window
+     2. <Key-[> : expand the window in both dimensions
+     3. <Key-]> : shrink the window in both dimensions
+  % Saving and restoring a zoom view:
+     1. To save a zoomed-in window, press the "Save" button above the plot.
+     2. Zoom in or out.
+     3. To restore the saved zoomed-in window, press the "Rest." button
+          above the plot.
+  % The plot window can be increased, decreased, restored to reference,
+    moved left, moved right, increased in x dimension, moved up, moved down,
+    or increased in y dimension, respectively by the use of the buttons
+    to the right of "Save", "Rest.", "Win 0".
+  % The plot window limits can be changed directly by typing the
+    coordinates into the entry boxes to the right of "Minimum" and "Maximum"
+    above the plot.

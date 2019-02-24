@@ -1,0 +1,3 @@
+grep
+----
+.. autofunction:: decida.grep.grep

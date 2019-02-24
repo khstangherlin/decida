@@ -1,0 +1,6 @@
+DialogBase
+----------
+.. autoclass:: decida.DialogBase.DialogBase
+    :members:
+    :undoc-members:
+    :show-inheritance:

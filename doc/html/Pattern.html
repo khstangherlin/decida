@@ -1,0 +1,347 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Pattern &#8212; decida 1.1.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.1.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="PlotBasem" href="PlotBasem.html" />
+    <link rel="prev" title="Parameters" href="Parameters.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="PlotBasem.html" title="PlotBasem"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="Parameters.html" title="Parameters"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">decida 1.1.3 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="decida_classes.html" accesskey="U"><strong>DeCiDa classes</strong></a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="pattern">
+<h1>Pattern<a class="headerlink" href="#pattern" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="decida.Pattern.Pattern">
+<em class="property">class </em><code class="descclassname">decida.Pattern.</code><code class="descname">Pattern</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.Pattern.Pattern" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ItclObjectx.html#decida.ItclObjectx.ItclObjectx" title="decida.ItclObjectx.ItclObjectx"><code class="xref py py-class docutils literal"><span class="pre">decida.ItclObjectx.ItclObjectx</span></code></a></p>
+<p><strong>synopsis</strong>:</p>
+<blockquote>
+<div><p>Pattern generator.</p>
+<p><em>Pattern</em> generates one of various bit-sequences and outputs the
+sequence as either a string of 1&#8217;s and 0&#8217;s, a piece-wise linear set of
+time, voltage pairs, or a set of time, binary pairs.</p>
+<p>The <em>Tckt</em> class uses <em>Pattern</em> to generate piece-wise linear voltage
+specifications for procedural simulation scripts.</p>
+</div></blockquote>
+<p><strong>constructor arguments</strong>:</p>
+<blockquote>
+<div><p><strong>**kwargs</strong> (dict)</p>
+<blockquote>
+<div>keyword=value specifications:
+configuration-options</div></blockquote>
+</div></blockquote>
+<p><strong>configuration options</strong>:</p>
+<blockquote>
+<div><p><strong>v0</strong> (float, default=0.0)</p>
+<blockquote>
+<div>low value of the signal.</div></blockquote>
+<p><strong>v1</strong> (float, default=1.0)</p>
+<blockquote>
+<div>high value of the signal.</div></blockquote>
+<p><strong>delay</strong> (float, default=0.0)</p>
+<blockquote>
+<div>delay before first bit.</div></blockquote>
+<p><strong>edge</strong> (float, default=50ps)</p>
+<blockquote>
+<div>rise and fall times in s.</div></blockquote>
+<p><strong>period</strong> (float, default=1ns)</p>
+<blockquote>
+<div>bit period in s.</div></blockquote>
+<p><strong>pre</strong> (str, default=&#8221;&#8221;)</p>
+<blockquote>
+<div>specify preamble to bit-pattern (bit-sequence)</div></blockquote>
+<p><strong>post</strong> (str, default=&#8221;&#8221;)</p>
+<blockquote>
+<div>specify suffix to bit-pattern (bit-sequence)</div></blockquote>
+<p><strong>start_at_first_bit</strong> (bool, default=False)</p>
+<blockquote>
+<div>Normally a pwl sequence starts at the common-mode.
+If start_at_first_bit=True, start at first bit value.</div></blockquote>
+<p><strong>format</strong> (str, default=&#8221;pwl&#8221;)</p>
+<blockquote>
+<div><p>Format of return list:</p>
+<blockquote>
+<div><p>&#8220;binary&#8221;: return pattern only</p>
+<p>&#8220;time-binary&#8221;: return list of time binary pairs</p>
+<p>&#8220;pwl&#8221;: return piecewise linear waveform</p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p><strong>example</strong> (from test_Pattern):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">decida.Pattern</span> <span class="k">import</span> <span class="n">Pattern</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">Pattern</span><span class="p">(</span><span class="n">delay</span><span class="o">=</span><span class="mi">4</span><span class="n">e</span><span class="o">-</span><span class="mi">9</span><span class="p">,</span> <span class="n">start_at_first_bit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">edge</span><span class="o">=</span><span class="mf">0.1e-9</span><span class="p">)</span>
+<span class="n">pwl</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">prbs</span><span class="p">(</span><span class="n">length</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;t v&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">t</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">pwl</span><span class="p">[</span><span class="mi">0</span><span class="p">::</span><span class="mi">2</span><span class="p">],</span> <span class="n">pwl</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">])</span> <span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>public methods</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>public methods from <em>ItclObjectx</em></li>
+</ul>
+</div></blockquote>
+<dl class="method">
+<dt id="decida.Pattern.Pattern.clock">
+<code class="descname">clock</code><span class="sig-paren">(</span><em>length</em>, <em>startbit=0</em>, <em>bits_level=1</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.Pattern.Pattern.clock" title="Permalink to this definition">¶</a></dt>
+<dd><p>generate clock pattern (0, 1, 0, 1, 0, ...).</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>length</strong> (int)</p>
+<blockquote>
+<div>The number of bits in the sequence</div></blockquote>
+<p><strong>startbit</strong> (int, default=0)</p>
+<blockquote>
+<div>The starting bit of the bit sequence</div></blockquote>
+<p><strong>bits_level</strong> (int, default=1)</p>
+<blockquote>
+<div>Number of bits in each clock level.</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>The <em>Pattern</em> pattern is set to a clock pattern, with
+the start bit set to the specified value.</li>
+<li>Returns pattern in format specified by the <em>format</em>
+configuration option.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Pattern.Pattern.format">
+<code class="descname">format</code><span class="sig-paren">(</span><em>pattern</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.Pattern.Pattern.format" title="Permalink to this definition">¶</a></dt>
+<dd><p>format the bit-sequence.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>pattern</strong> (string)</p>
+<blockquote>
+<div>a string of &#8220;1&#8220;&#8216;s and &#8220;0&#8220;&#8216;s</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul>
+<li><p class="first">Returns <em>Pattern</em> pattern in format specified by the <em>format</em>
+configuration option.</p>
+<p>format is one of:</p>
+<blockquote>
+<div><ul class="simple">
+<li>&#8220;binary&#8221;: string sequence of &#8220;1&#8220;&#8216;s and &#8220;0&#8220;&#8216;s</li>
+<li>&#8220;time-binary&#8221;: pairs of time, and integer value 1 or 0.</li>
+<li>&#8220;pwl&#8221;: pairs of time, value to account for signal
+edge, period, and voltage low and high values.</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Pattern.Pattern.long_short">
+<code class="descname">long_short</code><span class="sig-paren">(</span><em>longs</em>, <em>shorts</em>, <em>startbit=0</em>, <em>length=0</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.Pattern.Pattern.long_short" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>generate a bit pattern with several repeated bits, followed by</dt>
+<dd>a phase where each bit is inverted.</dd>
+</dl>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>longs</strong> (int)</p>
+<blockquote>
+<div>number of bits in the long phase, where each bit
+is repeated.</div></blockquote>
+<p><strong>shorts</strong> (int)</p>
+<blockquote>
+<div>number of bits in the short phase, where each bit
+is inverted.</div></blockquote>
+<p><strong>startbit</strong> (int, default=0)</p>
+<blockquote>
+<div>The starting bit of the bit sequence</div></blockquote>
+<p><strong>length</strong> (int, default=0)</p>
+<blockquote>
+<div>The number of bits in the sequence.
+If not specified, or less than 1, set to long+short</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>The <em>Pattern</em> pattern is set to the bit pattern.</li>
+<li>Returns pattern in format specified by the <em>format</em>
+configuration option.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Pattern.Pattern.pattern">
+<code class="descname">pattern</code><span class="sig-paren">(</span><em>pattern</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.Pattern.Pattern.pattern" title="Permalink to this definition">¶</a></dt>
+<dd><p>specify and generate a bit pattern directly.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>pattern</strong> (str)</p>
+<blockquote>
+<div>a string of &#8220;1&#8220;&#8216;s and &#8220;0&#8220;&#8216;s</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>The <em>Pattern</em> pattern is set to the bit pattern.</li>
+<li>Returns pattern in format specified by the <em>format</em>
+configuration option.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Pattern.Pattern.prbs">
+<code class="descname">prbs</code><span class="sig-paren">(</span><em>size=7</em>, <em>length=0</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.Pattern.Pattern.prbs" title="Permalink to this definition">¶</a></dt>
+<dd><p>generate a pseudo-random bit pattern.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>size</strong> (int, default=7)</p>
+<blockquote>
+<div>The PRBS specification: size=7 generates a pseudo-random
+bit-sequence of length 2^7-1.</div></blockquote>
+<p><strong>length</strong> (int, default=0)</p>
+<blockquote>
+<div>The length of the bit-sequence.  If length=0, generates
+a sequence of 2^size - 1.</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>The <em>Pattern</em> pattern is set to the PRBS bit pattern.</li>
+<li>Returns pattern in format specified by the <em>format</em>
+configuration option.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Pattern.Pattern.rand">
+<code class="descname">rand</code><span class="sig-paren">(</span><em>length</em>, <em>seed=None</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.Pattern.Pattern.rand" title="Permalink to this definition">¶</a></dt>
+<dd><p>generate a random bit sequence.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>length</strong> (int)</p>
+<blockquote>
+<div>the length of the bit sequence.</div></blockquote>
+<p><strong>seed</strong> (str, default=None)</p>
+<blockquote>
+<div>random seed to initialize random number generator.</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>The <em>Pattern</em> pattern is set to a random bit pattern.</li>
+<li>Returns pattern in format specified by the <em>format</em>
+configuration option.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="Parameters.html"
+                        title="previous chapter">Parameters</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="PlotBasem.html"
+                        title="next chapter">PlotBasem</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/Pattern.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="PlotBasem.html" title="PlotBasem"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="Parameters.html" title="Parameters"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">decida 1.1.3 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="decida_classes.html" ><strong>DeCiDa classes</strong></a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2013, Richard Booth.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

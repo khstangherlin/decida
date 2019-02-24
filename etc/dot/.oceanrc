@@ -1,0 +1,16 @@
+;###############################################################################
+; NAME:    .oceanrc
+; PURPOSE: ~/.oceanrc
+; DATE:    Mon Jan 16 13:31:45 EST 2006
+; AUTHOR:  Richard Booth
+; -----------------------------------------------------------------------------
+; NOTES:
+;###############################################################################
+printf("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n")
+printf("\n\nsourcing ~/.oceanrc\n\n")
+printf("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n")
+setSkillPath( append( getSkillPath() list( "~/.DeCiDa/skill" )))
+load("RVButil.il")
+load("RVBocn_getData.il")
+load("RVBocn_writeData.il")
+load("RVBocn_writeResult.il")

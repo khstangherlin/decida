@@ -1,0 +1,6 @@
+BinarySearch
+------------
+.. autoclass:: decida.BinarySearch.BinarySearch
+    :members:
+    :undoc-members:
+    :show-inheritance:

@@ -1,0 +1,86 @@
+#!/usr/bin/env python
+################################################################################
+# NAME     : op
+# PURPOSE  : post-process operating point simulation results (spectre)
+# AUTHOR   : Richard Booth
+# DATE     : Sat Nov  9 11:04:21 2013
+# -----------------------------------------------------------------------------
+# NOTES    : 
+################################################################################
+from __future__ import print_function
+import sys
+import os.path
+import decida
+from decida.Tckt import Tckt
+#==============================================================================
+# usage
+#==============================================================================
+script = sys.argv[0]
+script = os.path.basename(script)
+usage_text = """
+    usage: $script ?prefix? ?options?
+    options:
+      -h        print help information
+      -help     print help information
+      -block    specify op block in raw file (default = 0)
+      -raw      specify .raw file
+      -lis      specify .lis file
+      -idmin    minimum drain current
+      -vdssmin  minimum saturation voltage
+      -verbose  display messages
+    files:
+      lisfile:
+        .lis file
+      rawfile:
+        .raw file
+    arguments:
+      prefix: prefix of .lis and .raw files
+      if supplied, then use prefix.lis and prefix.raw
+  """
+usage_text = decida.interpolate(usage_text)
+#==============================================================================
+# command-line arguments
+#==============================================================================
+args    = sys.argv[1:]
+lisfile = None
+rawfile = None
+prefix  = None
+idmin   = 1e-8
+vdssmin = 0.01
+verbose = False
+block   = 0
+while len(args) > 0:
+    arg = args.pop(0)
+    if   arg == "-block" :
+        block = int(args.pop(0))
+    elif arg == "-idmin" :
+        idmin = args.pop(0)
+    elif arg == "-vdssmin" :
+        vdssmin = args.pop(0)
+    elif arg == "-raw" :
+        rawfile = args.pop(0)
+    elif arg == "-lis" :
+        lisfile = args.pop(0)
+    elif arg == "-verbose" :
+        verbose = True
+    elif arg == "-h" or arg == "-help" :
+        print(usage_text)
+        exit()
+    else :
+        prefix=arg
+
+if prefix :
+    if not rawfile :
+        rawfile = prefix + ".raw"
+    if not lisfile :
+        lisfile = prefix + ".lis"
+vdssmin = max(0.01, vdssmin)
+#=============================================================================
+# run dcop
+#=============================================================================
+tckt=Tckt()
+tckt.dcop(
+   rawfile=rawfile, lisfile=lisfile,
+   idmin=idmin, vdssmin=vdssmin, verbose=verbose, block=block
+)
+exit()

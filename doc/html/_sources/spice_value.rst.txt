@@ -1,0 +1,3 @@
+spice_value
+-----------
+.. autofunction:: decida.spice_value

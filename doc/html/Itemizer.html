@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Itemizer &#8212; decida 1.1.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.1.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="LevMar" href="LevMar.html" />
+    <link rel="prev" title="ItclObjectx" href="ItclObjectx.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="LevMar.html" title="LevMar"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="ItclObjectx.html" title="ItclObjectx"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">decida 1.1.3 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="decida_classes.html" accesskey="U"><strong>DeCiDa classes</strong></a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="itemizer">
+<h1>Itemizer<a class="headerlink" href="#itemizer" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="decida.Itemizer.Itemizer">
+<em class="property">class </em><code class="descclassname">decida.Itemizer.</code><code class="descname">Itemizer</code><span class="sig-paren">(</span><em>*iterables</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.Itemizer.Itemizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">future.types.newobject.newobject</span></code></p>
+<p><strong>synopsis</strong>:</p>
+<blockquote>
+<div><p>Cross-product iterator with tag.</p>
+<p>Each <em>Itemizer</em> iteration produces a list of elements, one from each
+contributing list of iterators.</p>
+<p>At each iteration, the tag() method produces a string for
+naming or reporting.</p>
+</div></blockquote>
+<p><strong>constructor arguments</strong>:</p>
+<blockquote>
+<div><p><strong>*iterators</strong> (iterables)</p>
+<blockquote>
+<div>variable arguments are each an iterator</div></blockquote>
+<p><strong>tag</strong> (str, default=None)</p>
+<blockquote>
+<div>format string for the tag.  If None, then tag is
+&#8220;%s. ... %s&#8221; (number of iterators)</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>the Itemizer instance iterates over the cross-product of
+all of the specified iterators.</li>
+<li>each iteration produces a list of elements, one from each iterator.</li>
+<li>the tag() method produces a string for naming or reporting.</li>
+</ul>
+</div></blockquote>
+<p><strong>example</strong> (from test_Itemizer):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">decida.Itemizer</span> <span class="k">import</span> <span class="n">Itemizer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">procs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;TT&quot;</span><span class="p">,</span> <span class="s2">&quot;SS&quot;</span><span class="p">,</span> <span class="s2">&quot;FF&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vdds</span>  <span class="o">=</span> <span class="p">[</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">temps</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ix</span> <span class="o">=</span> <span class="n">Itemizer</span><span class="p">(</span><span class="n">procs</span><span class="p">,</span> <span class="n">vdds</span><span class="p">,</span> <span class="n">temps</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">.V_</span><span class="si">%s</span><span class="s2">.T_</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">proc</span><span class="p">,</span> <span class="n">vdd</span><span class="p">,</span> <span class="n">temp</span> <span class="ow">in</span> <span class="n">ix</span> <span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="n">tag</span> <span class="o">=</span> <span class="n">ix</span><span class="o">.</span><span class="n">tag</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="nb">print</span> <span class="n">tag</span><span class="p">,</span> <span class="n">proc</span><span class="p">,</span> <span class="n">vdd</span><span class="p">,</span> <span class="n">temp</span>
+<span class="go">TT.V_0.9.T_0 TT 0.9 0</span>
+<span class="go">TT.V_0.9.T_25 TT 0.9 25</span>
+<span class="go">TT.V_0.9.T_100 TT 0.9 100</span>
+<span class="go">TT.V_1.0.T_0 TT 1.0 0</span>
+<span class="go">TT.V_1.0.T_25 TT 1.0 25</span>
+<span class="go">TT.V_1.0.T_100 TT 1.0 100</span>
+<span class="go">TT.V_1.1.T_0 TT 1.1 0</span>
+<span class="go">TT.V_1.1.T_25 TT 1.1 25</span>
+<span class="go">TT.V_1.1.T_100 TT 1.1 100</span>
+<span class="go">SS.V_0.9.T_0 SS 0.9 0</span>
+<span class="go">SS.V_0.9.T_25 SS 0.9 25</span>
+<span class="go">SS.V_0.9.T_100 SS 0.9 100</span>
+<span class="go">SS.V_1.0.T_0 SS 1.0 0</span>
+<span class="go">SS.V_1.0.T_25 SS 1.0 25</span>
+<span class="go">SS.V_1.0.T_100 SS 1.0 100</span>
+<span class="go">SS.V_1.1.T_0 SS 1.1 0</span>
+<span class="go">SS.V_1.1.T_25 SS 1.1 25</span>
+<span class="go">SS.V_1.1.T_100 SS 1.1 100</span>
+<span class="go">FF.V_0.9.T_0 FF 0.9 0</span>
+<span class="go">FF.V_0.9.T_25 FF 0.9 25</span>
+<span class="go">FF.V_0.9.T_100 FF 0.9 100</span>
+<span class="go">FF.V_1.0.T_0 FF 1.0 0</span>
+<span class="go">FF.V_1.0.T_25 FF 1.0 25</span>
+<span class="go">FF.V_1.0.T_100 FF 1.0 100</span>
+<span class="go">FF.V_1.1.T_0 FF 1.1 0</span>
+<span class="go">FF.V_1.1.T_25 FF 1.1 25</span>
+<span class="go">FF.V_1.1.T_100 FF 1.1 100</span>
+</pre></div>
+</div>
+<p><strong>public methods</strong>:</p>
+<dl class="method">
+<dt id="decida.Itemizer.Itemizer.tag">
+<code class="descname">tag</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.Itemizer.Itemizer.tag" title="Permalink to this definition">¶</a></dt>
+<dd><p>generate string based on specified tag format and element values</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ItclObjectx.html"
+                        title="previous chapter">ItclObjectx</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="LevMar.html"
+                        title="next chapter">LevMar</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/Itemizer.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="LevMar.html" title="LevMar"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="ItclObjectx.html" title="ItclObjectx"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">decida 1.1.3 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="decida_classes.html" ><strong>DeCiDa classes</strong></a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2013, Richard Booth.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

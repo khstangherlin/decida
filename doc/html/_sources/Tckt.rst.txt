@@ -1,0 +1,6 @@
+Tckt
+----
+.. autoclass:: decida.Tckt.Tckt
+    :members:
+    :undoc-members:
+    :show-inheritance:

@@ -1,0 +1,27 @@
+#!/bin/bash
+################################################################################
+# NAME     : run_sspice
+# PURPOSE  : SmartSpice wrapper script
+# AUTHOR   : Richard Booth
+# DATE     : Thu Nov 21 20:03:14 2013
+# -----------------------------------------------------------------------------
+# NOTES    : 
+################################################################################
+sspice=/tools/silvaco/bin/sspice
+project=generic
+quiet=0
+arglist=""
+while [ $# -gt 0 ]; do
+    arg=$1; shift 1
+    case $arg in
+        -project) project=$1; shift 1;;
+        -quiet)   quiet=1;;
+        -verbose) quiet=0;;
+        *) arglist="$arglist $arg";;
+    esac
+done
+if [ $quiet = 1 ]; then
+    nohup nice $sspice $arglist > /dev/null
+else
+    nice $sspice $arglist
+fi

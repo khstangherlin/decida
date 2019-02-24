@@ -1,0 +1,34 @@
+#=============================================================================
+# PROC    : lshift
+# PURPOSE : shift list and return first element
+# AUTHOR  : Richard Booth
+# DATE    : Wed Nov 27 16:34:32 EST 2002
+# ---------------------------------------------------------------------------
+# ARGUMENTS :
+#   % inputlist
+#       List to be shifted.
+# RESULTS :
+#   * Sets inputlist to 2nd to last elements of original inputlist
+#   * Returns first element in inputlist
+# NOTES :
+#   * useful for command-line argument processing
+# EXAMPLE-CALL :
+#{
+#  lib   = ""
+#  show  = 0
+#  tests = []
+#  while (len(sys.argv) > 0) :
+#    arg = lshift(sys.argv)
+#    if (arg == "-lib") :
+#      lib = lshift(sys.argv)
+#    elif (arg == "-show") :
+#      show = 1
+#    else :
+#      tests.append(arg)
+#}
+#=============================================================================
+def lshift (inputlist) :
+    return(inputlist.pop(0))
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwyyyyyyyyyyyyyyyyyyyyyy
+
+xxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww wwwwwwwwwwwwwwwwwwwwwyyyyyyyyyyyyyyyyyyyyyy

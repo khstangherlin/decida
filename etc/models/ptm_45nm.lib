@@ -1,0 +1,25 @@
+.lib tt
+.param __toxe_n=1.4e-9 __dvt0_n=2.8 __lint_n=1.2e-8 __wint_n=5e-9 __u0_n=0.032
+.param __toxe_p=1.4e-9 __dvt0_p=3.8 __lint_p=1.2e-8 __wint_p=5e-9 __u0_p=0.0095
+.include ptm_45nm_mos.inc
+.endl
+.lib ss
+.param __toxe_n=1.5e-9 __dvt0_n=2.8 __lint_n=1.6e-8 __wint_n=4e-9 __u0_n=0.030
+.param __toxe_p=1.5e-9 __dvt0_p=3.8 __lint_p=1.6e-8 __wint_p=4e-9 __u0_p=0.0090
+.include ptm_45nm_mos.inc
+.endl
+.lib ff
+.param __toxe_n=1.3e-9 __dvt0_n=2.8 __lint_n=1.6e-8 __wint_n=6e-9 __u0_n=0.034
+.param __toxe_p=1.3e-9 __dvt0_p=3.8 __lint_p=1.6e-8 __wint_p=6e-9 __u0_p=0.0097
+.include ptm_45nm_mos.inc
+.endl
+.lib sf
+.param __toxe_n=1.5e-9 __dvt0_n=2.8 __lint_n=1.6e-8 __wint_n=4e-9 __u0_n=0.030
+.param __toxe_p=1.3e-9 __dvt0_p=3.8 __lint_p=1.6e-8 __wint_p=6e-9 __u0_p=0.0097
+.include ptm_45nm_mos.inc
+.endl
+.lib fs
+.param __toxe_n=1.3e-9 __dvt0_n=2.8 __lint_n=1.6e-8 __wint_n=6e-9 __u0_n=0.034
+.param __toxe_p=1.5e-9 __dvt0_p=3.8 __lint_p=1.6e-8 __wint_p=4e-9 __u0_p=0.0090
+.include ptm_45nm_mos.inc
+.endl

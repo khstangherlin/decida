@@ -1,0 +1,3 @@
+pattern_alignment
+-----------------
+.. autofunction:: decida.pattern_alignment.pattern_alignment

@@ -1,0 +1,7 @@
+FrameNotebook
+-------------
+.. image:: _static/FrameNotebook.jpg
+.. autoclass:: decida.FrameNotebook.FrameNotebook
+    :members:
+    :undoc-members:
+    :show-inheritance:

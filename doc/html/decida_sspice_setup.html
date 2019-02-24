@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Setting-up and using DeCiDa (Silvaco SmartSpice Users) &#8212; decida 1.1.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.1.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="DeCiDa classes" href="decida_classes.html" />
+    <link rel="prev" title="Setting-up and using DeCiDa (UC Berkeley NGspice Users)" href="decida_ngspice_setup.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="decida_classes.html" title="DeCiDa classes"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="decida_ngspice_setup.html" title="Setting-up and using DeCiDa (UC Berkeley NGspice Users)"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">decida 1.1.3 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="setting-up-and-using-decida-silvaco-smartspice-users">
+<h1><strong>Setting-up and using DeCiDa (Silvaco SmartSpice Users)</strong><a class="headerlink" href="#setting-up-and-using-decida-silvaco-smartspice-users" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="first-time-setup-for-silvaco-smartspice-users">
+<h2>First-time setup for Silvaco SmartSpice Users<a class="headerlink" href="#first-time-setup-for-silvaco-smartspice-users" title="Permalink to this headline">¶</a></h2>
+<p>The application are found in the python bin directory, after
+installation (which or whence python to find the bin directory).
+These should be in the path so that simply typing an appication name,
+(calc, for example) should run the application.</p>
+<p>The pre-installed tool wrappers are in the distribution
+./etc/wrappers directory.  These are installed to ~/.DeCiDa/bin</p>
+<p>These are the two example projects.  The project drive is where SmartSpice is launched.  The scratch drive
+is where DeCiDa writes simulation data.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="13%" />
+<col width="12%" />
+<col width="30%" />
+<col width="34%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">project:</th>
+<th class="head">technology:</th>
+<th class="head">simulator:</th>
+<th class="head">project_drive:</th>
+<th class="head">scratch_drive:</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>bird</td>
+<td>ptm_130nm</td>
+<td>SmartSpice</td>
+<td>~/.DeCiDa/projects/bird</td>
+<td>~/.DeCiDa/projects/bird/scratch</td>
+</tr>
+<tr class="row-odd"><td>trane</td>
+<td>ptm_45nm</td>
+<td>SmartSpice</td>
+<td>~/.DeCiDa/projects/trane</td>
+<td>~/.DeCiDa/projects/trane/scratch</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="generate-a-starter-python-script">
+<h2>Generate a starter python script<a class="headerlink" href="#generate-a-starter-python-script" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">create a top-level test-bench schematic in Gateway</p>
+<ol class="loweralpha simple">
+<li>check all to detect any issues</li>
+<li>in simulation mode, check signals to be saved
+the schematic must be closed to have a *.crb file be generated</li>
+<li>edit/modify the control file</li>
+</ol>
+</li>
+<li><p class="first">simulation-&gt;create netlist</p>
+</li>
+<li><p class="first">close the schematic so that *.crb file is generated</p>
+</li>
+<li><p class="first">run creat_sspice_script &lt;testbench&gt; (fill in parameters)</p>
+<blockquote>
+<div><ul class="simple">
+<li>creates &lt;testbench&gt;.py</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">modify the python script and use to run simulations</p>
+</li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#"><strong>Setting-up and using DeCiDa (Silvaco SmartSpice Users)</strong></a><ul>
+<li><a class="reference internal" href="#first-time-setup-for-silvaco-smartspice-users">First-time setup for Silvaco SmartSpice Users</a></li>
+<li><a class="reference internal" href="#generate-a-starter-python-script">Generate a starter python script</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="decida_ngspice_setup.html"
+                        title="previous chapter"><strong>Setting-up and using DeCiDa (UC Berkeley NGspice Users)</strong></a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="decida_classes.html"
+                        title="next chapter"><strong>DeCiDa classes</strong></a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/decida_sspice_setup.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="decida_classes.html" title="DeCiDa classes"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="decida_ngspice_setup.html" title="Setting-up and using DeCiDa (UC Berkeley NGspice Users)"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">decida 1.1.3 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2013, Richard Booth.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

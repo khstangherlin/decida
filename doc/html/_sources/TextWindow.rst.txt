@@ -1,0 +1,7 @@
+TextWindow
+----------
+.. image:: _static/TextWindow.jpg
+.. autoclass:: decida.TextWindow.TextWindow
+    :members:
+    :undoc-members:
+    :show-inheritance:

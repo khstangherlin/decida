@@ -1,0 +1,861 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tckt &#8212; decida 1.1.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.1.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="TextWindow" href="TextWindow.html" />
+    <link rel="prev" title="StatusDialog" href="StatusDialog.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="TextWindow.html" title="TextWindow"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="StatusDialog.html" title="StatusDialog"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">decida 1.1.3 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="decida_classes.html" accesskey="U"><strong>DeCiDa classes</strong></a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tckt">
+<h1>Tckt<a class="headerlink" href="#tckt" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="decida.Tckt.Tckt">
+<em class="property">class </em><code class="descclassname">decida.Tckt.</code><code class="descname">Tckt</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.Tckt.Tckt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ItclObjectx.html#decida.ItclObjectx.ItclObjectx" title="decida.ItclObjectx.ItclObjectx"><code class="xref py py-class docutils literal"><span class="pre">decida.ItclObjectx.ItclObjectx</span></code></a></p>
+<p><strong>synopsis</strong>:</p>
+<blockquote>
+<div><p>Procedural simulation test-circuit class.</p>
+<p><em>Tckt</em> is a flexible scripting class for performing simulations with
+various circuit simulation tools, including (Synopsys) <em>HSpice</em>,
+(Cadence) <em>Spectre</em>, (Silvaco) <em>SmartSpice</em>, (UC Berkeley) <em>NGspice</em>,
+and others.</p>
+<p><em>Tckt</em> provides a database of process corners for each
+project, provides a means of modifying netlist source elements, and
+provides methods to run the simulations.  Additional source
+definitions are provided, including clock, counter, and PRBS
+generators, and bus definitions of sources.  In addition, <em>Tckt</em>
+provides a simplified way to specify signals to be monitored.</p>
+<p>The <em>ngsp</em> tool (runs <em>NGspice</em> using the <em>NGspice</em> class) generates a
+starter script that uses <em>Tckt</em> (File-&gt;Write NGspice DeCiDa script).</p>
+</div></blockquote>
+<p><strong>constructor arguments</strong>:</p>
+<blockquote>
+<div><p><strong>**kwargs</strong> (dict)</p>
+<blockquote>
+<div><p>keyword=value specifications:</p>
+<p>configuration-options</p>
+</div></blockquote>
+</div></blockquote>
+<p><strong>configuration options</strong>:</p>
+<blockquote>
+<div><p><strong>verbose</strong> (bool, default=False)</p>
+<blockquote>
+<div>Enable/disable verbose mode.</div></blockquote>
+<p><strong>project</strong> (str, default=&#8221;&#8221;)</p>
+<blockquote>
+<div>Specify project name.  The project must be one of the
+supported projects (one of the Tckt._ProjectDB entries)</div></blockquote>
+<p><strong>simulator</strong> (str, default=&#8221;spectre&#8221;)</p>
+<blockquote>
+<div><p>Specify the circuit simulator. Must be one of:</p>
+<blockquote>
+<div><ul class="simple">
+<li>hspice   : Synopsys HSpice</li>
+<li>sspice   : Silvaco SmartSpice</li>
+<li>ngspice  : UC Berkeley NGspice</li>
+<li>spectre  : Cadence Spectre</li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p><strong>simulator_args</strong> (str, default=&#8221;&#8221;)</p>
+<blockquote>
+<div>string of additional simulator command-line arguments</div></blockquote>
+<p><strong>case</strong> (str, default=&#8221;case&#8221;)</p>
+<blockquote>
+<div>specify the process/supply voltage/temperature case corner, by
+its name.  Must be one of the cases specified for the
+current project, and one of the supported cases
+(specified in Tckt._CaseDB)</div></blockquote>
+<p><strong>path</strong> (list of str, default=[&#8221;.&#8221;])</p>
+<blockquote>
+<div>list of paths to search for the circuit netlist.</div></blockquote>
+<p><strong>netlistfile</strong> (str, default=&#8221;&#8221;)</p>
+<blockquote>
+<div>name of the netlist file</div></blockquote>
+<p><strong>prefix</strong> (str, default=&#8221;&#8221;)</p>
+<blockquote>
+<div>prefix to generated files.  Should be a unique name for
+each simulation.</div></blockquote>
+<p><strong>title</strong> (str, default=&#8221;&#8221;)</p>
+<blockquote>
+<div>title to be added to top of generated input file.</div></blockquote>
+<p><strong>testdir</strong> (str, default=&#8221;&#8221;)</p>
+<blockquote>
+<div>directory where tests are performed.  (Not currently used).</div></blockquote>
+<p><strong>resultsdir</strong> (str, default=&#8221;&#8221;)</p>
+<blockquote>
+<div>directory where simulation results are written.  If resultsdir
+is not specified, results are written to the current directory.</div></blockquote>
+<p><strong>circuit</strong> (str, default=&#8221;&#8221;)</p>
+<blockquote>
+<div>the name of the device under test.  This is a convenience name for
+documenting generated files.</div></blockquote>
+<p><strong>temp_nom</strong> (float, default=25.0)</p>
+<blockquote>
+<div>nominal simulation temperature.</div></blockquote>
+<p><strong>temp_low</strong> (float, default=_40.0)</p>
+<blockquote>
+<div>low simulation temperature.</div></blockquote>
+<p><strong>temp_high</strong> (float, default=150.0)</p>
+<blockquote>
+<div>high simulation temperature.</div></blockquote>
+<p><strong>supply_nom</strong> (float, default=1.0)</p>
+<blockquote>
+<div>nominal supply voltage value.</div></blockquote>
+<p><strong>supply_low</strong> (float, default=0.9)</p>
+<blockquote>
+<div>low supply voltage value.</div></blockquote>
+<p><strong>supply_high</strong> (float, default=1.1)</p>
+<blockquote>
+<div>high supply voltage value.</div></blockquote>
+</div></blockquote>
+<p><strong>example</strong>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">decida.Tckt</span> <span class="k">import</span> <span class="n">Tckt</span>
+
+<span class="n">tckt</span> <span class="o">=</span> <span class="n">Tckt</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;trane&quot;</span><span class="p">,</span> <span class="n">simulator</span><span class="o">=</span><span class="s2">&quot;ngspice&quot;</span><span class="p">)</span>
+<span class="n">tckt</span><span class="p">[</span><span class="s2">&quot;netlistfile&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;crrc.sp&quot;</span>
+<span class="n">tckt</span><span class="o">.</span><span class="n">monitor</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    p n qp ip in qn cm</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+<span class="n">modelfile</span> <span class="o">=</span> <span class="n">tckt</span><span class="o">.</span><span class="n">get_modelfile</span><span class="p">()</span>
+<span class="n">cases</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;tt&#39;</span><span class="p">,</span> <span class="s1">&#39;ss&#39;</span><span class="p">,</span> <span class="s1">&#39;ff&#39;</span><span class="p">,</span> <span class="s1">&#39;fs&#39;</span><span class="p">,</span> <span class="s1">&#39;sf&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">case</span> <span class="ow">in</span> <span class="n">cases</span> <span class="p">:</span>
+    <span class="n">tckt</span><span class="p">[</span><span class="s2">&quot;case&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">case</span>
+    <span class="n">tckt</span><span class="p">[</span><span class="s2">&quot;prefix&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;tr.</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">case</span><span class="p">)</span>
+    <span class="n">process</span> <span class="o">=</span> <span class="n">tckt</span><span class="o">.</span><span class="n">get_process</span><span class="p">()</span>
+    <span class="n">temp</span>    <span class="o">=</span> <span class="n">tckt</span><span class="o">.</span><span class="n">get_temp</span><span class="p">()</span>
+    <span class="n">tstop</span> <span class="o">=</span> <span class="mi">5</span><span class="n">e</span><span class="o">-</span><span class="mi">09</span>
+    <span class="n">tstep</span> <span class="o">=</span> <span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">12</span>
+    <span class="n">tckt</span><span class="o">.</span><span class="n">elements</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        vdd netlist</span>
+<span class="s2">        vp sin 0.3 0.3 fosc 0</span>
+<span class="s2">        vn sin 0.3 0.3 fosc 180</span>
+<span class="s2">    &quot;&quot;&quot;</span><span class="p">)</span>
+    <span class="n">tckt</span><span class="o">.</span><span class="n">control</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        .lib &#39;$modelfile&#39; $process</span>
+<span class="s2">        .temp $temp</span>
+<span class="s2">        .tran $tstep $tstop</span>
+<span class="s2">        .parameter fosc=14G res=50 cap=220f</span>
+<span class="s2">    &quot;&quot;&quot;</span><span class="p">)</span>
+    <span class="n">tckt</span><span class="o">.</span><span class="n">generate_inputfile</span><span class="p">()</span>
+    <span class="n">tckt</span><span class="o">.</span><span class="n">simulate</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>public methods</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>public methods from <em>ItclObjectx</em></li>
+</ul>
+</div></blockquote>
+<dl class="method">
+<dt id="decida.Tckt.Tckt.bin2thm">
+<code class="descname">bin2thm</code><span class="sig-paren">(</span><em>binval</em>, <em>nbits</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.Tckt.Tckt.bin2thm" title="Permalink to this definition">¶</a></dt>
+<dd><p>generate thermometer value from binary value.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>binval</strong> (int)</p>
+<blockquote>
+<div>binary value</div></blockquote>
+<p><strong>nbits</strong> (int)</p>
+<blockquote>
+<div>number of bits in thermometer value</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>returns thermometer code string : nbits&#8217;b1111...</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Tckt.Tckt.case2ckey">
+<code class="descname">case2ckey</code><span class="sig-paren">(</span><em>case</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.Tckt.Tckt.case2ckey" title="Permalink to this definition">¶</a></dt>
+<dd><p>get case key from case corner name.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>case</strong> (str)</p>
+<blockquote>
+<div>case name</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>returns a PVT case corner key corresponding to the case name.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Tckt.Tckt.ckey2case">
+<code class="descname">ckey2case</code><span class="sig-paren">(</span><em>ckey</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.Tckt.Tckt.ckey2case" title="Permalink to this definition">¶</a></dt>
+<dd><p>get case corner name from case key.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>ckey</strong> (int)</p>
+<blockquote>
+<div>case integer index (key)</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>returns a PVT case corner name corresponding to the case key.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Tckt.Tckt.control">
+<code class="descname">control</code><span class="sig-paren">(</span><em>s</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.Tckt.Tckt.control" title="Permalink to this definition">¶</a></dt>
+<dd><p>specify simulation control string.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>s</strong> (str)</p>
+<blockquote>
+<div>a string to be inserted in the input file directly.  This is
+in the same language of the simulator itself.</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>python variables are interpolated into the control section</li>
+<li>the control section is included at the end of the
+simulator input file.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Tckt.Tckt.copy_netlist">
+<code class="descname">copy_netlist</code><span class="sig-paren">(</span><em>netlistcopy</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.Tckt.Tckt.copy_netlist" title="Permalink to this definition">¶</a></dt>
+<dd><p>copy netlist to local copy.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>copy netlist template to local copy</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Tckt.Tckt.dcop">
+<code class="descname">dcop</code><span class="sig-paren">(</span><em>rawfile=None</em>, <em>lisfile=None</em>, <em>idmin=1e-08</em>, <em>vdssmin=0.01</em>, <em>verbose=False</em>, <em>block=0</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.Tckt.Tckt.dcop" title="Permalink to this definition">¶</a></dt>
+<dd><p>view results from DC operating point analysis.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>idmin</strong> (float, default=1e_8)</p>
+<blockquote>
+<div>The minimum drain current to consider a device as being on.</div></blockquote>
+<p><strong>vdssmin</strong> (float, default=0.01)</p>
+<blockquote>
+<div>The minimum difference between the drain voltage and the
+saturation voltage to consider a device as being saturated.</div></blockquote>
+<p><strong>verbose</strong> (bool, default=False)</p>
+<blockquote>
+<div>If True, print verbose messages.</div></blockquote>
+<p><strong>block</strong> (int, default=0)</p>
+<blockquote>
+<div>Specify the block to process in the data file.</div></blockquote>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Tckt.Tckt.elements">
+<code class="descname">elements</code><span class="sig-paren">(</span><em>s</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.Tckt.Tckt.elements" title="Permalink to this definition">¶</a></dt>
+<dd><p>collect element value replacement specifications.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>s</strong> (str)</p>
+<blockquote>
+<div>each (newline-separated) line of s is a specification of
+a value for the sources in the netlist.</div></blockquote>
+</div></blockquote>
+<p><strong>example element definitions</strong>:</p>
+<blockquote>
+<div><ul>
+<li><p class="first">vin sin 0.6 0.2 $freq</p>
+<blockquote>
+<div><p>replace the value of the voltage source with a sine spec.</p>
+</div></blockquote>
+</li>
+<li><p class="first">vbg netlist</p>
+<blockquote>
+<div><p>use the existing vbg value in the netlist.  This marks the
+source as recognized and no warning message is printed
+for the source not being specified.</p>
+</div></blockquote>
+</li>
+<li><p class="first">vdd $vdd</p>
+<blockquote>
+<div><p>use the value of the python-script variable vdd</p>
+</div></blockquote>
+</li>
+<li><p class="first">vsd&lt;3:0&gt; 5&#8217;b0011 v0=0.0 v1=$vdd</p>
+<blockquote>
+<div><p>specify a bus of values.  The digital 0 value is 0.0V and
+the digital 1 value is vdd V.</p>
+</div></blockquote>
+</li>
+<li><p class="first">vdac_in&lt;9:0&gt; counter v0=0.0 v1=$vdd edge=$edge hold=$hold</p>
+<blockquote>
+<div><p>specify that vdac_in counts up from 0 to the maximum value
+with rise-time = edge and hold-time = hold.</p>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Tckt.Tckt.generate_inputfile">
+<code class="descname">generate_inputfile</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.Tckt.Tckt.generate_inputfile" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>write simulator input file based on netlist, control,</dt>
+<dd>monitor specs.</dd>
+</dl>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>calls spice or spectre input file generator.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Tckt.Tckt.generate_spectre_inputfile">
+<code class="descname">generate_spectre_inputfile</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.Tckt.Tckt.generate_spectre_inputfile" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>write (spectre) simulator input file based on netlist, control,</dt>
+<dd>monitor specs.</dd>
+</dl>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>generates input file for spectre.</li>
+<li>starting with the netlist file, specified element values are
+inserted, output voltages and currents are specified, and
+the control section is included.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Tckt.Tckt.generate_spice_inputfile">
+<code class="descname">generate_spice_inputfile</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.Tckt.Tckt.generate_spice_inputfile" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>write (spice) simulator input file based on netlist, control,</dt>
+<dd>monitor specs.</dd>
+</dl>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>generates input file for spice.</li>
+<li>starting with the netlist file, specified element values are
+inserted, output voltages and currents are specified, and
+the control section is included.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Tckt.Tckt.get_case_key">
+<code class="descname">get_case_key</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.Tckt.Tckt.get_case_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>get key of current process, voltage, temperature (case) corner.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>get the integer index (key) of the current case corner.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Tckt.Tckt.get_datafile">
+<code class="descname">get_datafile</code><span class="sig-paren">(</span><em>analysis='tr'</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.Tckt.Tckt.get_datafile" title="Permalink to this definition">¶</a></dt>
+<dd><p>get simulator waveform data file.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>analysis</strong> (str, default=&#8221;tr&#8221;)</p>
+<blockquote>
+<div>used for HSpice which names the output file with the
+simulation analysis.</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>get the simulator waveform data file path.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Tckt.Tckt.get_inputfile">
+<code class="descname">get_inputfile</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.Tckt.Tckt.get_inputfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>get simulator input file.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>get the input file path.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Tckt.Tckt.get_modelfile">
+<code class="descname">get_modelfile</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.Tckt.Tckt.get_modelfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>get modelfile.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>get the modelfile of the current project.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Tckt.Tckt.get_outputfile">
+<code class="descname">get_outputfile</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.Tckt.Tckt.get_outputfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>get simulator output file.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>get the output file path.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Tckt.Tckt.get_process">
+<code class="descname">get_process</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.Tckt.Tckt.get_process" title="Permalink to this definition">¶</a></dt>
+<dd><p>get process corner.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>get the process name (model file library) for the current
+PVT case corner.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Tckt.Tckt.get_tech">
+<code class="descname">get_tech</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.Tckt.Tckt.get_tech" title="Permalink to this definition">¶</a></dt>
+<dd><p>get technology.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>get name of the current technology name.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Tckt.Tckt.get_temp">
+<code class="descname">get_temp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.Tckt.Tckt.get_temp" title="Permalink to this definition">¶</a></dt>
+<dd><p>get temperature.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>get the temperature for the current PVT case corner.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Tckt.Tckt.get_test">
+<code class="descname">get_test</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.Tckt.Tckt.get_test" title="Permalink to this definition">¶</a></dt>
+<dd><p>get name of calling routine.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>get name of the routine from the calling frame.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Tckt.Tckt.get_vdd">
+<code class="descname">get_vdd</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.Tckt.Tckt.get_vdd" title="Permalink to this definition">¶</a></dt>
+<dd><p>get power-supply voltage.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>get the power-supply voltage for the current PVT case corner.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Tckt.Tckt.get_xnmos">
+<code class="descname">get_xnmos</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.Tckt.Tckt.get_xnmos" title="Permalink to this definition">¶</a></dt>
+<dd><p>get nmos subcircuit device.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>get the NMOS device path in the NMOS subcircuit model
+for the current project.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Tckt.Tckt.get_xpmos">
+<code class="descname">get_xpmos</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.Tckt.Tckt.get_xpmos" title="Permalink to this definition">¶</a></dt>
+<dd><p>get pmos subcircuit device.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>get the PMOS device path in the PMOS subcircuit model
+for the current project.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Tckt.Tckt.is_already_done">
+<code class="descname">is_already_done</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.Tckt.Tckt.is_already_done" title="Permalink to this definition">¶</a></dt>
+<dd><p>return true if data file already exists.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>return True if the data file is already present.  Can be used
+to re-perform an uncompleted loop of conditions, and skip
+the ones already performed.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="decida.Tckt.Tckt.modeldir">
+<code class="descname">modeldir</code><em class="property"> = '/Users/richard/.DeCiDa/models/'</em><a class="headerlink" href="#decida.Tckt.Tckt.modeldir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="decida.Tckt.Tckt.monitor">
+<code class="descname">monitor</code><span class="sig-paren">(</span><em>string</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.Tckt.Tckt.monitor" title="Permalink to this definition">¶</a></dt>
+<dd><p>collect monitor specifications.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>string</strong> (str)</p>
+<blockquote>
+<div>a string of space-separated monitor items.</div></blockquote>
+</div></blockquote>
+<p><strong>example monitor items</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>REF       : monitor voltage of node REF</li>
+<li>VCD&lt;3:0&gt;  : monitor voltage of nodes VCD_3, ... , VCD_0</li>
+<li>I(vsc)    : monitor current in voltage source vsc</li>
+<li>IDN(mn1)  : monitor drain current in mosfet xmn1</li>
+<li>IR(res)   : monitor current in resistor res</li>
+<li>IX(xa1.p) : monitor current in subcircuit xa1, node p</li>
+<li>PN(mn1-vdsat)  : monitor mosfet xmn1 vdsat parameter</li>
+<li>&#64;Xgmc:    : following specs are for subcircuit Xgmc</li>
+<li>&#64;Xgmc.Xq: : following specs are for subcircuit Xgmc.Xq</li>
+<li>&#64;:        : following specs are for top-level circuit</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Tckt.Tckt.netlist_lines">
+<code class="descname">netlist_lines</code><span class="sig-paren">(</span><em>lines</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.Tckt.Tckt.netlist_lines" title="Permalink to this definition">¶</a></dt>
+<dd><p>specify netlist template directly</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>lines</strong> (str)</p>
+<blockquote>
+<div>netlist lines text</div></blockquote>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Tckt.Tckt.netlist_remove">
+<code class="descname">netlist_remove</code><span class="sig-paren">(</span><em>s</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.Tckt.Tckt.netlist_remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>specify subcircuits or instances to remove from the netlist</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>s</strong> (str)</p>
+<blockquote>
+<div>a subcircuit name or instance name to remove from the
+netlist.</div></blockquote>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Tckt.Tckt.no_data">
+<code class="descname">no_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.Tckt.Tckt.no_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>return true if data file doesn&#8217;t exist.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>return True if there is no data file.  Can be used in a
+script report section to skip over loop-conditions which
+haven&#8217;t been done yet.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Tckt.Tckt.number_of_data_blocks">
+<code class="descname">number_of_data_blocks</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.Tckt.Tckt.number_of_data_blocks" title="Permalink to this definition">¶</a></dt>
+<dd><p>return number of blocks in the simulated data file.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>count the number of lines begining with &#8220;Plotname&#8221; in a
+nutmeg-format data file.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Tckt.Tckt.postlayout">
+<code class="descname">postlayout</code><span class="sig-paren">(</span><em>inst</em>, <em>subckt</em>, <em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.Tckt.Tckt.postlayout" title="Permalink to this definition">¶</a></dt>
+<dd><p>collect postlayout specifications.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>inst</strong> (str)</p>
+<blockquote>
+<div>full path of instance in testbench schematic
+to replace with postlayout representation.
+used to modify monitor specs.</div></blockquote>
+<p><strong>subckt</strong> (str)</p>
+<blockquote>
+<div>specifies subcircuit to replace.
+Tckt.netlist_remove() is used to remove the subcircuit.</div></blockquote>
+<p><strong>filename</strong> (str)</p>
+<blockquote>
+<div>specifies path to postlayout netlist.
+used to generate .include file.</div></blockquote>
+</div></blockquote>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="decida.Tckt.Tckt.project_cases">
+<em class="property">static </em><code class="descname">project_cases</code><span class="sig-paren">(</span><em>project</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.Tckt.Tckt.project_cases" title="Permalink to this definition">¶</a></dt>
+<dd><p>return PVT case corners of project in the database.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="decida.Tckt.Tckt.project_modelfile">
+<em class="property">static </em><code class="descname">project_modelfile</code><span class="sig-paren">(</span><em>project</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.Tckt.Tckt.project_modelfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>return modelfile of project in the database.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="decida.Tckt.Tckt.project_tech">
+<em class="property">static </em><code class="descname">project_tech</code><span class="sig-paren">(</span><em>project</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.Tckt.Tckt.project_tech" title="Permalink to this definition">¶</a></dt>
+<dd><p>return technology of project in the database.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="decida.Tckt.Tckt.projects">
+<em class="property">static </em><code class="descname">projects</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.Tckt.Tckt.projects" title="Permalink to this definition">¶</a></dt>
+<dd><p>return valid projects in the database.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Tckt.Tckt.simulate">
+<code class="descname">simulate</code><span class="sig-paren">(</span><em>simulate=True</em>, <em>clean=False</em>, <em>remote=''</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.Tckt.Tckt.simulate" title="Permalink to this definition">¶</a></dt>
+<dd><p>perform simulation.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>simulate</strong> (bool, default=True)</p>
+<blockquote>
+<div>if True, proceed to simulate.  Otherwise simply print the
+simulation command.</div></blockquote>
+<p><strong>clean</strong> (bool, default=False)</p>
+<blockquote>
+<div>if True, remove the input file and output file, leaving only
+the data file.</div></blockquote>
+<p><strong>remote</strong> (str, default=&#8221;&#8221;)</p>
+<blockquote>
+<div>if specified, generate a command deck and submit as a batch job
+on the named remote host.</div></blockquote>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Tckt.Tckt.stability_analysis">
+<code class="descname">stability_analysis</code><span class="sig-paren">(</span><em>plot=True</em>, <em>save=True</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.Tckt.Tckt.stability_analysis" title="Permalink to this definition">¶</a></dt>
+<dd><p>perform stability analysis.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>plot</strong> (bool, default=True)</p>
+<blockquote>
+<div>If True, plot loop-gain and loop-phase after simulation.</div></blockquote>
+<p><strong>save</strong> (bool, default=True)</p>
+<blockquote>
+<div>If True, save the collated loop simulation results.</div></blockquote>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Tckt.Tckt.test_select">
+<code class="descname">test_select</code><span class="sig-paren">(</span><em>tests</em>, <em>selected_tests=None</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.Tckt.Tckt.test_select" title="Permalink to this definition">¶</a></dt>
+<dd><p>display dialog for selecting tests, or directly select tests.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>tests</strong> (list of str)</p>
+<blockquote>
+<div>list of available tests in the script.</div></blockquote>
+<p><strong>selected_tests</strong> (list of str, default=None)</p>
+<blockquote>
+<div>list of tests which are supplied directly.</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>if selected_tests is not None, return a list of these
+tests in the same order that they appear in the tests
+argument.</li>
+<li>if selected_tests is None, display a dialog to select
+the tests.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Tckt.Tckt.veriloga">
+<code class="descname">veriloga</code><span class="sig-paren">(</span><em>subckt</em>, <em>filename</em>, <em>parameters=''</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.Tckt.Tckt.veriloga" title="Permalink to this definition">¶</a></dt>
+<dd><p>collect verilog-A specifications.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>subckt</strong> (str)</p>
+<blockquote>
+<div>subcircuit name to use verilog-A representation.</div></blockquote>
+<p><strong>filename</strong> (str)</p>
+<blockquote>
+<div>verilog-A module file.</div></blockquote>
+<p><strong>parameters</strong> (str, default=&#8221;&#8221;)</p>
+<blockquote>
+<div>string of space-separated parameter-name=value entries.</div></blockquote>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Tckt.Tckt.wait_for_data">
+<code class="descname">wait_for_data</code><span class="sig-paren">(</span><em>interval=5</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.Tckt.Tckt.wait_for_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>wait until datafile appears and is non-zero.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>interval</strong> (int, default=5)</p>
+<blockquote>
+<div>seconds to wait before re-checking for the existence of
+the data file.</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>the script waits until the data file has been produced and
+is not empty.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="StatusDialog.html"
+                        title="previous chapter">StatusDialog</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="TextWindow.html"
+                        title="next chapter">TextWindow</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/Tckt.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="TextWindow.html" title="TextWindow"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="StatusDialog.html" title="StatusDialog"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">decida 1.1.3 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="decida_classes.html" ><strong>DeCiDa classes</strong></a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2013, Richard Booth.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

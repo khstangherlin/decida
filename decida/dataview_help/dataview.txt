@@ -1,0 +1,158 @@
+
+  Decida:dataview documentation
+
+#=============================================================================
+# usage
+#=============================================================================
+ usage: dataview data-file ?data-block? ?options?
+  options:
+    -h     print help information
+    -help  print help information
+    -hjou  hspice journal    data format
+    -csdf  common simulator  data format
+    -psf   cadence psf-ascii data format
+    -nut   nutmeg-ascii data format
+    -csv   comma-separated value data format
+    -rlr   remove last record which could be corrupt
+  files:
+    data-file:
+      column-oriented file, or
+      advplot-format file, or
+      hspice-journal-format file, or
+      csdf-format file, or
+      psf-ascii file, or
+      nutmeg-ascii file
+      csv-format file
+  arguments:
+    data-block (optional argument): the data-block number in 
+    advplot or hspice-journal file to read
+    or the plotname in nutmeg-format file
+#=============================================================================
+# Menus, Buttons, and Mouse actions
+#=============================================================================
+ File MENU:
+   % Read Data File
+       display file browser to select data file to read
+   % Write column format
+       writes current working data set to a file in column-oriented format
+   % Write advplot format
+       writes current working data set to a file in advplot format
+   % Print all plots
+       prints all notebook pages
+   % Accept Data
+       working data set copied to main data set
+   % Restore Data
+       main data set copied to working data set
+   % Re-order data
+       specify columns for re-ordering data set
+   % Close
+       close dataview window, do not exit decida
+   % Exit Decida
+       exit decida
+ Analysis MENU:
+   % Statistics
+       print time,signal statistics
+   % Duty-cycle
+       open new dataview window with duty-cycle, frequency, period
+       versus time.
+   % FFT
+       Fourier transform.
+   % IFFT
+       Inverse Fourier transform.
+   % Jitter
+       clock jitter calculation and dataview window with jitter vs time, etc.
+   % Time-Constant
+       calculate time-constant from exponential curve.
+ X: Y:
+   % select current XCOL and current YCOL
+ RED BUTTONS:
+   % Start
+       plots YCOL_vs_XCOL curve
+   % Overlay
+       plots YCOL_vs_XCOL curve on current plot, overlayed
+   % Stack
+       plots YCOL_vs_XCOL curve on current plot, stacked above last curve
+   % Next
+       starts new notebook page and plots YCOL_vs_XCOL curve
+   % Delete
+       deletes current notebook page
+ MOUSE on plot:
+   % button 1: zoom-in
+       Pressing down button 1 starts a zoom-in operation.  Holding button 1 
+       down and moving to new location displays a zoom-in box with endpoints
+       at original location and current location.  Releasing button 1
+       changes axes limits of graph to those of the zoom-in box.
+   % button 2: restore
+       Pressing down button 2 returns axes limits to the original ones.
+   % button 3: line parameter report
+       Pressing down button 3 starts a line-segment operation for reporting
+       slope and intercepts.  Holding down, moving, then releasing define a
+       line-segment.  After release, a report of the line-parameters of the
+       defined line segment: slope, y-intercept, x-intercept.
+       For a single press and release, only x and y are reported.
+   % shift-button 3: curve label operation
+       Pressing down button 3 with shift held down starts a curve-label
+       operation.  Holding down, moving, then releasing defines a
+       line-segment.  After release, prompt for text for the label, and 
+       whether or not to add an arrow.
+   % shift-button 1: delete curve label operation
+       Pressing down button 3 with shift held down starts a delete
+       curve-label operation.  Holding down, moving, then releasing
+       defines a delete box.  After release, any markers within the
+       delete box are removed.
+   % control-button 3: data removal operation
+       Pressing down button 3 with control held down starts a data removal
+       operation.  Holding down, moving, then releasing defines a
+       delete box (red).  After release, any data points (XCOL, YCOL)
+       are deleted from the working data set.
+
+ MOUSE on note-book tab:
+   % button 1: select page
+       Button 1 selects notebook page connected to the tab.
+   % button 3: lift off page
+       Button 3 lifts the notebook page out of the notebook into a new
+       window.
+       Deleting the new window returns the plot to the notebook.
+
+  
+ Plot File MENU:
+   % Write PostScript File
+       Display FileSpecify dialog. Write current plot to file specified.
+   % Write and print PostScript File
+       Prints current plot to printer specified by LPRINTER
+         environment parameter.  Print command is a Decida/Tk option.
+   % Write and print PostScript File (specify print command)
+   % Quit
+ Plot Edit MENU:
+   % Settings
+       Display dialog for specifying various plot settings, including titles.
+   % Trace increasing
+       specify curve trace orientation:
+         XCOL increasing is solid, XCOL decreasing is invisible
+   % Trace decreasing
+       specify curve trace orientation:
+         XCOL increasing is invisible, XCOL decreasing is solid
+   % Trace both
+       specify curve trace orientation:
+         XCOL increasing is solid,     XCOL decreasing is solid
+   % All squares
+       curve is plotted with squares only
+   % All small squares
+       curve is plotted with small squares only
+   % All lines
+       curve is plotted with lines only
+   % All lines and squares
+       curve is plotted with lines and squares
+ Plot Symbol MENU:
+   % specify symbol for current curve
+ Plot Color MENU:
+   % specify color  for current curve
+ Plot Curve MENU:
+   % specify current curve
+#=============================================================================
+# scripting example
+#=============================================================================
+[data d] read vco.adv
+d view \
+  -plotargs "-ymin 0" TIME VINM -start TIME VINP -overlay TIME VOUT -overlay \
+  -plotargs "-ymin 0" TIME VINM -next  TIME VINP -overlay TIME VCK  -stack

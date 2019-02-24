@@ -1,0 +1,342 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>SimulatorNetlist &#8212; decida 1.1.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.1.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="SmithChartx" href="SmithChartx.html" />
+    <link rel="prev" title="SelectionDialog" href="SelectionDialog.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="SmithChartx.html" title="SmithChartx"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="SelectionDialog.html" title="SelectionDialog"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">decida 1.1.3 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="decida_classes.html" accesskey="U"><strong>DeCiDa classes</strong></a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="simulatornetlist">
+<h1>SimulatorNetlist<a class="headerlink" href="#simulatornetlist" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="decida.SimulatorNetlist.SimulatorNetlist">
+<em class="property">class </em><code class="descclassname">decida.SimulatorNetlist.</code><code class="descname">SimulatorNetlist</code><span class="sig-paren">(</span><em>netlist_file</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.SimulatorNetlist.SimulatorNetlist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ItclObjectx.html#decida.ItclObjectx.ItclObjectx" title="decida.ItclObjectx.ItclObjectx"><code class="xref py py-class docutils literal"><span class="pre">decida.ItclObjectx.ItclObjectx</span></code></a></p>
+<p><strong>synopsis</strong>:</p>
+<blockquote>
+<div><p>Circuit simulator netlist parsing.</p>
+<p><em>SimulatorNetlist</em> reads a circuit-simulator netlist and extracts
+some limited information about the circuit, such as lists or devices,
+and total capacitance on each node.</p>
+</div></blockquote>
+<p><strong>constructor arguments</strong>:</p>
+<blockquote>
+<div><p><strong>netlist_file</strong> (str)</p>
+<blockquote>
+<div>simulator netlist file</div></blockquote>
+<p><strong>**kwargs</strong> (dict)</p>
+<blockquote>
+<div>configuration-options</div></blockquote>
+</div></blockquote>
+<p><strong>configuration options</strong>:</p>
+<blockquote>
+<div><p><strong>verbose</strong> (bool) (optional, default=False)</p>
+<blockquote>
+<div>enable/disable verbose mode</div></blockquote>
+<p><strong>simulator</strong> (str) (optional, default=&#8221;sspice&#8221;)</p>
+<blockquote>
+<div><p>circuit simulator associated with the netlist file, one of :</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="43%" />
+<col width="57%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">simulator:</th>
+<th class="head">format:</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>spice</td>
+<td>spice</td>
+</tr>
+<tr class="row-odd"><td>hspice</td>
+<td>spice</td>
+</tr>
+<tr class="row-even"><td>sspice</td>
+<td>spice</td>
+</tr>
+<tr class="row-odd"><td>eldo</td>
+<td>spice</td>
+</tr>
+<tr class="row-even"><td>adit</td>
+<td>spice</td>
+</tr>
+<tr class="row-odd"><td>nanosim</td>
+<td>spice</td>
+</tr>
+<tr class="row-even"><td>finesim</td>
+<td>spice</td>
+</tr>
+<tr class="row-odd"><td>ngspice</td>
+<td>spice</td>
+</tr>
+<tr class="row-even"><td>spectre</td>
+<td>spectre</td>
+</tr>
+<tr class="row-odd"><td>spectrerf</td>
+<td>spectre</td>
+</tr>
+<tr class="row-even"><td>ncverilog</td>
+<td>verilog</td>
+</tr>
+<tr class="row-odd"><td>ncsim</td>
+<td>verilog</td>
+</tr>
+<tr class="row-even"><td>vsim</td>
+<td>verilog</td>
+</tr>
+<tr class="row-odd"><td>vcs</td>
+<td>verilog</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div></blockquote>
+<p><strong>example</strong> (from test_SimulatorNetlist):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">decida.SimulatorNetlist</span> <span class="k">import</span> <span class="n">SimulatorNetlist</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="n">SimulatorNetlist</span><span class="p">(</span><span class="s2">&quot;sar_seq_dig.net&quot;</span><span class="p">,</span> <span class="n">simulator</span><span class="o">=</span><span class="s2">&quot;ngspice&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;subcircuits :&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;subckts&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;instances :&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;insts&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;capacitors:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;caps&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;resistors:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ress&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><strong>public methods</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>public methods from <em>ItclObjectx</em></li>
+</ul>
+</div></blockquote>
+<dl class="method">
+<dt id="decida.SimulatorNetlist.SimulatorNetlist.capacitance_report">
+<code class="descname">capacitance_report</code><span class="sig-paren">(</span><em>report_format='column'</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.SimulatorNetlist.SimulatorNetlist.capacitance_report" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="decida.SimulatorNetlist.SimulatorNetlist.get">
+<code class="descname">get</code><span class="sig-paren">(</span><em>what</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.SimulatorNetlist.SimulatorNetlist.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>access method for several parameters.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>what</strong> (string)</p>
+<blockquote>
+<div><p>specify what to retrieve:</p>
+<blockquote>
+<div><ul class="simple">
+<li>netlist-file: return netlist file path</li>
+<li>netlist-format: netlist format (circuit simulator)</li>
+<li>original-netlist: unmodified netlist text</li>
+<li>filtered-netlist: netlist after line-continuations and other
+preprocessing has been done</li>
+<li>subckts: list of subcircuits defined in the netlist</li>
+<li>insts: list of subcircuit instances in the netlist</li>
+<li>caps: list of capacitors in the netlist</li>
+<li>ress: list of resistors in the netlist</li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p><strong>**kwargs</strong> (dict)</p>
+<blockquote>
+<div>unused</div></blockquote>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.SimulatorNetlist.SimulatorNetlist.get_cap">
+<code class="descname">get_cap</code><span class="sig-paren">(</span><em>cap</em>, <em>detail</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.SimulatorNetlist.SimulatorNetlist.get_cap" title="Permalink to this definition">¶</a></dt>
+<dd><p>get capacitor information.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>cap</strong> (str)</p>
+<blockquote>
+<div>name of capacitor instance</div></blockquote>
+<p><strong>detail</strong> (str)</p>
+<blockquote>
+<div><p>one of:</p>
+<blockquote>
+<div><ul class="simple">
+<li>ports: return list of capacitor ports</li>
+<li>value: return capacitance value</li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.SimulatorNetlist.SimulatorNetlist.get_inst">
+<code class="descname">get_inst</code><span class="sig-paren">(</span><em>inst</em>, <em>detail</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.SimulatorNetlist.SimulatorNetlist.get_inst" title="Permalink to this definition">¶</a></dt>
+<dd><p>get subcircuit instance information.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>inst</strong> (str)</p>
+<blockquote>
+<div>name of subcircuit instance</div></blockquote>
+<p><strong>detail</strong> (str)</p>
+<blockquote>
+<div><p>one of:</p>
+<blockquote>
+<div><ul class="simple">
+<li>ports: return list of instance ports</li>
+<li>params: return list of instance parameters</li>
+<li>subckt: return subcircuit name</li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.SimulatorNetlist.SimulatorNetlist.get_res">
+<code class="descname">get_res</code><span class="sig-paren">(</span><em>res</em>, <em>detail</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.SimulatorNetlist.SimulatorNetlist.get_res" title="Permalink to this definition">¶</a></dt>
+<dd><p>get resistor information.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>res</strong> (str)</p>
+<blockquote>
+<div>name of resistor instance</div></blockquote>
+<p><strong>detail</strong> (str)</p>
+<blockquote>
+<div><p>one of:</p>
+<blockquote>
+<div><ul class="simple">
+<li>ports: return list of resistor ports</li>
+<li>value: return resistor value</li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.SimulatorNetlist.SimulatorNetlist.get_subckt">
+<code class="descname">get_subckt</code><span class="sig-paren">(</span><em>subckt</em>, <em>detail</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.SimulatorNetlist.SimulatorNetlist.get_subckt" title="Permalink to this definition">¶</a></dt>
+<dd><p>get subcircuit information.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>subckt</strong> (str)</p>
+<blockquote>
+<div>name of subcircuit</div></blockquote>
+<p><strong>detail</strong> (str)</p>
+<blockquote>
+<div><p>one of:</p>
+<blockquote>
+<div><ul class="simple">
+<li>ports: return list of subcircuit ports</li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="SelectionDialog.html"
+                        title="previous chapter">SelectionDialog</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="SmithChartx.html"
+                        title="next chapter">SmithChartx</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/SimulatorNetlist.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="SmithChartx.html" title="SmithChartx"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="SelectionDialog.html" title="SelectionDialog"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">decida 1.1.3 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="decida_classes.html" ><strong>DeCiDa classes</strong></a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2013, Richard Booth.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

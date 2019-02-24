@@ -1,0 +1,883 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>PlotBasem &#8212; decida 1.1.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.1.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Plotterm" href="Plotterm.html" />
+    <link rel="prev" title="Pattern" href="Pattern.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="Plotterm.html" title="Plotterm"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="Pattern.html" title="Pattern"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">decida 1.1.3 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="decida_classes.html" accesskey="U"><strong>DeCiDa classes</strong></a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="plotbasem">
+<h1>PlotBasem<a class="headerlink" href="#plotbasem" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="decida.PlotBasem.PlotBasem">
+<em class="property">class </em><code class="descclassname">decida.PlotBasem.</code><code class="descname">PlotBasem</code><span class="sig-paren">(</span><em>parent=None</em>, <em>use_matplotlib=True</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.PlotBasem.PlotBasem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ItclObjectx.html#decida.ItclObjectx.ItclObjectx" title="decida.ItclObjectx.ItclObjectx"><code class="xref py py-class docutils literal"><span class="pre">decida.ItclObjectx.ItclObjectx</span></code></a>, <code class="xref py py-class docutils literal"><span class="pre">Tkinter.Frame</span></code></p>
+<p><strong>synopsis</strong>:</p>
+<blockquote>
+<div><p>2-dimensional plot base class.</p>
+<p><em>PlotBasem</em> is a base class for 2-D plotting classes. It provides
+a central canvas for displaying the plot, controls for changing aspects
+of the plot, point display boxes, and mouse commands for zooming,
+annotating, and determining line-parameters.</p>
+<p><em>PlotBasem</em> provides its own vector (Hershey) fonts, which can
+be rotated, slanted, and sized.  The tk canvas does provide a
+font set, but with some limitations.</p>
+<p><em>PlotBasem</em> is inherited by <em>XYplotm</em>, <em>Histogramx</em>, <em>Contourx</em>,
+and <em>Smithchartx</em>.</p>
+</div></blockquote>
+<p><strong>configuration options</strong>:</p>
+<blockquote>
+<div><p><strong>verbose</strong> (bool, default=False)</p>
+<blockquote>
+<div>enable/disable verbose mode</div></blockquote>
+<p><strong>title</strong> (str, default=&#8221;&#8221;)</p>
+<blockquote>
+<div>main title</div></blockquote>
+<p><strong>xtitle</strong> (str, default=&#8221;&#8221;)</p>
+<blockquote>
+<div>x-axis title</div></blockquote>
+<p><strong>ytitle</strong> (str, default=&#8221;&#8221;)</p>
+<blockquote>
+<div>y-axis title</div></blockquote>
+<p><strong>plot_height</strong> (str, default=&#8221;10i&#8221; for MacOS, else &#8220;6i&#8221;)</p>
+<blockquote>
+<div>Height of plot window (Tk inch or pixel specification)</div></blockquote>
+<p><strong>plot_width</strong> (str, default=&#8221;10i&#8221; for MacOS, else &#8220;6i&#8221;)</p>
+<blockquote>
+<div>Width of plot window (Tk inch or pixel specification)</div></blockquote>
+<p><strong>plot_background</strong> (str, default=&#8221;GhostWhite&#8221;)</p>
+<blockquote>
+<div>Background color of plot window</div></blockquote>
+<p><strong>legend_background</strong> (str, default=&#8221;AntiqueWhite2&#8221;)</p>
+<blockquote>
+<div>Background color of legend</div></blockquote>
+<dl class="docutils">
+<dt><strong>colors</strong> (list of str, default=[</dt>
+<dd><blockquote class="first">
+<div>&#8220;blue&#8221;, &#8220;red&#8221;, &#8220;green&#8221;, &#8220;orange&#8221;, &#8220;cyan&#8221;,
+&#8220;brown&#8221;, &#8220;black&#8221;, &#8220;blue violet&#8221;, &#8220;cadet blue&#8221;,
+&#8220;dark cyan&#8221;, &#8220;dark goldenrod&#8221;, &#8220;dark green&#8221;,
+&#8220;dark magenta&#8221;, &#8220;dark olive green&#8221;, &#8220;dark orange&#8221;,
+&#8220;dark red&#8221;, &#8220;dark slate blue&#8221;, &#8220;dark slate gray&#8221;,
+&#8220;dodger blue&#8221;, &#8220;forest green&#8221;, &#8220;steel blue&#8221;, &#8220;sienna&#8221;])</div></blockquote>
+<p class="last">list of colors for curves.
+Used to populate color menu, and to specify curve colors
+in scripted &#8220;command&#8221; option in derived classes.</p>
+</dd>
+<dt><strong>symbols</strong> (list of str, default = [</dt>
+<dd><blockquote class="first">
+<div>&#8220;none&#8221;, &#8220;dot&#8221;, &#8220;square&#8221;, &#8220;diamond&#8221;,
+&#8220;triangle&#8221;, &#8220;itriangle&#8221;,
+&#8220;dash&#8221;, &#8220;pipe&#8221;, &#8220;plus&#8221;, &#8220;cross&#8221;,
+&#8220;spade&#8221;, &#8220;heart&#8221;, &#8220;diam&#8221;, &#8220;club&#8221;, &#8220;shamrock&#8221;,
+&#8220;fleurdelis&#8221;, &#8220;circle&#8221;, &#8220;star&#8221;])</div></blockquote>
+<p class="last">list of symbols for curves.
+Used to populate symbol menu, and to specify curve symbols
+in scripted &#8220;command&#8221; option in derived classes.</p>
+</dd>
+</dl>
+<p><strong>ssizes</strong> (list of float, default = [0.01])</p>
+<blockquote>
+<div>list of symbol sizes for curves.
+Used to specify curve symbol sizes
+in scripted &#8220;command&#8221; option in derived classes.</div></blockquote>
+<p><strong>wlines</strong> (list of int, default = [1])</p>
+<blockquote>
+<div>list of line widths for curves.
+Used to specify curve line widths
+in scripted &#8220;command&#8221; option in derived classes.</div></blockquote>
+<p><strong>traces</strong> (list, default = [&#8220;increasing&#8221;])</p>
+<blockquote>
+<div>list of traces for curves.  each trace can be one of:
+&#8220;increasing&#8221;, &#8220;decreasing&#8221;, or &#8220;both&#8221;.
+Used to specify curve trace directions
+in scripted &#8220;command&#8221; option in derived classes.</div></blockquote>
+<p><strong>xaxis</strong> (str, default=&#8221;lin&#8221;)</p>
+<blockquote>
+<div>linear or logarithmic axis: &#8220;lin&#8221; or &#8220;log&#8221;</div></blockquote>
+<p><strong>yaxis</strong> (str, default=&#8221;lin&#8221;)</p>
+<blockquote>
+<div>linear or logarithmic axis: &#8220;lin&#8221; or &#8220;log&#8221;</div></blockquote>
+<p><strong>xmin</strong> (float, default=0.0)</p>
+<blockquote>
+<div>xaxis minimum</div></blockquote>
+<p><strong>xmax</strong> (float, default=0.0)</p>
+<blockquote>
+<div>xaxis maximum</div></blockquote>
+<p><strong>ymin</strong> (float, default=0.0)</p>
+<blockquote>
+<div>yaxis minimum</div></blockquote>
+<p><strong>ymax</strong> (float, default=0.0)</p>
+<blockquote>
+<div>yaxis maximum</div></blockquote>
+<p><strong>grid</strong> (bool, default=True)</p>
+<blockquote>
+<div>if true, show grid on plot</div></blockquote>
+<p><strong>legend</strong> (bool, default=True)</p>
+<blockquote>
+<div>if true, show legend on plot</div></blockquote>
+<p><strong>postscript</strong> (bool, default=False)</p>
+<blockquote>
+<div>if true, generate a PostScript file.</div></blockquote>
+<p><strong>postscript_file</strong> (str, default=&#8221;plot.ps&#8221;)</p>
+<blockquote>
+<div>name of PostScript file to plot to</div></blockquote>
+<p><strong>wait</strong> (bool, default=False)</p>
+<blockquote>
+<div>wait in main-loop until window is destroyed.</div></blockquote>
+<p><strong>destroy</strong> (bool, default=False)</p>
+<blockquote>
+<div>destroy main window after it has been displayed.
+useful for displaying, generating PostScript, then
+destroying window.</div></blockquote>
+</div></blockquote>
+<p><strong>protected methods</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>_plot_curves</li>
+<li>_settings_cmd</li>
+</ul>
+</div></blockquote>
+<p><strong>public methods</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>public methods from <em>ItclObjectx</em></li>
+</ul>
+</div></blockquote>
+<dl class="method">
+<dt id="decida.PlotBasem.PlotBasem.add_curve">
+<code class="descname">add_curve</code><span class="sig-paren">(</span><em>datobj</em>, <em>xcol</em>, <em>ycol</em>, <em>start=False</em>, <em>autoscale_x=False</em>, <em>autoscale_y=True</em>, <em>strict=False</em>, <em>dname=None</em>, <em>lstate=True</em>, <em>sstate=True</em>, <em>color=None</em>, <em>symbol=None</em>, <em>ssize=None</em>, <em>wline=None</em>, <em>trace=None</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.PlotBasem.PlotBasem.add_curve" title="Permalink to this definition">¶</a></dt>
+<dd><p>add a curve.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>datobj</strong> (Data object handle)</p>
+<blockquote>
+<div>data object supplying points to add to curve.</div></blockquote>
+<p><strong>xcol</strong> (str)</p>
+<blockquote>
+<div>x column name.</div></blockquote>
+<p><strong>ycol</strong> (str)</p>
+<blockquote>
+<div>x column name.</div></blockquote>
+<p><strong>start</strong> (bool, default=False)</p>
+<blockquote>
+<div>modify x, y titles if this is the first and only curve.</div></blockquote>
+<p><strong>autoscale_x</strong> (bool, default=False)</p>
+<blockquote>
+<div>widen x-axis to fit all curves. if strict, narrow x-axis to
+minimum and maximum of all curves.</div></blockquote>
+<p><strong>autoscale_y</strong> (bool, default=True)</p>
+<blockquote>
+<div>widen y-axis to fit all curves. if strict, narrow y-axis to
+minimum and maximum of all curves.</div></blockquote>
+<p><strong>strict</strong> (bool, default=False)</p>
+<blockquote>
+<div>if false, rescale and redraw only if current plot limits
+are smaller than minimum and maximum of all curves</div></blockquote>
+<p><strong>dname</strong> (str, default=None)</p>
+<blockquote>
+<div>specify data name.
+if not specified, dname = data_1.</div></blockquote>
+<p><strong>lstate</strong> (bool, default=True)</p>
+<blockquote>
+<div>specify line-state.</div></blockquote>
+<p><strong>sstate</strong> (bool, default=true)</p>
+<blockquote>
+<div>specify symbol-state.</div></blockquote>
+<p><strong>color</strong> (str, default=None)</p>
+<blockquote>
+<div>specify curve color.
+if not specified, chooses next color in color list.</div></blockquote>
+<p><strong>symbol</strong> (str, default=None)</p>
+<blockquote>
+<div>specify curve symbol.
+if not specified, chooses next symbol in symbol list.
+if symbol list wasn&#8217;t configured, then symbol=none.</div></blockquote>
+<p><strong>ssize</strong> (float, default=None)</p>
+<blockquote>
+<div>specify curve symbol size.
+if not specified, chooses next symbol size in symbol size list.</div></blockquote>
+<p><strong>wline</strong> (float, default=None)</p>
+<blockquote>
+<div>specify curve line width.
+if not specified, chooses next line width in line width list.</div></blockquote>
+<p><strong>trace</strong> (str, default=None)</p>
+<blockquote>
+<div>specify curve trace.
+if not specified, chooses next trace in trace list</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="first docutils">
+<dt>Registers a new curve with a curve id in the format:</dt>
+<dd>&lt;data_name&gt;_:_&lt;ycol&gt;_vs_&lt;xcol&gt;
+If data_name is undefined, it is set to &#8220;data_1&#8221;</dd>
+</dl>
+</li>
+<li>Plot is re-drawn with the new curve.</li>
+<li>New curve is selected as the current curve.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.PlotBasem.PlotBasem.autoscale">
+<code class="descname">autoscale</code><span class="sig-paren">(</span><em>autoscale_x=False</em>, <em>autoscale_y=True</em>, <em>strict=False</em>, <em>redraw=False</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.PlotBasem.PlotBasem.autoscale" title="Permalink to this definition">¶</a></dt>
+<dd><p>find limits and autoscale plot.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>autoscale_x</strong> (bool, default=False)</p>
+<blockquote>
+<div>widen x-axis to fit all curves. if strict, narrow x-axis to
+minimum and maximum of all curves</div></blockquote>
+<p><strong>autoscale_y</strong> (bool, default=True)</p>
+<blockquote>
+<div>widen y-axis to fit all curves. if strict, narrow y-axis to
+minimum and maximum of all curves</div></blockquote>
+<p><strong>strict</strong> (bool, default=False)</p>
+<blockquote>
+<div>if false, rescale and redraw only if current plot limits
+are smaller than minimum and maximum of all curves</div></blockquote>
+<p><strong>redraw</strong> (bool, default=False)</p>
+<blockquote>
+<div>if true, do redraw for any case of limit comparisons</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>The plot is re-drawn with the new limits.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.PlotBasem.PlotBasem.begin_stretch">
+<code class="descname">begin_stretch</code><span class="sig-paren">(</span><em>mode</em>, <em>func</em>, <em>u</em>, <em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.PlotBasem.PlotBasem.begin_stretch" title="Permalink to this definition">¶</a></dt>
+<dd><p>mouse down call-back.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>mode</strong> (str)</p>
+<blockquote>
+<div><p>mode string: one of</p>
+<blockquote>
+<div><ul class="simple">
+<li>&#8220;zoom&#8221;    : zoom in to window</li>
+<li>&#8220;delete&#8221;  : delete labels within window</li>
+<li>&#8220;report&#8221;  : report line-parameters</li>
+<li>&#8220;label&#8221;   : annotate plot</li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p><strong>func</strong> (function)</p>
+<blockquote>
+<div>function to call on end_stretch</div></blockquote>
+<p><strong>u, v</strong> (int)</p>
+<blockquote>
+<div>canvas coordinates</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Registers the  stretch function, mode, and
+beginning coordinates.</li>
+<li>Updates the coordinate display.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.PlotBasem.PlotBasem.continue_stretch">
+<code class="descname">continue_stretch</code><span class="sig-paren">(</span><em>u</em>, <em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.PlotBasem.PlotBasem.continue_stretch" title="Permalink to this definition">¶</a></dt>
+<dd><p>mouse movement after mouse down call-back.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>u, v</strong> (int)</p>
+<blockquote>
+<div>canvas coordinates</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Redraws rectangle or line, depending on the stretch operation.</li>
+<li>Updates the coordinate display.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.PlotBasem.PlotBasem.current_curve">
+<code class="descname">current_curve</code><span class="sig-paren">(</span><em>curve=None</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.PlotBasem.PlotBasem.current_curve" title="Permalink to this definition">¶</a></dt>
+<dd><p>return the current curve.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Returns the current curve id.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.PlotBasem.PlotBasem.curve_attributes">
+<code class="descname">curve_attributes</code><span class="sig-paren">(</span><em>curve</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.PlotBasem.PlotBasem.curve_attributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>return curve attributes.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>curve</strong> (str)</p>
+<blockquote>
+<div>The curve id is in the format (see add_curve):
+&lt;data_name&gt;_:_&lt;ycol&gt;_vs_&lt;xcol&gt;
+If data_name is undefined, it is set to &#8220;data_1&#8221;</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul>
+<li><p class="first">Returns a list of curve attributes in the Dictionary V:</p>
+<blockquote>
+<div><ul class="simple">
+<li>V[&#8220;dname&#8221;]  = data name (str)</li>
+<li>V[&#8220;xname&#8221;]  = x-column name (str)</li>
+<li>V[&#8220;yname&#8221;]  = y-column name (str)</li>
+<li>V[&#8220;color&#8221;]  = curve color (str)</li>
+<li>V[&#8220;symbol&#8221;] = curve symbol (str)</li>
+<li>V[&#8220;ssize&#8221;]  = curve symbol size (int)</li>
+<li>V[&#8220;wline&#8221;]  = curve line-width (int)</li>
+<li>V[&#8220;trace&#8221;]  = trace direction (str)
+(&#8220;increasing&#8221;, &#8220;decreasing&#8221;, or &#8220;both&#8221;)</li>
+<li>V[&#8220;lstate&#8221;] = line display state (bool)</li>
+<li>V[&#8220;sstate&#8221;] = symbol display state (bool)</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.PlotBasem.PlotBasem.curves">
+<code class="descname">curves</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.PlotBasem.PlotBasem.curves" title="Permalink to this definition">¶</a></dt>
+<dd><p>return list of curves.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Returns the list of curve id&#8217;s in the plot.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.PlotBasem.PlotBasem.delete_curve">
+<code class="descname">delete_curve</code><span class="sig-paren">(</span><em>curve</em>, <em>redraw=True</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.PlotBasem.PlotBasem.delete_curve" title="Permalink to this definition">¶</a></dt>
+<dd><p>delete a curve.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>curve</strong> (str)</p>
+<blockquote>
+<div>label of curve to delete.
+curve labels appear in the curve menu.
+the label is in the format &lt;data_name&gt;_:_&lt;ycol&gt;_vs_&lt;xcol&gt;
+where data_name is the name of the data object
+and xcol and ycol are the x and y column names in the curve.</div></blockquote>
+<p><strong>redraw</strong> (bool, default=True)</p>
+<blockquote>
+<div>if True, redraw plot after deleting curve</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>The specified curve is de-registered.</li>
+<li>If redraw is True, redraw the Plot.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.PlotBasem.PlotBasem.end_stretch">
+<code class="descname">end_stretch</code><span class="sig-paren">(</span><em>u</em>, <em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.PlotBasem.PlotBasem.end_stretch" title="Permalink to this definition">¶</a></dt>
+<dd><p>mouse up call-back.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>u, v</strong> (int)</p>
+<blockquote>
+<div>canvas coordinates</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Calls the registered stretch function with the two
+canvas endpoints defined by begin_stretch and end_stretch.</li>
+<li>Updates the coordinate display.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.PlotBasem.PlotBasem.limits">
+<code class="descname">limits</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.PlotBasem.PlotBasem.limits" title="Permalink to this definition">¶</a></dt>
+<dd><p>return plot limits.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>returns a list of the current plotting limits:
+[xmin, xmax, ymin, ymax]</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.PlotBasem.PlotBasem.plot_annotate">
+<code class="descname">plot_annotate</code><span class="sig-paren">(</span><em>shape</em>, <em>text</em>, <em>x1</em>, <em>y1</em>, <em>x2</em>, <em>y2</em>, <em>tag</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.PlotBasem.PlotBasem.plot_annotate" title="Permalink to this definition">¶</a></dt>
+<dd><p>add a line (or an arrowed line) to a curve with a label.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>shape</strong> (str)</p>
+<blockquote>
+<div><p>shape to draw on the plot. One of:</p>
+<ul class="simple">
+<li>NONE             : no shape.</li>
+<li>LINE             : line segment between two enpoints.</li>
+<li>RECTANGLE        : rectangle using two endpoints.</li>
+<li>FILLED-RECTANGLE : filled rectangle using two endpoints.</li>
+<li>ARROW-TO         : arrow from 1st point with arrow on 2nd.</li>
+<li>ARROW-FROM       : arrow from 2nd point with arrow on 1st.</li>
+<li>ARROW-BOTH       : arrow to both points.</li>
+</ul>
+</div></blockquote>
+<p><strong>text</strong> (str)</p>
+<blockquote>
+<div>text to draw on the plot.</div></blockquote>
+<p><strong>x1, y1, x2, y2</strong> (float)</p>
+<blockquote>
+<div>x and y coordinates cooresponding to the window where
+the plot is to be annotated.</div></blockquote>
+<p><strong>tag</strong> (str)</p>
+<blockquote>
+<div>tk canvas tag to assign to the annotation.</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Display a dialog for the user to select text or shapes to
+annotate the plot.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.PlotBasem.PlotBasem.plot_annotate_dialog">
+<code class="descname">plot_annotate_dialog</code><span class="sig-paren">(</span><em>x1</em>, <em>y1</em>, <em>x2</em>, <em>y2</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.PlotBasem.PlotBasem.plot_annotate_dialog" title="Permalink to this definition">¶</a></dt>
+<dd><p>add a line (or an arrowed line) to a curve with a label.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>x1, y1, x2, y2</strong> (float)</p>
+<blockquote>
+<div>x and y coordinates cooresponding to the window where
+the plot is to be annotated.</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Display a dialog for the user to select text or shapes to
+annotate the plot.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.PlotBasem.PlotBasem.plot_st_uv">
+<code class="descname">plot_st_uv</code><span class="sig-paren">(</span><em>s</em>, <em>t</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.PlotBasem.PlotBasem.plot_st_uv" title="Permalink to this definition">¶</a></dt>
+<dd><p>convert scaled coordinates (0, 1, 0, 1) to canvas coordinates.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>s, t</strong> (float)</p>
+<blockquote>
+<div>x, y coordinates in scaled domain.  In the scaled domain,
+every point on the canvas is mapped to the window
+smin, smax = 0.0, 1.0 and tmin, tmax = 0.0, 1.0</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>return canvas coordinates u, v</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.PlotBasem.PlotBasem.plot_st_xy">
+<code class="descname">plot_st_xy</code><span class="sig-paren">(</span><em>s</em>, <em>t</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.PlotBasem.PlotBasem.plot_st_xy" title="Permalink to this definition">¶</a></dt>
+<dd><p>convert scaled coordinates (0, 1, 0, 1) to x, y coordinates</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>s, t</strong> (float)</p>
+<blockquote>
+<div>x, y coordinates in scaled domain.  In the scaled domain,
+every point on the canvas is mapped to the window
+smin, smax = 0.0, 1.0 and tmin, tmax = 0.0, 1.0</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>return x, y coordinates x, y</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.PlotBasem.PlotBasem.plot_symb">
+<code class="descname">plot_symb</code><span class="sig-paren">(</span><em>sp</em>, <em>tp</em>, <em>hp</em>, <em>symbol</em>, <em>tags=None</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.PlotBasem.PlotBasem.plot_symb" title="Permalink to this definition">¶</a></dt>
+<dd><p>plot a symbol.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>sp, tp</strong> (float)</p>
+<blockquote>
+<div>plot location in scaled coordinates.
+In the scaled domain,
+every point on the canvas is mapped to the window
+smin, smax = 0.0, 1.0 and tmin, tmax = 0.0, 1.0</div></blockquote>
+<p><strong>hp</strong> (float)</p>
+<blockquote>
+<div>size of the symbol to be drawn in scaled units.</div></blockquote>
+<p><strong>symbol</strong> (str)</p>
+<blockquote>
+<div><p>the name of the symbol to be drawn. One of:</p>
+<blockquote>
+<div><ul class="simple">
+<li>spade      : (Hershey) spade</li>
+<li>heart      : (Hershey) heart</li>
+<li>diam       : (Hershey) diamond</li>
+<li>club       : (Hershey) club</li>
+<li>shamrock   : (Hershey) shamrock</li>
+<li>fleurdelis : (Hershey) Fleur-de-lis</li>
+<li>circle     : (Hershey) circle</li>
+<li>star       : (Hershey) star</li>
+<li>dot        : dot</li>
+<li>square     : square</li>
+<li>diamond    : diamond</li>
+<li>triangle   : triangle</li>
+<li>itriangle  : inverted triangle</li>
+<li>dash       : dash</li>
+<li>pipe       : pipe</li>
+<li>plus       : plus</li>
+<li>cross      : cross</li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p><strong>tags</strong> (str)</p>
+<blockquote>
+<div>tk canvas tags to apply to the symbol.</div></blockquote>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.PlotBasem.PlotBasem.plot_texv">
+<code class="descname">plot_texv</code><span class="sig-paren">(</span><em>sp</em>, <em>tp</em>, <em>hp</em>, <em>stringp</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.PlotBasem.PlotBasem.plot_texv" title="Permalink to this definition">¶</a></dt>
+<dd><p>plot a text string.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>sp, tp</strong> (float)</p>
+<blockquote>
+<div>plot location in scaled coordinates.
+In the scaled domain,
+every point on the canvas is mapped to the window
+smin, smax = 0.0, 1.0 and tmin, tmax = 0.0, 1.0</div></blockquote>
+<p><strong>hp</strong> (float)</p>
+<blockquote>
+<div>size of the text to be drawn in scaled units.</div></blockquote>
+<p><strong>stringp</strong> (str)</p>
+<blockquote>
+<div><p>the string to label.</p>
+<p>If control_mode is True, the following control sequences are
+respected:</p>
+<blockquote>
+<div><ul>
+<li><p class="first">single-character control sequences:</p>
+<blockquote>
+<div><ul class="simple">
+<li>&amp;  greek characters follow</li>
+<li>$  script characters follow</li>
+<li>^  super-script</li>
+<li>~  subscript</li>
+<li>&#64;  increase character size</li>
+<li>#  decrease character size</li>
+<li>%  toggle overstrike mode</li>
+<li> back-space</li>
+<li>!  begin two-letter control sequence</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">two-letter control sequences:</p>
+<blockquote>
+<div><ul class="simple">
+<li>!0  font family 0</li>
+<li>!1  font family 1</li>
+<li>!2  font family 2</li>
+<li>!3  font family 3</li>
+<li>!=  toggle constant spacing mode</li>
+<li>!-  toggle connected mode</li>
+<li>!|  stretch by 1.2</li>
+<li>!~  shrink by 1.2</li>
+<li>!.  ignore any following control sequences</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p><strong>**kwargs</strong> (dict)</p>
+<blockquote>
+<div>options.</div></blockquote>
+</div></blockquote>
+<p><strong>options</strong>:</p>
+<blockquote>
+<div><p><strong>tags</strong> (str, default=&#8221;STRING&#8221;)</p>
+<blockquote>
+<div>tk canvas tags to apply to the symbol.</div></blockquote>
+<p><strong>rotate</strong> (float, default=0.0)</p>
+<blockquote>
+<div>The rotation angle in degrees of the string label.</div></blockquote>
+<p><strong>slant</strong> (float, default=0.0)</p>
+<blockquote>
+<div>The slant angle in degrees of the string label.</div></blockquote>
+<p><strong>anchor</strong> (str, default=&#8221;c&#8221;)</p>
+<blockquote>
+<div><p>The alignment of text with respect to sp, tp.  One of:</p>
+<p>&#8220;c&#8221; : x:centered y: centered</p>
+<p>&#8220;n&#8221; : x:centered y: north of sp, tp</p>
+<p>&#8220;s&#8221; : x:centered y: south of sp, tp</p>
+<p>&#8220;e&#8221; : x:east of sp, tp  y: centered</p>
+<p>&#8220;w&#8221; : x:west of sp, tp  y: centered</p>
+<p>&#8220;ne&#8221; : x:east of sp, tp  y: north of sp, tp</p>
+<p>&#8220;nw&#8221; : x:west of sp, tp  y: north of sp, tp</p>
+<p>&#8220;se&#8221; : x:east of sp, tp  y: south of sp, tp</p>
+<p>&#8220;sw&#8221; : x:west of sp, tp  y: south of sp, tp</p>
+</div></blockquote>
+<p><strong>control_mode</strong> (bool, default=True)</p>
+<blockquote>
+<div>if True, respect control sequences,
+listed in stringp option description</div></blockquote>
+<p><strong>single_char</strong> (int, default=-1)</p>
+<blockquote>
+<div>specify one character in the Hershey font set to be printed,
+an integer between 0 and 1535.</div></blockquote>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.PlotBasem.PlotBasem.plot_transform_entry">
+<code class="descname">plot_transform_entry</code><span class="sig-paren">(</span><em>entry</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.PlotBasem.PlotBasem.plot_transform_entry" title="Permalink to this definition">¶</a></dt>
+<dd><p>return the transform dictionary entry.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>entry</strong> (str)</p>
+<blockquote>
+<div><p>the transform entry to return. One of:</p>
+<blockquote>
+<div><ul class="simple">
+<li>uv_max_limits:  maximum canvas limits</li>
+<li>st_max_limits:  maximum scaled limits</li>
+<li>xy_max_limits:  maximum x,y limits</li>
+<li>uv_limits:      current canvas limits</li>
+<li>st_limits:      current scaled limits</li>
+<li>xy_limits:      current x,y limits</li>
+<li>uv_st:          transform canvas to scale point</li>
+<li>uv_xy:          transform canvas to x,y point</li>
+<li>st_uv:          transform scaled to canvas point</li>
+<li>st_xy:          transform scaled to x,y point</li>
+<li>xy_st:          transform x,y to scaled point</li>
+<li>xy_uv:          transform x,y to canvas point</li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.PlotBasem.PlotBasem.plot_uv_st">
+<code class="descname">plot_uv_st</code><span class="sig-paren">(</span><em>u</em>, <em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.PlotBasem.PlotBasem.plot_uv_st" title="Permalink to this definition">¶</a></dt>
+<dd><p>convert canvas coordinates to scaled coordinates (0, 1, 0, 1)</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>u, v</strong> (int)</p>
+<blockquote>
+<div>x, y (pixel) coordinates in canvas domain.</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>return scaled coordinates s, t</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.PlotBasem.PlotBasem.plot_uv_xy">
+<code class="descname">plot_uv_xy</code><span class="sig-paren">(</span><em>u</em>, <em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.PlotBasem.PlotBasem.plot_uv_xy" title="Permalink to this definition">¶</a></dt>
+<dd><p>convert canvas coordinates to x, y coordinates.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>u, v</strong> (int)</p>
+<blockquote>
+<div>canvas (pixel) coordinates.</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>return x, y coordinates</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.PlotBasem.PlotBasem.plot_window">
+<code class="descname">plot_window</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.PlotBasem.PlotBasem.plot_window" title="Permalink to this definition">¶</a></dt>
+<dd><p>return plot window (canvas).</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Returns the handle to the current plot window.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.PlotBasem.PlotBasem.plot_xy_st">
+<code class="descname">plot_xy_st</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.PlotBasem.PlotBasem.plot_xy_st" title="Permalink to this definition">¶</a></dt>
+<dd><p>convert x, y coordinates to scaled coordinates (0, 1, 0, 1)</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>x, y</strong> (float)</p>
+<blockquote>
+<div>x, y coordinates.</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>return scaled coordinates s, t</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.PlotBasem.PlotBasem.plot_xy_uv">
+<code class="descname">plot_xy_uv</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.PlotBasem.PlotBasem.plot_xy_uv" title="Permalink to this definition">¶</a></dt>
+<dd><p>convert x, y coordinates to canvas coordinates.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>x, y</strong> (float)</p>
+<blockquote>
+<div>x, y coordinates.</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>return canvas coordinates u, v</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="Pattern.html"
+                        title="previous chapter">Pattern</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="Plotterm.html"
+                        title="next chapter">Plotterm</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/PlotBasem.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="Plotterm.html" title="Plotterm"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="Pattern.html" title="Pattern"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">decida 1.1.3 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="decida_classes.html" ><strong>DeCiDa classes</strong></a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2013, Richard Booth.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

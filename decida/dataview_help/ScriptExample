@@ -1,0 +1,22 @@
+  dataview help
+  
+  Scripting example:
+
+  The dataview window can be started up in a decida script
+  or directly in interactive mode.
+
+  The following example reads the file "vco.raw" into a 
+  decida data object.
+  The DataViewm parameter command is a list of plots to be made.
+  In the example, two plots are made. The first plot is
+  VINM, VINP, and VOUT versus TIME.
+  The second plot is VINM, VINP, and VCK versus TIME, where VCK is
+  stacked above the bottom plots (-stack and -overlay are keywords).
+  The second list element in each plot is XYplotm arguments.
+
+  d = Data()
+  d.read("vco.raw")
+  DataViewm(d, command=[
+      ["TIME VINM VINP VOUT", "ymin=0"],
+      ["TIME VINM VINP -stack VCK", "ymin=0"],
+  ])

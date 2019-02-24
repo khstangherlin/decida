@@ -1,0 +1,299 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>SmithChartx &#8212; decida 1.1.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.1.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="StatusDialog" href="StatusDialog.html" />
+    <link rel="prev" title="SimulatorNetlist" href="SimulatorNetlist.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="StatusDialog.html" title="StatusDialog"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="SimulatorNetlist.html" title="SimulatorNetlist"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">decida 1.1.3 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="decida_classes.html" accesskey="U"><strong>DeCiDa classes</strong></a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="smithchartx">
+<h1>SmithChartx<a class="headerlink" href="#smithchartx" title="Permalink to this headline">¶</a></h1>
+<img alt="_images/SmithChartx.jpg" src="_images/SmithChartx.jpg" />
+<dl class="class">
+<dt id="decida.SmithChartx.SmithChartx">
+<em class="property">class </em><code class="descclassname">decida.SmithChartx.</code><code class="descname">SmithChartx</code><span class="sig-paren">(</span><em>parent=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.SmithChartx.SmithChartx" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="PlotBasem.html#decida.PlotBasem.PlotBasem" title="decida.PlotBasem.PlotBasem"><code class="xref py py-class docutils literal"><span class="pre">decida.PlotBasem.PlotBasem</span></code></a></p>
+<p><strong>synopsis</strong>:</p>
+<blockquote>
+<div><p>Plot s-parameter data on a Smith chart.</p>
+<p><em>SmithChartx</em> plots s-parameter on a Smith chart.  The Smith chart
+grid is normalized impedance and/or admittance.  The grid can be
+extended beyond the unit circle.</p>
+</div></blockquote>
+<p><strong>constructor arguments</strong>:</p>
+<blockquote>
+<div><p><strong>parent</strong> (tk handle, default=None)</p>
+<blockquote>
+<div>handle of frame or other widget to pack plot in.
+if this is not specified, top-level is created.</div></blockquote>
+<p><strong>**kwargs</strong> (dict)</p>
+<blockquote>
+<div>keyword=value specifications:
+options or configuration-options</div></blockquote>
+</div></blockquote>
+<p><strong>options</strong>:</p>
+<blockquote>
+<div><p><strong>command</strong> (list)</p>
+<blockquote>
+<div><p>list of pairs of data-object, string of freq, RE(s1), IM(s1),
+?RE(s2), IM(s2), ...?  columns
+(frequency, and real, imaginary vectors)</p>
+<dl class="docutils">
+<dt>example: [d1, &#8220;freq RE(s11) IM(s11)&#8221;, d2, &#8220;freq RE(s11) IM(s11)&#8221;]:</dt>
+<dd>s11 curves will be plotted for each data object d1 and d2.
+Each curve will also be plotted
+with color, symbol, symbol-size, line-width, and
+trace-direction selected from the successive item in
+the respective list of specified configured options:
+colors, symbols, ssizes, wlines, traces.  Selection
+wraps around if the respective list is shorter than
+the number of curves.</dd>
+</dl>
+</div></blockquote>
+</div></blockquote>
+<p><strong>configuration options</strong>:</p>
+<blockquote>
+<div><p><strong>verbose</strong> (bool, default=False)</p>
+<blockquote>
+<div>enable/disable verbose mode</div></blockquote>
+<p><strong>title</strong> (str, default=&#8221;&#8221;)</p>
+<blockquote>
+<div>main title</div></blockquote>
+<p><strong>xtitle</strong> (str, default=&#8221;&#8221;)</p>
+<blockquote>
+<div>x-axis title</div></blockquote>
+<p><strong>ytitle</strong> (str, default=&#8221;&#8221;)</p>
+<blockquote>
+<div>y-axis title</div></blockquote>
+<p><strong>plot_height</strong> (str, default=&#8221;10i&#8221; for MacOS, else &#8220;7i&#8221;)</p>
+<blockquote>
+<div>Height of plot window (Tk inch  or pixelspecification)</div></blockquote>
+<p><strong>plot_width</strong> (str, default=&#8221;10i&#8221; for MacOS, else &#8220;7i&#8221;)</p>
+<blockquote>
+<div>Width of plot window (Tk inch or pixel specification)</div></blockquote>
+<p><strong>plot_background</strong> (str, default=&#8221;GhostWhite&#8221;)</p>
+<blockquote>
+<div>Background color of plot window</div></blockquote>
+<p><strong>legend_background</strong> (str, default=&#8221;AntiqueWhite2&#8221;)</p>
+<blockquote>
+<div>Background color of legend</div></blockquote>
+<p><strong>grid_color</strong> (str, default=&#8221;black&#8221;)</p>
+<blockquote>
+<div>Color of Smith Chart grid.</div></blockquote>
+<p><strong>unit_color</strong> (str, default=&#8221;#eeeeff&#8221;)</p>
+<blockquote>
+<div>Color of Smith Chart unit-circle.</div></blockquote>
+<p><strong>unit_width</strong> (int, default=4)</p>
+<blockquote>
+<div>Width of Smith Chart unit-circle outline.</div></blockquote>
+<dl class="docutils">
+<dt><strong>resistance_list</strong> (list of float, default=[</dt>
+<dd><blockquote class="first">
+<div>0.1, 0.2, 0.3, 0.5, 0.7, 1, 1.5, 2, 3, 5, 10])</div></blockquote>
+<p class="last">list of normalized resistance values to form grid of Smith Chart.</p>
+</dd>
+<dt><strong>reactance_list</strong> (list of float, default=[</dt>
+<dd><blockquote class="first">
+<div>0.1, 0.2, 0.3, 0.5, 0.7, 1, 1.5, 2, 3, 5, 10])</div></blockquote>
+<p class="last">list of normalized reactance values to form grid of Smith Chart.</p>
+</dd>
+<dt><strong>colors</strong> (list of str, default=[</dt>
+<dd><blockquote class="first">
+<div>&#8220;blue&#8221;, &#8220;red&#8221;, &#8220;green&#8221;, &#8220;orange&#8221;, &#8220;cyan&#8221;,
+&#8220;brown&#8221;, &#8220;black&#8221;, &#8220;blue violet&#8221;, &#8220;cadet blue&#8221;,
+&#8220;dark cyan&#8221;, &#8220;dark goldenrod&#8221;, &#8220;dark green&#8221;,
+&#8220;dark magenta&#8221;, &#8220;dark olive green&#8221;, &#8220;dark orange&#8221;,
+&#8220;dark red&#8221;, &#8220;dark slate blue&#8221;, &#8220;dark slate gray&#8221;,
+&#8220;dodger blue&#8221;, &#8220;forest green&#8221;, &#8220;steel blue&#8221;, &#8220;sienna&#8221;])</div></blockquote>
+<p class="last">list of colors for curves.
+Used to populate color menu, and to specify curve colors
+in scripted &#8220;command&#8221; option.</p>
+</dd>
+<dt><strong>symbols</strong> (list of str, default=[</dt>
+<dd><blockquote class="first">
+<div>&#8220;none&#8221;, &#8220;dot&#8221;, &#8220;square&#8221;, &#8220;diamond&#8221;,
+&#8220;triangle&#8221;, &#8220;itriangle&#8221;,
+&#8220;dash&#8221;, &#8220;pipe&#8221;, &#8220;plus&#8221;, &#8220;cross&#8221;,
+&#8220;spade&#8221;, &#8220;heart&#8221;, &#8220;diam&#8221;, &#8220;club&#8221;, &#8220;shamrock&#8221;,
+&#8220;fleurdelis&#8221;, &#8220;circle&#8221;, &#8220;star&#8221;])</div></blockquote>
+<p class="last">list of symbols for curves.
+Used to populate symbol menu, and to specify curve symbols
+in scripted &#8220;command&#8221; option.</p>
+</dd>
+</dl>
+<p><strong>ssizes</strong> (list of float, default = [0.01])</p>
+<blockquote>
+<div>list of symbol sizes for curves.
+Used to specify curve symbol sizes
+in scripted &#8220;command&#8221; option.</div></blockquote>
+<p><strong>wlines</strong> (list of int, default = [1])</p>
+<blockquote>
+<div>list of line widths for curves.
+Used to specify curve line widths
+in scripted &#8220;command&#8221; option.</div></blockquote>
+<p><strong>traces</strong> (list, default = [&#8220;increasing&#8221;])</p>
+<blockquote>
+<div>list of traces for curves.  each trace can be one of:
+&#8220;increasing&#8221;, &#8220;decreasing&#8221;, or &#8220;both&#8221;.
+Used to specify curve trace directions
+in scripted &#8220;command&#8221; option.</div></blockquote>
+<p><strong>xaxis</strong> (str, default=&#8221;lin&#8221;)</p>
+<blockquote>
+<div>linear or logarithmic axis: &#8220;lin&#8221; or &#8220;log&#8221;</div></blockquote>
+<p><strong>yaxis</strong> (str, default=&#8221;lin&#8221;)</p>
+<blockquote>
+<div>linear or logarithmic axis: &#8220;lin&#8221; or &#8220;log&#8221;</div></blockquote>
+<p><strong>xmin</strong> (float, default=0.0)</p>
+<blockquote>
+<div>xaxis minimum</div></blockquote>
+<p><strong>xmax</strong> (float, default=0.0)</p>
+<blockquote>
+<div>xaxis maximum</div></blockquote>
+<p><strong>ymin</strong> (float, default=0.0)</p>
+<blockquote>
+<div>yaxis minimum</div></blockquote>
+<p><strong>ymax</strong> (float, default=0.0)</p>
+<blockquote>
+<div>yaxis maximum</div></blockquote>
+<p><strong>grid</strong>  (bool, default=True)</p>
+<blockquote>
+<div>if True, show grid on plot</div></blockquote>
+<p><strong>legend</strong> (bool, default=True)</p>
+<blockquote>
+<div>if True, show legend on plot</div></blockquote>
+<p><strong>postscript</strong> (bool, default=False)</p>
+<blockquote>
+<div>if true, generate a PostScript file.</div></blockquote>
+<p><strong>postscript_file</strong> (str, default=&#8221;plot.ps&#8221;)</p>
+<blockquote>
+<div>name of PostScript file to plot to</div></blockquote>
+<p><strong>wait</strong> (bool, default=False)</p>
+<blockquote>
+<div>wait in main-loop until window is destroyed.</div></blockquote>
+<p><strong>destroy</strong> (bool, default=False)</p>
+<blockquote>
+<div>destroy main window after it has been displayed.
+useful for displaying, generating PostScript, then
+destroying window.</div></blockquote>
+</div></blockquote>
+<p><strong>example</strong> (from test_SmithChartx_2):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">decida.Data</span> <span class="k">import</span> <span class="n">Data</span>
+<span class="kn">from</span> <span class="nn">decida.SmithChartx</span> <span class="k">import</span> <span class="n">SmithChartx</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="n">Data</span><span class="p">()</span>
+<span class="n">d</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;spars.col&quot;</span><span class="p">)</span>
+<span class="n">h</span><span class="o">=</span><span class="n">SmithChartx</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="p">[</span><span class="n">d</span><span class="p">,</span> <span class="s2">&quot;freq REAL(Sdd11) IMAG(Sdd11) REAL(Sdd22) IMAG(Sdd22) REAL(Sdd12) IMAG(Sdd12)&quot;</span><span class="p">],</span> <span class="n">symbols</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;dot&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p><strong>public methods</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>public methods from <em>ItclObjectx</em></li>
+<li>public methods from <em>PlotBasem</em> (2-dimensinal plot base class)</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="SimulatorNetlist.html"
+                        title="previous chapter">SimulatorNetlist</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="StatusDialog.html"
+                        title="next chapter">StatusDialog</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/SmithChartx.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="StatusDialog.html" title="StatusDialog"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="SimulatorNetlist.html" title="SimulatorNetlist"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">decida 1.1.3 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="decida_classes.html" ><strong>DeCiDa classes</strong></a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2013, Richard Booth.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

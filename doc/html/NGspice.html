@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>NGspice &#8212; decida 1.1.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.1.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="PLL" href="PLL.html" />
+    <link rel="prev" title="MessageDialog" href="MessageDialog.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="PLL.html" title="PLL"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="MessageDialog.html" title="MessageDialog"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">decida 1.1.3 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="decida_classes.html" accesskey="U"><strong>DeCiDa classes</strong></a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="ngspice">
+<h1>NGspice<a class="headerlink" href="#ngspice" title="Permalink to this headline">¶</a></h1>
+<img alt="_images/NGspice.jpg" src="_images/NGspice.jpg" />
+<dl class="class">
+<dt id="decida.NGspice.NGspice">
+<em class="property">class </em><code class="descclassname">decida.NGspice.</code><code class="descname">NGspice</code><span class="sig-paren">(</span><em>parent=None</em>, <em>use_matplotlib=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.NGspice.NGspice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ItclObjectx.html#decida.ItclObjectx.ItclObjectx" title="decida.ItclObjectx.ItclObjectx"><code class="xref py py-class docutils literal"><span class="pre">decida.ItclObjectx.ItclObjectx</span></code></a>, <code class="xref py py-class docutils literal"><span class="pre">Tkinter.Frame</span></code></p>
+<p><strong>synopsis</strong>:</p>
+<blockquote>
+<div><p>Simulate using <em>NGspice</em> and plot results.</p>
+<p><em>NGspice</em> is a graphical user-interface to run <em>NGspice</em>.  There is a
+netlist pane to directly enter a netlist and a plotting pane for
+displaying results.  The plotting pane is a full <em>DataViewm</em> window,
+which has all of the features of that class.</p>
+<p>The DeCiDa application <em>ngsp</em> simply instantiates one <em>NGspice</em> object.</p>
+</div></blockquote>
+<p><strong>constructor arguments</strong>:</p>
+<blockquote>
+<div><p><strong>parent</strong> (tk handle, default=None)</p>
+<blockquote>
+<div>handle of frame or other widget to pack plot in.
+if this is not specified, top-level is created.</div></blockquote>
+<p><strong>**kwargs</strong> (dict)</p>
+<blockquote>
+<div>keyword=value specifications:
+options or configuration-options</div></blockquote>
+</div></blockquote>
+<p><strong>options</strong>:</p>
+<blockquote>
+<div><p><strong>netlist</strong> (str, default=None)</p>
+<blockquote>
+<div>netlist lines.</div></blockquote>
+<p><strong>cktfile</strong> (str, default=None)</p>
+<blockquote>
+<div>circuit file to read.</div></blockquote>
+</div></blockquote>
+<p><strong>configuration options</strong>:</p>
+<blockquote>
+<div><p><strong>verbose</strong> (bool, default=False)</p>
+<blockquote>
+<div>enable/disable verbose mode</div></blockquote>
+<p><strong>plot_height</strong> (str, default=&#8221;10i&#8221; for MacOS, else &#8220;6i&#8221;)</p>
+<blockquote>
+<div>Height of plot window (Tk inch  or pixelspecification)</div></blockquote>
+<p><strong>plot_width</strong> (str, default=&#8221;10i&#8221; for MacOS, else &#8220;6i&#8221;)</p>
+<blockquote>
+<div>Width of plot window (Tk inch or pixel specification)</div></blockquote>
+<p><strong>xcol</strong> (str, default=&#8221;time&#8221;)</p>
+<blockquote>
+<div>X-column of plot to generate after simulation.</div></blockquote>
+<p><strong>ycol</strong> (str, default=&#8221;v(1)&#8221;)</p>
+<blockquote>
+<div>Y-columns of plot to generate after simulation.</div></blockquote>
+</div></blockquote>
+<p><strong>example</strong> (from test_NGspice_1):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">decida.NGspice</span> <span class="k">import</span> <span class="n">NGspice</span>
+<span class="n">NGspice</span><span class="p">(</span><span class="n">cktfile</span><span class="o">=</span><span class="s2">&quot;hartley.ckt&quot;</span><span class="p">,</span> <span class="n">xcol</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">ycols</span><span class="o">=</span><span class="s2">&quot;v(c)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>public methods</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>public methods from <em>ItclObjectx</em></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="MessageDialog.html"
+                        title="previous chapter">MessageDialog</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="PLL.html"
+                        title="next chapter">PLL</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/NGspice.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="PLL.html" title="PLL"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="MessageDialog.html" title="MessageDialog"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">decida 1.1.3 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="decida_classes.html" ><strong>DeCiDa classes</strong></a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2013, Richard Booth.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

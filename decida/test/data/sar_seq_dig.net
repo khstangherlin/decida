@@ -1,0 +1,820 @@
+* Gateway 2.12.18.R Spice Netlist Generator
+* Workspace name:       Z:\MSTR\SCH\MSTR.workspace
+* Simulation name:      Z:\MSTR\SCH\TCKTS\SAR_SEQ_DIG.schlr
+* Simulation timestamp: 10-Nov-2013 09:37:31
+
+* Schematic name: SAR_SEQ_DIG
+Vcompo compo GND DC 3.3
+Vf en GND DC 0 PULSE(0 3.3 1u 100p 100p 1 2)
+Vdd vdd GND DC 3.3
+Vcdn cdn GND DC 3.3 PULSE(3.3 0 10n 100p 100p 10n 1)
+Vclk clk GND DC 0 PULSE(0 3.3 200n 100p 100p 250n 500n)
+Vss vss GND DC 0
+X2 cdn ch_result<0> ch_result<1> ch_result<2> ch_result<3> ch_result<4>
++  ch_result<5> ch_result<6> ch_result<7> ch_result<8> ch_result<9> ch_result<10>
++  ch_result<11> ch_sel<0> ch_sel<1> ch_sel<2> ch_sel<3> ch_sel<4> ch_start
++  ch_valid channel<0> channel<1> channel<2> clk en result<0> result<1> result<2>
++  result<3> result<4> result<5> result<6> result<7> result<8> result<9> result<10>
++ result<11> vdd vss vsub write SAR_SEQ
+X3 cdn clk compo dac_in<0> dac_in<1> dac_in<2> dac_in<3> dac_in<4> dac_in<5>
++  dac_in<6> dac_in<7> dac_in<8> dac_in<9> dac_in<10> dac_in<11> reset ch_result<0>
++  ch_result<1> ch_result<2> ch_result<3> ch_result<4> ch_result<5> ch_result<6>
++  ch_result<7> ch_result<8> ch_result<9> ch_result<10> ch_result<11> sample
++ ch_start ch_valid vdd vss vsub SAR_DIG
+
+* Schematic name: SAR_SEQ
+.SUBCKT SAR_SEQ cdn ch_result<0> ch_result<1> ch_result<2> ch_result<3>
++  ch_result<4> ch_result<5> ch_result<6> ch_result<7> ch_result<8> ch_result<9>
++  ch_result<10> ch_result<11> ch_sel<0> ch_sel<1> ch_sel<2> ch_sel<3> ch_sel<4>
++  ch_start ch_valid channel<0> channel<1> channel<2> clk en result<0> result<1>
++  result<2> result<3> result<4> result<5> result<6> result<7> result<8> result<9>
++ result<10> result<11> vdd vss vsub write
+** noconnect symbol generating channel1_n<2>
+** noconnect symbol generating ch_sel1_n<4>
+** noconnect symbol generating ch_start1_n
+** noconnect symbol generating result1_n<11>
+** noconnect symbol generating write1_n
+X1 nsd<2> nsd<5> nsd<8> nsd<11> vss vsub vdd write_in v5_or4d4
+Xb_ch_sel<4> ch_sel1<4> vss vsub vdd ch_sel<4> v5_nid4
+Xb_ch_sel<3> ch_sel1<3> vss vsub vdd ch_sel<3> v5_nid4
+Xb_ch_sel<2> ch_sel1<2> vss vsub vdd ch_sel<2> v5_nid4
+Xb_ch_sel<1> ch_sel1<1> vss vsub vdd ch_sel<1> v5_nid4
+Xb_ch_sel<0> ch_sel1<0> vss vsub vdd ch_sel<0> v5_nid4
+Xbch_start ch_start1 vss vsub vdd ch_start v5_nid4
+Xbwrite write1 vss vsub vdd write v5_nid4
+Xbchannel<2> channel1<2> vss vsub vdd channel<2> v5_nid4
+Xbchannel<1> channel1<1> vss vsub vdd channel<1> v5_nid4
+Xbchannel<0> channel1<0> vss vsub vdd channel<0> v5_nid4
+Xbresult<11> result1<11> vss vsub vdd result<11> v5_nid4
+Xbresult<10> result1<10> vss vsub vdd result<10> v5_nid4
+Xbresult<9> result1<9> vss vsub vdd result<9> v5_nid4
+Xbresult<8> result1<8> vss vsub vdd result<8> v5_nid4
+Xbresult<7> result1<7> vss vsub vdd result<7> v5_nid4
+Xbresult<6> result1<6> vss vsub vdd result<6> v5_nid4
+Xbresult<5> result1<5> vss vsub vdd result<5> v5_nid4
+Xbresult<4> result1<4> vss vsub vdd result<4> v5_nid4
+Xbresult<3> result1<3> vss vsub vdd result<3> v5_nid4
+Xbresult<2> result1<2> vss vsub vdd result<2> v5_nid4
+Xbresult<1> result1<1> vss vsub vdd result<1> v5_nid4
+Xbresult<0> result1<0> vss vsub vdd result<0> v5_nid4
+Xg_channel_comb<2> L ch_sel_comb<4> vss vsub vdd channel_comb<2> v5_or2d1
+Xg_channel_comb<1> ch_sel_comb<2> ch_sel_comb<3> vss vsub vdd channel_comb<1>
++ v5_or2d1
+Xg_channel_comb<0> ch_sel_comb<1> ch_sel_comb<3> vss vsub vdd channel_comb<0>
++ v5_or2d1
+Xchannel<2> clk channel_comb<2> vss channel1<2> channel1_n<2> cdn H vsub vdd
++ v5_fd4d2
+Xchannel<1> clk channel_comb<1> vss channel1<1> channel1_n<1> cdn H vsub vdd
++ v5_fd4d2
+Xchannel<0> clk channel_comb<0> vss channel1<0> channel1_n<0> cdn H vsub vdd
++ v5_fd4d2
+Xch_start clk ch_start_comb vss ch_start1 ch_start1_n cdn H vsub vdd v5_fd4d2
+Xg_ch_start_comb nsd<1> nsd<4> nsd<7> nsd<10> vss vsub vdd ch_start_comb v5_or4d1
+Xi_ch_valid ch_valid vss vsub vdd ch_valid_n v5_ivd1
+Xresult<11> clk dresult<11> vss result1<11> result1_n<11> cdn H vsub vdd v5_fd4d2
+Xresult<10> clk dresult<10> vss result1<10> result1_n<10> cdn H vsub vdd v5_fd4d2
+Xresult<9> clk dresult<9> vss result1<9> result1_n<9> cdn H vsub vdd v5_fd4d2
+Xresult<8> clk dresult<8> vss result1<8> result1_n<8> cdn H vsub vdd v5_fd4d2
+Xresult<7> clk dresult<7> vss result1<7> result1_n<7> cdn H vsub vdd v5_fd4d2
+Xresult<6> clk dresult<6> vss result1<6> result1_n<6> cdn H vsub vdd v5_fd4d2
+Xresult<5> clk dresult<5> vss result1<5> result1_n<5> cdn H vsub vdd v5_fd4d2
+Xresult<4> clk dresult<4> vss result1<4> result1_n<4> cdn H vsub vdd v5_fd4d2
+Xresult<3> clk dresult<3> vss result1<3> result1_n<3> cdn H vsub vdd v5_fd4d2
+Xresult<2> clk dresult<2> vss result1<2> result1_n<2> cdn H vsub vdd v5_fd4d2
+Xresult<1> clk dresult<1> vss result1<1> result1_n<1> cdn H vsub vdd v5_fd4d2
+Xresult<0> clk dresult<0> vss result1<0> result1_n<0> cdn H vsub vdd v5_fd4d2
+Xmx_result<11> result1<11> ch_result<11> vss write_in vsub vdd dresult<11>
++ v5_mx2d1
+Xmx_result<10> result1<10> ch_result<10> vss write_in vsub vdd dresult<10>
++ v5_mx2d1
+Xmx_result<9> result1<9> ch_result<9> vss write_in vsub vdd dresult<9> v5_mx2d1
+Xmx_result<8> result1<8> ch_result<8> vss write_in vsub vdd dresult<8> v5_mx2d1
+Xmx_result<7> result1<7> ch_result<7> vss write_in vsub vdd dresult<7> v5_mx2d1
+Xmx_result<6> result1<6> ch_result<6> vss write_in vsub vdd dresult<6> v5_mx2d1
+Xmx_result<5> result1<5> ch_result<5> vss write_in vsub vdd dresult<5> v5_mx2d1
+Xmx_result<4> result1<4> ch_result<4> vss write_in vsub vdd dresult<4> v5_mx2d1
+Xmx_result<3> result1<3> ch_result<3> vss write_in vsub vdd dresult<3> v5_mx2d1
+Xmx_result<2> result1<2> ch_result<2> vss write_in vsub vdd dresult<2> v5_mx2d1
+Xmx_result<1> result1<1> ch_result<1> vss write_in vsub vdd dresult<1> v5_mx2d1
+Xmx_result<0> result1<0> ch_result<0> vss write_in vsub vdd dresult<0> v5_mx2d1
+Xch_sel<4> clk ch_sel_comb<4> vss ch_sel1<4> ch_sel1_n<4> cdn H vsub vdd v5_fd4d2
+Xch_sel<3> clk ch_sel_comb<3> vss ch_sel1<3> ch_sel1_n<3> cdn H vsub vdd v5_fd4d2
+Xch_sel<2> clk ch_sel_comb<2> vss ch_sel1<2> ch_sel1_n<2> cdn H vsub vdd v5_fd4d2
+Xch_sel<1> clk ch_sel_comb<1> vss ch_sel1<1> ch_sel1_n<1> cdn H vsub vdd v5_fd4d2
+Xch_sel<0> clk ch_sel_comb<0> vss ch_sel1<0> ch_sel1_n<0> cdn H vsub vdd v5_fd4d2
+Xg_write_comb nsd<3> nsd<6> nsd<9> nsd<12> vss vsub vdd write_comb v5_or4d1
+Xg_ch_sel_comb<4> L L L vss vsub vdd ch_sel_comb<4> v5_or3d1
+Xg_ch_sel_comb<3> nsd<10> nsd<11> nsd<12> vss vsub vdd ch_sel_comb<3> v5_or3d1
+Xg_ch_sel_comb<2> nsd<7> nsd<8> nsd<9> vss vsub vdd ch_sel_comb<2> v5_or3d1
+Xg_ch_sel_comb<1> nsd<4> nsd<5> nsd<6> vss vsub vdd ch_sel_comb<1> v5_or3d1
+Xg_ch_sel_comb<0> nsd<1> nsd<2> nsd<3> vss vsub vdd ch_sel_comb<0> v5_or3d1
+Xwrite clk write_comb vss write1 write1_n cdn H vsub vdd v5_fd4d2
+Xncd_dcd<12> nsb0 nsb1 nsa2 nsa3 vss vsub vdd nsd<12> v5_ad4d1
+Xncd_dcd<11> nsa0 nsa1 nsb2 nsa3 vss vsub vdd nsd<11> v5_ad4d1
+Xncd_dcd<10> nsb0 nsa1 nsb2 nsa3 vss vsub vdd nsd<10> v5_ad4d1
+Xncd_dcd<9> nsa0 nsb1 nsb2 nsa3 vss vsub vdd nsd<9> v5_ad4d1
+Xncd_dcd<8> nsb0 nsb1 nsb2 nsa3 vss vsub vdd nsd<8> v5_ad4d1
+Xncd_dcd<7> nsa0 nsa1 nsa2 nsb3 vss vsub vdd nsd<7> v5_ad4d1
+Xncd_dcd<6> nsb0 nsa1 nsa2 nsb3 vss vsub vdd nsd<6> v5_ad4d1
+Xncd_dcd<5> nsa0 nsb1 nsa2 nsb3 vss vsub vdd nsd<5> v5_ad4d1
+Xncd_dcd<4> nsb0 nsb1 nsa2 nsb3 vss vsub vdd nsd<4> v5_ad4d1
+Xncd_dcd<3> nsa0 nsa1 nsb2 nsb3 vss vsub vdd nsd<3> v5_ad4d1
+Xncd_dcd<2> nsb0 nsa1 nsb2 nsb3 vss vsub vdd nsd<2> v5_ad4d1
+Xncd_dcd<1> nsa0 nsb1 nsb2 nsb3 vss vsub vdd nsd<1> v5_ad4d1
+Xncd_dcd<0> nsb0 nsb1 nsb2 nsb3 vss vsub vdd nsd<0> v5_ad4d1
+Xhi vss vsub vdd H v5_tieh
+Xlo vss vsub vdd L v5_tiel
+Xstate<3> cdn clk L L L L L L L ch_valid H en H H L L L L nsa3 nsb3 state<3>
++ state_n<3> state<0> state<1> state<2> state<3> vdd vss vsub SAR_SEQ_MXFF
+Xstate<2> cdn clk L L L en H H en ch_valid_n L L L H L L L L nsa2 nsb2 state<2>
++ state_n<2> state<0> state<1> state<2> state<3> vdd vss vsub SAR_SEQ_MXFF
+Xstate<1> cdn clk L ch_valid H L L H en ch_valid_n L en H L L L L L nsa1 nsb1
++  state<1> state_n<1> state<0> state<1> state<2> state<3> vdd vss vsub
++ SAR_SEQ_MXFF
+Xstate<0> cdn clk en ch_valid_n H L ch_valid L en ch_valid_n H L ch_valid L en L
++  L L nsa0 nsb0 state<0> state_n<0> state<0> state<1> state<2> state<3> vdd vss
++ vsub SAR_SEQ_MXFF
+.ENDS SAR_SEQ
+
+* Schematic name: SAR_DIG
+.SUBCKT SAR_DIG cdn clk compo dac_in<0> dac_in<1> dac_in<2> dac_in<3> dac_in<4>
++  dac_in<5> dac_in<6> dac_in<7> dac_in<8> dac_in<9> dac_in<10> dac_in<11> reset
++  result<0> result<1> result<2> result<3> result<4> result<5> result<6> result<7>
++ result<8> result<9> result<10> result<11> sample start valid vdd vss vsub
+** noconnect symbol generating NET3
+** noconnect symbol generating NET2
+** noconnect symbol generating NET1
+** noconnect symbol generating mask_n<11>
+** noconnect symbol generating result1_n<11>
+Xstate<2> cdn clk L L L H H H L L nsa2 nsb2 state<2> state_n<2> state<0> state<1>
++ state<2> vdd vss vsub SAR_DIG_MXFF
+Xstate<1> cdn clk L H H L L mask<0> L L nsa1 nsb1 state<1> state_n<1> state<0>
++ state<1> state<2> vdd vss vsub SAR_DIG_MXFF
+Xstate<0> cdn clk start L H L H mask_n<0> L L nsa0 nsb0 state<0> state_n<0>
++ state<0> state<1> state<2> vdd vss vsub SAR_DIG_MXFF
+Xstd<1> state<0> state_n<1> state<2> vss vsub vdd std<5> v5_ad3d1
+Xstd<0> state<0> state_n<1> state_n<2> vss vsub vdd std<1> v5_ad3d1
+Xmxupdate<11> result1<11> dac_in1<11> vss compo vsub vdd update<11> v5_mx2d1
+Xmxupdate<10> result1<10> dac_in1<10> vss compo vsub vdd update<10> v5_mx2d1
+Xmxupdate<9> result1<9> dac_in1<9> vss compo vsub vdd update<9> v5_mx2d1
+Xmxupdate<8> result1<8> dac_in1<8> vss compo vsub vdd update<8> v5_mx2d1
+Xmxupdate<7> result1<7> dac_in1<7> vss compo vsub vdd update<7> v5_mx2d1
+Xmxupdate<6> result1<6> dac_in1<6> vss compo vsub vdd update<6> v5_mx2d1
+Xmxupdate<5> result1<5> dac_in1<5> vss compo vsub vdd update<5> v5_mx2d1
+Xmxupdate<4> result1<4> dac_in1<4> vss compo vsub vdd update<4> v5_mx2d1
+Xmxupdate<3> result1<3> dac_in1<3> vss compo vsub vdd update<3> v5_mx2d1
+Xmxupdate<2> result1<2> dac_in1<2> vss compo vsub vdd update<2> v5_mx2d1
+Xmxupdate<1> result1<1> dac_in1<1> vss compo vsub vdd update<1> v5_mx2d1
+Xmxupdate<0> result1<0> dac_in1<0> vss compo vsub vdd update<0> v5_mx2d1
+Xgsample nsd<1> nsd<2> vss vsub vdd sample_comb v5_or2d1
+Xgreset nsd<0> nsd<6> vss vsub vdd reset_comb v5_or2d1
+Xhi vss vsub vdd H v5_tieh
+Xlo vss vsub vdd L v5_tiel
+Xbresult<11> result1<11> vss vsub vdd result<11> v5_nid4
+Xbresult<10> result1<10> vss vsub vdd result<10> v5_nid4
+Xbresult<9> result1<9> vss vsub vdd result<9> v5_nid4
+Xbresult<8> result1<8> vss vsub vdd result<8> v5_nid4
+Xbresult<7> result1<7> vss vsub vdd result<7> v5_nid4
+Xbresult<6> result1<6> vss vsub vdd result<6> v5_nid4
+Xbresult<5> result1<5> vss vsub vdd result<5> v5_nid4
+Xbresult<4> result1<4> vss vsub vdd result<4> v5_nid4
+Xbresult<3> result1<3> vss vsub vdd result<3> v5_nid4
+Xbresult<2> result1<2> vss vsub vdd result<2> v5_nid4
+Xbresult<1> result1<1> vss vsub vdd result<1> v5_nid4
+Xbresult<0> result1<0> vss vsub vdd result<0> v5_nid4
+X4 clk reset_comb vss reset1 NET3 cdn H vsub vdd v5_fd4d1
+Xbvalid valid1 vss vsub vdd valid v5_nid4
+Xbsample sample1 vss vsub vdd sample v5_nid4
+Xbreset reset1 vss vsub vdd reset v5_nid4
+Xbdac_in<11> dac_in1<11> vss vsub vdd dac_in<11> v5_nid4
+Xbdac_in<10> dac_in1<10> vss vsub vdd dac_in<10> v5_nid4
+Xbdac_in<9> dac_in1<9> vss vsub vdd dac_in<9> v5_nid4
+Xbdac_in<8> dac_in1<8> vss vsub vdd dac_in<8> v5_nid4
+Xbdac_in<7> dac_in1<7> vss vsub vdd dac_in<7> v5_nid4
+Xbdac_in<6> dac_in1<6> vss vsub vdd dac_in<6> v5_nid4
+Xbdac_in<5> dac_in1<5> vss vsub vdd dac_in<5> v5_nid4
+Xbdac_in<4> dac_in1<4> vss vsub vdd dac_in<4> v5_nid4
+Xbdac_in<3> dac_in1<3> vss vsub vdd dac_in<3> v5_nid4
+Xbdac_in<2> dac_in1<2> vss vsub vdd dac_in<2> v5_nid4
+Xbdac_in<1> dac_in1<1> vss vsub vdd dac_in<1> v5_nid4
+Xbdac_in<0> dac_in1<0> vss vsub vdd dac_in<0> v5_nid4
+Xgdac_in<11> mask<11> result1<11> vss vsub vdd dac_in1<11> v5_or2d2
+Xgdac_in<10> mask<10> result1<10> vss vsub vdd dac_in1<10> v5_or2d2
+Xgdac_in<9> mask<9> result1<9> vss vsub vdd dac_in1<9> v5_or2d2
+Xgdac_in<8> mask<8> result1<8> vss vsub vdd dac_in1<8> v5_or2d2
+Xgdac_in<7> mask<7> result1<7> vss vsub vdd dac_in1<7> v5_or2d2
+Xgdac_in<6> mask<6> result1<6> vss vsub vdd dac_in1<6> v5_or2d2
+Xgdac_in<5> mask<5> result1<5> vss vsub vdd dac_in1<5> v5_or2d2
+Xgdac_in<4> mask<4> result1<4> vss vsub vdd dac_in1<4> v5_or2d2
+Xgdac_in<3> mask<3> result1<3> vss vsub vdd dac_in1<3> v5_or2d2
+Xgdac_in<2> mask<2> result1<2> vss vsub vdd dac_in1<2> v5_or2d2
+Xgdac_in<1> mask<1> result1<1> vss vsub vdd dac_in1<1> v5_or2d2
+Xgdac_in<0> mask<0> result1<0> vss vsub vdd dac_in1<0> v5_or2d2
+Xmask<11> clk dmask<11> vss mask<11> mask_n<11> cdn H vsub vdd v5_fd4d2
+Xmask<10> clk dmask<10> vss mask<10> mask_n<10> cdn H vsub vdd v5_fd4d2
+Xmask<9> clk dmask<9> vss mask<9> mask_n<9> cdn H vsub vdd v5_fd4d2
+Xmask<8> clk dmask<8> vss mask<8> mask_n<8> cdn H vsub vdd v5_fd4d2
+Xmask<7> clk dmask<7> vss mask<7> mask_n<7> cdn H vsub vdd v5_fd4d2
+Xmask<6> clk dmask<6> vss mask<6> mask_n<6> cdn H vsub vdd v5_fd4d2
+Xmask<5> clk dmask<5> vss mask<5> mask_n<5> cdn H vsub vdd v5_fd4d2
+Xmask<4> clk dmask<4> vss mask<4> mask_n<4> cdn H vsub vdd v5_fd4d2
+Xmask<3> clk dmask<3> vss mask<3> mask_n<3> cdn H vsub vdd v5_fd4d2
+Xmask<2> clk dmask<2> vss mask<2> mask_n<2> cdn H vsub vdd v5_fd4d2
+Xmask<1> clk dmask<1> vss mask<1> mask_n<1> cdn H vsub vdd v5_fd4d2
+Xmask<0> clk dmask<0> vss mask<0> mask_n<0> cdn H vsub vdd v5_fd4d2
+Xmxmask<11> mask<11> H L mask<11> vss std<1> std<5> vsub vdd dmask<11> v5_mx4d1
+Xmxmask<10> mask<10> L mask<11> mask<10> vss std<1> std<5> vsub vdd dmask<10>
++ v5_mx4d1
+Xmxmask<9> mask<9> L mask<10> mask<9> vss std<1> std<5> vsub vdd dmask<9>
++ v5_mx4d1
+Xmxmask<8> mask<8> L mask<9> mask<8> vss std<1> std<5> vsub vdd dmask<8> v5_mx4d1
+Xmxmask<7> mask<7> L mask<8> mask<7> vss std<1> std<5> vsub vdd dmask<7> v5_mx4d1
+Xmxmask<6> mask<6> L mask<7> mask<6> vss std<1> std<5> vsub vdd dmask<6> v5_mx4d1
+Xmxmask<5> mask<5> L mask<6> mask<5> vss std<1> std<5> vsub vdd dmask<5> v5_mx4d1
+Xmxmask<4> mask<4> L mask<5> mask<4> vss std<1> std<5> vsub vdd dmask<4> v5_mx4d1
+Xmxmask<3> mask<3> L mask<4> mask<3> vss std<1> std<5> vsub vdd dmask<3> v5_mx4d1
+Xmxmask<2> mask<2> L mask<3> mask<2> vss std<1> std<5> vsub vdd dmask<2> v5_mx4d1
+Xmxmask<1> mask<1> L mask<2> mask<1> vss std<1> std<5> vsub vdd dmask<1> v5_mx4d1
+Xmxmask<0> mask<0> L mask<1> mask<0> vss std<1> std<5> vsub vdd dmask<0> v5_mx4d1
+Xmxresult<11> result1<11> L update<11> result1<11> vss std<1> std<5> vsub vdd
++ dresult<11> v5_mx4d1
+Xmxresult<10> result1<10> L update<10> result1<10> vss std<1> std<5> vsub vdd
++ dresult<10> v5_mx4d1
+Xmxresult<9> result1<9> L update<9> result1<9> vss std<1> std<5> vsub vdd
++ dresult<9> v5_mx4d1
+Xmxresult<8> result1<8> L update<8> result1<8> vss std<1> std<5> vsub vdd
++ dresult<8> v5_mx4d1
+Xmxresult<7> result1<7> L update<7> result1<7> vss std<1> std<5> vsub vdd
++ dresult<7> v5_mx4d1
+Xmxresult<6> result1<6> L update<6> result1<6> vss std<1> std<5> vsub vdd
++ dresult<6> v5_mx4d1
+Xmxresult<5> result1<5> L update<5> result1<5> vss std<1> std<5> vsub vdd
++ dresult<5> v5_mx4d1
+Xmxresult<4> result1<4> L update<4> result1<4> vss std<1> std<5> vsub vdd
++ dresult<4> v5_mx4d1
+Xmxresult<3> result1<3> L update<3> result1<3> vss std<1> std<5> vsub vdd
++ dresult<3> v5_mx4d1
+Xmxresult<2> result1<2> L update<2> result1<2> vss std<1> std<5> vsub vdd
++ dresult<2> v5_mx4d1
+Xmxresult<1> result1<1> L update<1> result1<1> vss std<1> std<5> vsub vdd
++ dresult<1> v5_mx4d1
+Xmxresult<0> result1<0> L update<0> result1<0> vss std<1> std<5> vsub vdd
++ dresult<0> v5_mx4d1
+Xnsd<3> nsb0 nsa1 nsa2 vss vsub vdd nsd<6> v5_ad3d1
+Xnsd<2> nsb0 nsa1 nsb2 vss vsub vdd nsd<2> v5_ad3d1
+Xnsd<1> nsa0 nsb1 nsb2 vss vsub vdd nsd<1> v5_ad3d1
+Xnsd<0> nsb0 nsb1 nsb2 vss vsub vdd nsd<0> v5_ad3d1
+Xresult1<11> clk dresult<11> vss result1<11> result1_n<11> cdn H vsub vdd
++ v5_fd4d2
+Xresult1<10> clk dresult<10> vss result1<10> result1_n<10> cdn H vsub vdd
++ v5_fd4d2
+Xresult1<9> clk dresult<9> vss result1<9> result1_n<9> cdn H vsub vdd v5_fd4d2
+Xresult1<8> clk dresult<8> vss result1<8> result1_n<8> cdn H vsub vdd v5_fd4d2
+Xresult1<7> clk dresult<7> vss result1<7> result1_n<7> cdn H vsub vdd v5_fd4d2
+Xresult1<6> clk dresult<6> vss result1<6> result1_n<6> cdn H vsub vdd v5_fd4d2
+Xresult1<5> clk dresult<5> vss result1<5> result1_n<5> cdn H vsub vdd v5_fd4d2
+Xresult1<4> clk dresult<4> vss result1<4> result1_n<4> cdn H vsub vdd v5_fd4d2
+Xresult1<3> clk dresult<3> vss result1<3> result1_n<3> cdn H vsub vdd v5_fd4d2
+Xresult1<2> clk dresult<2> vss result1<2> result1_n<2> cdn H vsub vdd v5_fd4d2
+Xresult1<1> clk dresult<1> vss result1<1> result1_n<1> cdn H vsub vdd v5_fd4d2
+Xresult1<0> clk dresult<0> vss result1<0> result1_n<0> cdn H vsub vdd v5_fd4d2
+Xsample clk sample_comb vss sample1 NET2 cdn H vsub vdd v5_fd4d1
+Xvalid clk nsd<6> vss valid1 NET1 cdn H vsub vdd v5_fd4d1
+.ENDS SAR_DIG
+
+* Schematic name: v5_or4d4
+* Synonym List:   vdd = VDD
+.SUBCKT v5_or4d4 a1 a2 a3 a4 gnd sub vdd z
+XMm0 net043 a1 vdd vdd sub pch_lvt width=4.05U length=500n as=1.944p ad=1.944p
++ ps=5.01u pd=5.01u m=2
+XMm1 net040 a2 net043 vdd sub pch_lvt width=4.05U length=500n as=1.944p
++ ad=1.944p ps=5.01u pd=5.01u m=2
+XMm2 net19 a3 net040 vdd sub pch_lvt width=4.05U length=500n as=1.944p ad=1.944p
++ ps=5.01u pd=5.01u m=2
+XMm3 net030 a4 net19 vdd sub pch_lvt width=4.05U length=500n as=1.944p ad=1.944p
++ ps=5.01u pd=5.01u m=2
+XMm4 z net030 vdd vdd sub pch_lvt width=4.05U length=500n as=1.944p ad=1.944p
++ ps=5.01u pd=5.01u m=4
+XMm5 net030 a1 gnd sub nch_lvt width=2.24U length=500n as=1.0752p ad=1.0752p
++ ps=3.2u pd=3.2u m=2
+XMm6 net030 a2 gnd sub nch_lvt width=2.24U length=500n as=1.0752p ad=1.0752p
++ ps=3.2u pd=3.2u m=2
+XMm7 net030 a3 gnd sub nch_lvt width=2.24U length=500n as=1.0752p ad=1.0752p
++ ps=3.2u pd=3.2u m=2
+XMm8 net030 a4 gnd sub nch_lvt width=2.24U length=500n as=1.0752p ad=1.0752p
++ ps=3.2u pd=3.2u m=2
+XMm9 z net030 gnd sub nch_lvt width=2.24U length=500n as=1.0752p ad=1.0752p
++ ps=3.2u pd=3.2u m=4
+.ENDS v5_or4d4
+
+* Schematic name: v5_nid4
+.SUBCKT v5_nid4 a gnd sub vdd z
+XMm0 net018 a vdd vdd sub pch_lvt width=4.05U length=500n as=1.944p ad=1.944p
++ ps=5.01u pd=5.01u m=2
+XMm1 z net018 vdd vdd sub pch_lvt width=4.05U length=500n as=1.944p ad=1.944p
++ ps=5.01u pd=5.01u m=4
+XMm2 net018 a gnd sub nch_lvt width=2.24U length=500n as=1.0752p ad=1.0752p
++ ps=3.2u pd=3.2u m=2
+XMm3 z net018 gnd sub nch_lvt width=2.24U length=500n as=1.0752p ad=1.0752p
++ ps=3.2u pd=3.2u m=4
+.ENDS v5_nid4
+
+* Schematic name: v5_fd4d2
+* Synonym List:   VDD = vdd
+.SUBCKT v5_fd4d2 ck d gnd q qn rn sn sub VDD
+XMm0 net081 d net0108 sub nch_lvt width=1.06U length=500n as=508.8f ad=508.8f
++ ps=2.02u pd=2.02u m=1
+XMm1 net0108 ckb gnd sub nch_lvt width=1.06U length=500n as=508.8f ad=508.8f
++ ps=2.02u pd=2.02u m=1
+XMm2 net0158 sn net0113 sub nch_lvt width=1.12U length=500n as=537.6f ad=537.6f
++ ps=2.08u pd=2.08u m=1
+XMm3 net0113 net081 gnd sub nch_lvt width=1.12U length=500n as=537.6f ad=537.6f
++ ps=2.08u pd=2.08u m=1
+XMm4 net0263 rn net098 sub nch_lvt width=1.12U length=500n as=537.6f ad=537.6f
++ ps=2.08u pd=2.08u m=1
+XMm5 net098 net0151 gnd sub nch_lvt width=1.12U length=500n as=537.6f ad=537.6f
++ ps=2.08u pd=2.08u m=1
+XMm6 q net0263 gnd sub nch_lvt width=2.24U length=500n as=1.0752p ad=1.0752p
++ ps=3.2u pd=3.2u m=2
+XMm7 qn net087 gnd sub nch_lvt width=2.24U length=500n as=1.0752p ad=1.0752p
++ ps=3.2u pd=3.2u m=2
+XMm8 ckb ck gnd sub nch_lvt width=1.12U length=500n as=537.6f ad=537.6f ps=2.08u
++ pd=2.08u m=1
+XMm9 ckbb ckb gnd sub nch_lvt width=1.12U length=500n as=537.6f ad=537.6f
++ ps=2.08u pd=2.08u m=1
+XMm10 net081 ckbb net097 sub nch_lvt width=900N length=500n as=432f ad=432f
++ ps=1.86u pd=1.86u m=1
+XMm11 net097 net0158 net093 sub nch_lvt width=900N length=500n as=432f ad=432f
++ ps=1.86u pd=1.86u m=1
+XMm12 net093 rn gnd sub nch_lvt width=900N length=500n as=432f ad=432f ps=1.86u
++ pd=1.86u m=1
+XMm13 net087 sn net0114 sub nch_lvt width=1.12U length=500n as=537.6f ad=537.6f
++ ps=2.08u pd=2.08u m=1
+XMm14 net0114 net0263 gnd sub nch_lvt width=1.12U length=500n as=537.6f
++ ad=537.6f ps=2.08u pd=2.08u m=1
+XMm15 net087 ckb net0151 sub nch_lvt width=900N length=500n as=432f ad=432f
++ ps=1.86u pd=1.86u m=1
+XMm16 net0158 ckbb net0151 sub nch_lvt width=900N length=500n as=432f ad=432f
++ ps=1.86u pd=1.86u m=1
+XMm17 net0161 ckbb VDD VDD sub pch_lvt width=1.68U length=500n as=806.4f
++ ad=806.4f ps=2.64u pd=2.64u m=1
+XMm18 net081 d net0161 VDD sub pch_lvt width=1.68U length=500n as=806.4f
++ ad=806.4f ps=2.64u pd=2.64u m=1
+XMm19 net0158 net081 VDD VDD sub pch_lvt width=1.98U length=500n as=950.4f
++ ad=950.4f ps=2.94u pd=2.94u m=1
+XMm20 net0158 sn VDD VDD sub pch_lvt width=1.98U length=500n as=950.4f ad=950.4f
++ ps=2.94u pd=2.94u m=1
+XMm21 net0263 net0151 VDD VDD sub pch_lvt width=1.98U length=500n as=950.4f
++ ad=950.4f ps=2.94u pd=2.94u m=1
+XMm22 net0263 rn VDD VDD sub pch_lvt width=1.98U length=500n as=950.4f ad=950.4f
++ ps=2.94u pd=2.94u m=1
+XMm23 q net0263 VDD VDD sub pch_lvt width=4.05U length=500n as=1.944p ad=1.944p
++ ps=5.01u pd=5.01u m=2
+XMm24 qn net087 VDD VDD sub pch_lvt width=4.05U length=500n as=1.944p ad=1.944p
++ ps=5.01u pd=5.01u m=2
+XMm25 ckb ck VDD VDD sub pch_lvt width=1.98U length=500n as=950.4f ad=950.4f
++ ps=2.94u pd=2.94u m=1
+XMm26 ckbb ckb VDD VDD sub pch_lvt width=1.98U length=500n as=950.4f ad=950.4f
++ ps=2.94u pd=2.94u m=1
+XMm27 net0138 rn VDD VDD sub pch_lvt width=1.12U length=500n as=537.6f ad=537.6f
++ ps=2.08u pd=2.08u m=1
+XMm28 net0138 net0158 VDD VDD sub pch_lvt width=1.12U length=500n as=537.6f
++ ad=537.6f ps=2.08u pd=2.08u m=1
+XMm29 net081 ckb net0138 VDD sub pch_lvt width=1.12U length=500n as=537.6f
++ ad=537.6f ps=2.08u pd=2.08u m=1
+XMm30 net087 sn VDD VDD sub pch_lvt width=1.98U length=500n as=950.4f ad=950.4f
++ ps=2.94u pd=2.94u m=1
+XMm31 net087 net0263 VDD VDD sub pch_lvt width=1.98U length=500n as=950.4f
++ ad=950.4f ps=2.94u pd=2.94u m=1
+XMm32 net0151 ckb net0158 VDD sub pch_lvt width=1.12U length=500n as=537.6f
++ ad=537.6f ps=2.08u pd=2.08u m=1
+XMm33 net0151 ckbb net087 VDD sub pch_lvt width=1.12U length=500n as=537.6f
++ ad=537.6f ps=2.08u pd=2.08u m=1
+.ENDS v5_fd4d2
+
+* Schematic name: v5_or3d1
+* Synonym List:   vdd = VDD
+.SUBCKT v5_or3d1 a1 a2 a3 gnd sub vdd z
+XMm0 net027 a1 gnd sub nch_lvt width=1.12U length=500n as=537.6f ad=537.6f
++ ps=2.08u pd=2.08u m=1
+XMm1 net027 a2 gnd sub nch_lvt width=1.12U length=500n as=537.6f ad=537.6f
++ ps=2.08u pd=2.08u m=1
+XMm2 net027 a3 gnd sub nch_lvt width=1.12U length=500n as=537.6f ad=537.6f
++ ps=2.08u pd=2.08u m=1
+XMm3 z net027 gnd sub nch_lvt width=2.24U length=500n as=1.0752p ad=1.0752p
++ ps=3.2u pd=3.2u m=1
+XMm4 net033 a1 vdd vdd sub pch_lvt width=2.025U length=500n as=972f ad=972f
++ ps=2.985u pd=2.985u m=1
+XMm5 net19 a2 net033 vdd sub pch_lvt width=2.025U length=500n as=972f ad=972f
++ ps=2.985u pd=2.985u m=1
+XMm6 net027 a3 net19 vdd sub pch_lvt width=2.025U length=500n as=972f ad=972f
++ ps=2.985u pd=2.985u m=1
+XMm7 z net027 vdd vdd sub pch_lvt width=4.05U length=500n as=1.944p ad=1.944p
++ ps=5.01u pd=5.01u m=1
+.ENDS v5_or3d1
+
+* Schematic name: v5_or2d1
+* Synonym List:   VDD = vdd
+.SUBCKT v5_or2d1 a1 a2 gnd sub VDD z
+XMm0 net023 a1 VDD VDD sub pch_lvt width=2.025U length=500n as=972f ad=972f
++ ps=2.985u pd=2.985u m=1
+XMm1 z net025 VDD VDD sub pch_lvt width=4.05U length=500n as=1.944p ad=1.944p
++ ps=5.01u pd=5.01u m=1
+XMm2 net025 a2 net023 VDD sub pch_lvt width=2.025U length=500n as=972f ad=972f
++ ps=2.985u pd=2.985u m=1
+XMm3 net025 a1 gnd sub nch_lvt width=1.12U length=500n as=537.6f ad=537.6f
++ ps=2.08u pd=2.08u m=1
+XMm4 net025 a2 gnd sub nch_lvt width=1.12U length=500n as=537.6f ad=537.6f
++ ps=2.08u pd=2.08u m=1
+XMm5 z net025 gnd sub nch_lvt width=2.24U length=500n as=1.0752p ad=1.0752p
++ ps=3.2u pd=3.2u m=1
+.ENDS v5_or2d1
+
+* Schematic name: v5_or4d1
+* Synonym List:   vdd = VDD
+.SUBCKT v5_or4d1 a1 a2 a3 a4 gnd sub vdd z
+XMm0 net043 a1 vdd vdd sub pch_lvt width=2.025U length=500n as=972f ad=972f
++ ps=2.985u pd=2.985u m=1
+XMm1 net040 a2 net043 vdd sub pch_lvt width=2.025U length=500n as=972f ad=972f
++ ps=2.985u pd=2.985u m=1
+XMm2 net19 a3 net040 vdd sub pch_lvt width=2.025U length=500n as=972f ad=972f
++ ps=2.985u pd=2.985u m=1
+XMm3 net030 a4 net19 vdd sub pch_lvt width=2.025U length=500n as=972f ad=972f
++ ps=2.985u pd=2.985u m=1
+XMm4 z net030 vdd vdd sub pch_lvt width=4.05U length=500n as=1.944p ad=1.944p
++ ps=5.01u pd=5.01u m=1
+XMm5 net030 a1 gnd sub nch_lvt width=1.12U length=500n as=537.6f ad=537.6f
++ ps=2.08u pd=2.08u m=1
+XMm6 net030 a2 gnd sub nch_lvt width=1.12U length=500n as=537.6f ad=537.6f
++ ps=2.08u pd=2.08u m=1
+XMm7 net030 a3 gnd sub nch_lvt width=1.12U length=500n as=537.6f ad=537.6f
++ ps=2.08u pd=2.08u m=1
+XMm8 net030 a4 gnd sub nch_lvt width=1.12U length=500n as=537.6f ad=537.6f
++ ps=2.08u pd=2.08u m=1
+XMm9 z net030 gnd sub nch_lvt width=2.24U length=500n as=1.0752p ad=1.0752p
++ ps=3.2u pd=3.2u m=1
+.ENDS v5_or4d1
+
+* Schematic name: v5_tieh
+* Synonym List:   vdd = VDD
+.SUBCKT v5_tieh gnd sub vdd z
+XMnm0 net023 net023 gnd sub nch_lvt width=1.8U length=500n as=864f ad=864f
++ ps=2.76u pd=2.76u m=1
+XMpm0 z net023 vdd vdd sub pch_lvt width=2.24U length=500n as=1.0752p ad=1.0752p
++ ps=3.2u pd=3.2u m=1
+.ENDS v5_tieh
+
+* Schematic name: v5_ivd1
+.SUBCKT v5_ivd1 a gnd sub vdd z
+XMm0 z a vdd vdd sub pch_lvt width=4.05U length=500n as=1.944p ad=1.944p
++ ps=5.01u pd=5.01u m=1
+XMm1 z a gnd sub nch_lvt width=2.24U length=500n as=1.0752p ad=1.0752p ps=3.2u
++ pd=3.2u m=1
+.ENDS v5_ivd1
+
+* Schematic name: v5_tiel
+* Synonym List:   VDD = vdd
+.SUBCKT v5_tiel gnd sub VDD z
+XMm0 net023 net023 VDD VDD sub pch_lvt width=1.8U length=500n as=864f ad=864f
++ ps=2.76u pd=2.76u m=1
+XMm1 z net023 gnd sub nch_lvt width=2.24U length=500n as=1.0752p ad=1.0752p
++ ps=3.2u pd=3.2u m=1
+.ENDS v5_tiel
+
+* Schematic name: v5_mx2d1
+* Synonym List:   VDD = vdd
+.SUBCKT v5_mx2d1 d0 d1 gnd s sub VDD z
+XMm0 net56 d0 gnd sub nch_lvt width=1.12U length=500n as=537.6f ad=537.6f
++ ps=2.08u pd=2.08u m=1
+XMm1 net53 s gnd sub nch_lvt width=1.12U length=500n as=537.6f ad=537.6f
++ ps=2.08u pd=2.08u m=1
+XMm2 net59 d1 gnd sub nch_lvt width=1.12U length=500n as=537.6f ad=537.6f
++ ps=2.08u pd=2.08u m=1
+XMm3 z net64 gnd sub nch_lvt width=2.24U length=500n as=1.944p ad=1.944p
++ ps=5.01u pd=5.01u m=1
+XMm4 net56 d0 VDD VDD sub pch_lvt width=2.025U length=500n as=972f ad=972f
++ ps=2.985u pd=2.985u m=1
+XMm5 net53 s VDD VDD sub pch_lvt width=2.025U length=500n as=972f ad=972f
++ ps=2.985u pd=2.985u m=1
+XMm6 net59 d1 VDD VDD sub pch_lvt width=2.025U length=500n as=972f ad=972f
++ ps=2.985u pd=2.985u m=1
+XMm7 z net64 VDD VDD sub pch_lvt width=4.05U length=500n as=1.944p ad=1.944p
++ ps=5.01u pd=5.01u m=1
+XMm10 net56 net53 net64 sub nch_lvt width=900N length=500n as=432f ad=432f
++ ps=1.86u pd=1.86u m=1
+XMm11 net59 s net64 sub nch_lvt width=900N length=500n as=432f ad=432f ps=1.86u
++ pd=1.86u m=1
+XMm12 net64 s net56 VDD sub pch_lvt width=1.8U length=500n as=864f ad=864f
++ ps=2.76u pd=2.76u m=1
+XMm13 net64 net53 net59 VDD sub pch_lvt width=1.8U length=500n as=864f ad=864f
++ ps=2.76u pd=2.76u m=1
+.ENDS v5_mx2d1
+
+* Schematic name: v5_ad4d1
+.SUBCKT v5_ad4d1 a1 a2 a3 a4 gnd sub vdd z
+XMm0 net046 a4 net20 sub nch_lvt width=1.12U length=500n as=537.6f ad=537.6f
++ ps=2.08u pd=2.08u m=1
+XMm1 z net046 gnd sub nch_lvt width=2.24U length=500n as=1.0752p ad=1.0752p
++ ps=3.2u pd=3.2u m=1
+XMm2 net20 a3 net036 sub nch_lvt width=1.12U length=500n as=537.6f ad=537.6f
++ ps=2.08u pd=2.08u m=1
+XMm3 net036 a2 net11 sub nch_lvt width=1.12U length=500n as=537.6f ad=537.6f
++ ps=2.08u pd=2.08u m=1
+XMm4 net11 a1 gnd sub nch_lvt width=1.12U length=500n as=537.6f ad=537.6f
++ ps=2.08u pd=2.08u m=1
+XMm5 net046 a1 vdd vdd sub pch_lvt width=2.025U length=500n as=972f ad=972f
++ ps=2.985u pd=2.985u m=1
+XMm6 net046 a2 vdd vdd sub pch_lvt width=2.025U length=500n as=972f ad=972f
++ ps=2.985u pd=2.985u m=1
+XMm7 net046 a3 vdd vdd sub pch_lvt width=2.025U length=500n as=972f ad=972f
++ ps=2.985u pd=2.985u m=1
+XMm8 net046 a4 vdd vdd sub pch_lvt width=2.025U length=500n as=972f ad=972f
++ ps=2.985u pd=2.985u m=1
+XMm9 z net046 vdd vdd sub pch_lvt width=4.05U length=500n as=1.944p ad=1.944p
++ ps=5.01u pd=5.01u m=1
+.ENDS v5_ad4d1
+
+* Schematic name: SAR_SEQ_MXFF
+.SUBCKT SAR_SEQ_MXFF cdn clk d<0> d<1> d<2> d<3> d<4> d<5> d<6> d<7> d<8> d<9>
++  d<10> d<11> d<12> d<13> d<14> d<15> p p_n q q_n sd<0> sd<1> sd<2> sd<3> vdd vss
++ vsub
+Xf clk p vss q q_n cdn H vsub vdd v5_fd4d2
+Xhi vss vsub vdd H v5_tieh
+Xm2 d1<0> d1<1> d1<2> d1<3> vss sd<2> sd<3> vsub vdd p v5_mx4d4
+Xm1<3> d<12> d<13> d<14> d<15> vss sd<0> sd<1> vsub vdd d1<3> v5_mx4d4
+Xm1<2> d<8> d<9> d<10> d<11> vss sd<0> sd<1> vsub vdd d1<2> v5_mx4d4
+Xm1<1> d<4> d<5> d<6> d<7> vss sd<0> sd<1> vsub vdd d1<1> v5_mx4d4
+Xm1<0> d<0> d<1> d<2> d<3> vss sd<0> sd<1> vsub vdd d1<0> v5_mx4d4
+Xp_n p vss vsub vdd p_n v5_ivd2
+.ENDS SAR_SEQ_MXFF
+
+* Schematic name: v5_mx4d4
+* Synonym List:   VDD = vdd
+.SUBCKT v5_mx4d4 d0 d1 d2 d3 gnd s0 s1 sub VDD z
+XMm0 net76 d0 VDD VDD sub pch_lvt width=4.05U length=500n as=1.944p ad=1.944p
++ ps=5.01u pd=5.01u m=1
+XMm1 net79 d1 VDD VDD sub pch_lvt width=4.05U length=500n as=1.944p ad=1.944p
++ ps=5.01u pd=5.01u m=1
+XMm2 net85 d2 VDD VDD sub pch_lvt width=4.05U length=500n as=1.944p ad=1.944p
++ ps=5.01u pd=5.01u m=1
+XMm3 z net106 VDD VDD sub pch_lvt width=4.05U length=500n as=1.944p ad=1.944p
++ ps=5.01u pd=5.01u m=4
+XMm4 net82 d3 VDD VDD sub pch_lvt width=4.05U length=500n as=1.944p ad=1.944p
++ ps=5.01u pd=5.01u m=1
+XMm5 s0b s0 VDD VDD sub pch_lvt width=4.05U length=500n as=1.944p ad=1.944p
++ ps=5.01u pd=5.01u m=1
+XMm6 s1b s1 VDD VDD sub pch_lvt width=4.05U length=500n as=1.944p ad=1.944p
++ ps=5.01u pd=5.01u m=1
+XMm13 net76 d0 gnd sub nch_lvt width=2.24U length=500n as=1.0752p ad=1.0752p
++ ps=3.2u pd=3.2u m=1
+XMm14 net79 d1 gnd sub nch_lvt width=2.24U length=500n as=1.0752p ad=1.0752p
++ ps=3.2u pd=3.2u m=1
+XMm15 net85 d2 gnd sub nch_lvt width=2.24U length=500n as=1.0752p ad=1.0752p
++ ps=3.2u pd=3.2u m=1
+XMm16 z net106 gnd sub nch_lvt width=2.24U length=500n as=1.0752p ad=1.0752p
++ ps=3.2u pd=3.2u m=4
+XMm17 net82 d3 gnd sub nch_lvt width=2.24U length=500n as=1.0752p ad=1.0752p
++ ps=3.2u pd=3.2u m=1
+XMm18 s0b s0 gnd sub nch_lvt width=2.24U length=500n as=1.0752p ad=1.0752p
++ ps=3.2u pd=3.2u m=1
+XMm19 s1b s1 gnd sub nch_lvt width=2.24U length=500n as=1.0752p ad=1.0752p
++ ps=3.2u pd=3.2u m=1
+XMm20 net76 s0b net97 sub nch_lvt width=900N length=500n m=1
+XMm21 net79 s0 net97 sub nch_lvt width=900N length=500n m=1
+XMm22 net85 s0b net90 sub nch_lvt width=900N length=500n m=1
+XMm23 net82 s0 net90 sub nch_lvt width=900N length=500n m=1
+XMm24 net97 s1b net106 sub nch_lvt width=900N length=500n as=432f ad=432f
++ ps=1.86u pd=1.86u m=1
+XMm25 net90 s1 net106 sub nch_lvt width=900N length=500n m=1
+XMm26 net97 s0 net76 VDD sub pch_lvt width=1.8U length=500n as=864f ad=864f
++ ps=2.76u pd=2.76u m=1
+XMm27 net97 s0b net79 VDD sub pch_lvt width=1.8U length=500n as=864f ad=864f
++ ps=2.76u pd=2.76u m=1
+XMm28 net90 s0 net85 VDD sub pch_lvt width=1.8U length=500n as=864f ad=864f
++ ps=2.76u pd=2.76u m=1
+XMm29 net90 s0b net82 VDD sub pch_lvt width=1.8U length=500n as=864f ad=864f
++ ps=2.76u pd=2.76u m=1
+XMm30 net106 s1 net97 VDD sub pch_lvt width=1.8U length=500n as=864f ad=864f
++ ps=2.76u pd=2.76u m=1
+XMm31 net106 s1b net90 VDD sub pch_lvt width=1.8U length=500n as=864f ad=864f
++ ps=2.76u pd=2.76u m=1
+.ENDS v5_mx4d4
+
+* Schematic name: v5_ivd2
+.SUBCKT v5_ivd2 a gnd sub vdd z
+XMm0 z a vdd vdd sub pch_lvt width=4.05U length=500n as=1.944p ad=1.944p
++ ps=5.01u pd=5.01u m=2
+XMm1 z a gnd sub nch_lvt width=2.24U length=500n as=1.0752p ad=1.0752p ps=3.2u
++ pd=3.2u m=2
+.ENDS v5_ivd2
+
+* Schematic name: v5_fd4d1
+* Synonym List:   VDD = vdd
+.SUBCKT v5_fd4d1 ck d gnd q qn rn sn sub VDD
+XMm0 net081 d net0108 sub nch_lvt width=1.06U length=500n as=508.8f ad=508.8f
++ ps=2.02u pd=2.02u m=1
+XMm1 net0108 ckb gnd sub nch_lvt width=1.06U length=500n as=508.8f ad=508.8f
++ ps=2.02u pd=2.02u m=1
+XMm2 net0158 sn net0113 sub nch_lvt width=1.12U length=500n as=537.6f ad=537.6f
++ ps=2.08u pd=2.08u m=1
+XMm3 net0113 net081 gnd sub nch_lvt width=1.12U length=500n as=537.6f ad=537.6f
++ ps=2.08u pd=2.08u m=1
+XMm4 net0263 rn net098 sub nch_lvt width=840N length=500n as=403.2f ad=403.2f
++ ps=1.8u pd=1.8u m=1
+XMm5 net098 net0151 gnd sub nch_lvt width=840N length=500n as=403.2f ad=403.2f
++ ps=1.8u pd=1.8u m=1
+XMm6 q net0263 gnd sub nch_lvt width=2.24U length=500n as=1.0752p ad=1.0752p
++ ps=3.2u pd=3.2u m=1
+XMm7 qn net087 gnd sub nch_lvt width=2.24U length=500n as=1.0752p ad=1.0752p
++ ps=3.2u pd=3.2u m=1
+XMm8 ckb ck gnd sub nch_lvt width=1.12U length=500n as=537.6f ad=537.6f ps=2.08u
++ pd=2.08u m=1
+XMm9 ckbb ckb gnd sub nch_lvt width=1.12U length=500n as=537.6f ad=537.6f
++ ps=2.08u pd=2.08u m=1
+XMm10 net081 ckbb net097 sub nch_lvt width=900N length=500n as=432f ad=432f
++ ps=1.86u pd=1.86u m=1
+XMm11 net097 net0158 net093 sub nch_lvt width=900N length=500n as=432f ad=432f
++ ps=1.86u pd=1.86u m=1
+XMm12 net093 rn gnd sub nch_lvt width=900N length=500n as=432f ad=432f ps=1.86u
++ pd=1.86u m=1
+XMm13 net087 sn net0114 sub nch_lvt width=1.12U length=500n as=537.6f ad=537.6f
++ ps=2.08u pd=2.08u m=1
+XMm14 net0114 net0263 gnd sub nch_lvt width=1.12U length=500n as=537.6f
++ ad=537.6f ps=2.08u pd=2.08u m=1
+XMm15 net087 ckb net0151 sub nch_lvt width=900N length=500n as=432f ad=432f
++ ps=1.86u pd=1.86u m=1
+XMm16 net0158 ckbb net0151 sub nch_lvt width=900N length=500n as=432f ad=432f
++ ps=1.86u pd=1.86u m=1
+XMm17 net0161 ckbb VDD VDD sub pch_lvt width=1.68U length=500n as=806.4f
++ ad=806.4f ps=2.64u pd=2.64u m=1
+XMm18 net081 d net0161 VDD sub pch_lvt width=1.68U length=500n as=806.4f
++ ad=806.4f ps=2.64u pd=2.64u m=1
+XMm19 net0158 net081 VDD VDD sub pch_lvt width=1.98U length=500n as=950.4f
++ ad=950.4f ps=2.94u pd=2.94u m=1
+XMm20 net0158 sn VDD VDD sub pch_lvt width=1.98U length=500n as=950.4f ad=950.4f
++ ps=2.94u pd=2.94u m=1
+XMm21 net0263 net0151 VDD VDD sub pch_lvt width=1.4U length=500n as=672f ad=672f
++ ps=2.36u pd=2.36u m=1
+XMm22 net0263 rn VDD VDD sub pch_lvt width=1.4U length=500n as=672f ad=672f
++ ps=2.36u pd=2.36u m=1
+XMm23 q net0263 VDD VDD sub pch_lvt width=4.05U length=500n as=1.944p ad=1.944p
++ ps=5.01u pd=5.01u m=1
+XMm24 qn net087 VDD VDD sub pch_lvt width=4.05U length=500n as=1.944p ad=1.944p
++ ps=5.01u pd=5.01u m=1
+XMm25 ckb ck VDD VDD sub pch_lvt width=1.98U length=500n as=950.4f ad=950.4f
++ ps=2.94u pd=2.94u m=1
+XMm26 ckbb ckb VDD VDD sub pch_lvt width=1.98U length=500n as=950.4f ad=950.4f
++ ps=2.94u pd=2.94u m=1
+XMm27 net0138 rn VDD VDD sub pch_lvt width=1.12U length=500n as=537.6f ad=537.6f
++ ps=2.08u pd=2.08u m=1
+XMm28 net0138 net0158 VDD VDD sub pch_lvt width=1.12U length=500n as=537.6f
++ ad=537.6f ps=2.08u pd=2.08u m=1
+XMm29 net081 ckb net0138 VDD sub pch_lvt width=1.12U length=500n as=537.6f
++ ad=537.6f ps=2.08u pd=2.08u m=1
+XMm30 net087 sn VDD VDD sub pch_lvt width=1.98U length=500n as=950.4f ad=950.4f
++ ps=2.94u pd=2.94u m=1
+XMm31 net087 net0263 VDD VDD sub pch_lvt width=1.98U length=500n as=950.4f
++ ad=950.4f ps=2.94u pd=2.94u m=1
+XMm32 net0151 ckb net0158 VDD sub pch_lvt width=1.12U length=500n as=537.6f
++ ad=537.6f ps=2.08u pd=2.08u m=1
+XMm33 net0151 ckbb net087 VDD sub pch_lvt width=1.12U length=500n as=537.6f
++ ad=537.6f ps=2.08u pd=2.08u m=1
+.ENDS v5_fd4d1
+
+* Schematic name: v5_or2d2
+* Synonym List:   VDD = vdd
+.SUBCKT v5_or2d2 a1 a2 gnd sub VDD z
+XMm0 net023 a1 VDD VDD sub pch_lvt width=4.05U length=500n as=1.944p ad=1.944p
++ ps=5.01u pd=5.01u m=1
+XMm1 z net025 VDD VDD sub pch_lvt width=4.05U length=500n as=1.944p ad=1.944p
++ ps=5.01u pd=5.01u m=2
+XMm2 net025 a2 net023 VDD sub pch_lvt width=4.05U length=500n as=1.944p
++ ad=1.944p ps=5.01u pd=5.01u m=1
+XMm3 net025 a1 gnd sub nch_lvt width=2.24U length=500n as=1.0752p ad=1.0752p
++ ps=3.2u pd=3.2u m=1
+XMm4 net025 a2 gnd sub nch_lvt width=2.24U length=500n as=1.0752p ad=1.0752p
++ ps=3.2u pd=3.2u m=1
+XMm5 z net025 gnd sub nch_lvt width=2.24U length=500n as=1.0752p ad=1.0752p
++ ps=3.2u pd=3.2u m=2
+.ENDS v5_or2d2
+
+* Schematic name: v5_mx4d1
+* Synonym List:   VDD = vdd
+.SUBCKT v5_mx4d1 d0 d1 d2 d3 gnd s0 s1 sub VDD z
+XMm0 net76 d0 VDD VDD sub pch_lvt width=2.025U length=500n as=972f ad=972f
++ ps=2.985u pd=2.985u m=1
+XMm1 net79 d1 VDD VDD sub pch_lvt width=2.025U length=500n as=972f ad=972f
++ ps=2.985u pd=2.985u m=1
+XMm2 net85 d2 VDD VDD sub pch_lvt width=2.025U length=500n as=972f ad=972f
++ ps=2.985u pd=2.985u m=1
+XMm3 z net106 VDD VDD sub pch_lvt width=4.05U length=500n as=1.944p ad=1.944p
++ ps=5.01u pd=5.01u m=1
+XMm4 net82 d3 VDD VDD sub pch_lvt width=2.025U length=500n as=972f ad=972f
++ ps=2.985u pd=2.985u m=1
+XMm5 s0b s0 VDD VDD sub pch_lvt width=2.025U length=500n as=972f ad=972f
++ ps=2.985u pd=2.985u m=1
+XMm6 s1b s1 VDD VDD sub pch_lvt width=2.025U length=500n as=972f ad=972f
++ ps=2.985u pd=2.985u m=1
+XMm13 net76 d0 gnd sub nch_lvt width=1.12U length=500n as=537.6f ad=537.6f
++ ps=2.08u pd=2.08u m=1
+XMm14 net79 d1 gnd sub nch_lvt width=1.12U length=500n as=537.6f ad=537.6f
++ ps=2.08u pd=2.08u m=1
+XMm15 net85 d2 gnd sub nch_lvt width=1.12U length=500n as=537.6f ad=537.6f
++ ps=2.08u pd=2.08u m=1
+XMm16 z net106 gnd sub nch_lvt width=2.24U length=500n as=1.0752p ad=1.0752p
++ ps=3.2u pd=3.2u m=1
+XMm17 net82 d3 gnd sub nch_lvt width=1.12U length=500n as=537.6f ad=537.6f
++ ps=2.08u pd=2.08u m=1
+XMm18 s0b s0 gnd sub nch_lvt width=1.12U length=500n as=537.6f ad=537.6f
++ ps=2.08u pd=2.08u m=1
+XMm19 s1b s1 gnd sub nch_lvt width=1.12U length=500n as=537.6f ad=537.6f
++ ps=2.08u pd=2.08u m=1
+XMm20 net76 s0b net97 sub nch_lvt width=900N length=500n as=432f ad=432f
++ ps=1.86u pd=1.86u m=1
+XMm21 net79 s0 net97 sub nch_lvt width=900N length=500n as=432f ad=432f ps=1.86u
++ pd=1.86u m=1
+XMm22 net85 s0b net90 sub nch_lvt width=900N length=500n as=432f ad=432f
++ ps=1.86u pd=1.86u m=1
+XMm23 net82 s0 net90 sub nch_lvt width=900N length=500n as=432f ad=432f ps=1.86u
++ pd=1.86u m=1
+XMm24 net97 s1b net106 sub nch_lvt width=900N length=500n as=432f ad=432f
++ ps=1.86u pd=1.86u m=1
+XMm25 net90 s1 net106 sub nch_lvt width=900N length=500n as=432f ad=432f
++ ps=1.86u pd=1.86u m=1
+XMm26 net97 s0 net76 VDD sub pch_lvt width=1.8U length=500n as=864f ad=864f
++ ps=2.76u pd=2.76u m=1
+XMm27 net97 s0b net79 VDD sub pch_lvt width=1.8U length=500n as=864f ad=864f
++ ps=2.76u pd=2.76u m=1
+XMm28 net90 s0 net85 VDD sub pch_lvt width=1.8U length=500n as=864f ad=864f
++ ps=2.76u pd=2.76u m=1
+XMm29 net90 s0b net82 VDD sub pch_lvt width=1.8U length=500n as=864f ad=864f
++ ps=2.76u pd=2.76u m=1
+XMm30 net106 s1 net97 VDD sub pch_lvt width=1.8U length=500n as=864f ad=864f
++ ps=2.76u pd=2.76u m=1
+XMm31 net106 s1b net90 VDD sub pch_lvt width=1.8U length=500n as=864f ad=864f
++ ps=2.76u pd=2.76u m=1
+.ENDS v5_mx4d1
+
+* Schematic name: v5_ad3d1
+.SUBCKT v5_ad3d1 a1 a2 a3 gnd sub vdd z
+XMm0 net20 a1 vdd vdd sub pch_lvt width=2.025U length=500n as=972f ad=972f
++ ps=2.985u pd=2.985u m=1
+XMm1 net20 a2 vdd vdd sub pch_lvt width=2.025U length=500n as=972f ad=972f
++ ps=2.985u pd=2.985u m=1
+XMm2 net20 a3 vdd vdd sub pch_lvt width=2.025U length=500n as=972f ad=972f
++ ps=2.985u pd=2.985u m=1
+XMm3 z net20 vdd vdd sub pch_lvt width=4.05U length=500n as=1.944p ad=1.944p
++ ps=5.01u pd=5.01u m=1
+XMm4 net20 a3 net036 sub nch_lvt width=1.12U length=500n as=537.6f ad=537.6f
++ ps=2.08u pd=2.08u m=1
+XMm5 z net20 gnd sub nch_lvt width=2.24U length=500n as=1.0752p ad=1.0752p
++ ps=3.2u pd=3.2u m=1
+XMm6 net036 a2 net11 sub nch_lvt width=1.12U length=500n as=537.6f ad=537.6f
++ ps=2.08u pd=2.08u m=1
+XMm7 net11 a1 gnd sub nch_lvt width=1.12U length=500n as=537.6f ad=537.6f
++ ps=2.08u pd=2.08u m=1
+.ENDS v5_ad3d1
+
+* Schematic name: SAR_DIG_MXFF
+.SUBCKT SAR_DIG_MXFF cdn clk d<0> d<1> d<2> d<3> d<4> d<5> d<6> d<7> p p_n q q_n
++ sd<0> sd<1> sd<2> vdd vss vsub
+Xf clk p vss q q_n cdn H vsub vdd v5_fd4d2
+Xhi vss vsub vdd H v5_tieh
+Xm1<3> d<6> d<7> vss sd<0> vsub vdd d1<3> v5_mx2d4
+Xm1<2> d<4> d<5> vss sd<0> vsub vdd d1<2> v5_mx2d4
+Xm1<1> d<2> d<3> vss sd<0> vsub vdd d1<1> v5_mx2d4
+Xm1<0> d<0> d<1> vss sd<0> vsub vdd d1<0> v5_mx2d4
+Xm2 d1<0> d1<1> d1<2> d1<3> vss sd<1> sd<2> vsub vdd p v5_mx4d4
+Xp_n p vss vsub vdd p_n v5_ivd2
+.ENDS SAR_DIG_MXFF
+
+* Schematic name: v5_mx2d4
+* Synonym List:   VDD = vdd
+.SUBCKT v5_mx2d4 d0 d1 gnd s sub VDD z
+XMm0 net56 d0 gnd sub nch_lvt width=2.24U length=500n as=1.0752p ad=1.0752p
++ ps=3.2u pd=3.2u m=1
+XMm1 net53 s gnd sub nch_lvt width=2.24U length=500n as=1.0752p ad=1.0752p
++ ps=3.2u pd=3.2u m=1
+XMm2 net59 d1 gnd sub nch_lvt width=2.24U length=500n as=1.0752p ad=1.0752p
++ ps=3.2u pd=3.2u m=1
+XMm3 z net64 gnd sub nch_lvt width=2.24U length=500n as=1.0752p ad=1.0752p
++ ps=3.2u pd=3.2u m=4
+XMm4 net56 d0 VDD VDD sub pch_lvt width=4.05U length=500n as=1.944p ad=1.944p
++ ps=5.01u pd=5.01u m=1
+XMm5 net53 s VDD VDD sub pch_lvt width=4.05U length=500n as=1.944p ad=1.944p
++ ps=5.01u pd=5.01u m=1
+XMm6 net59 d1 VDD VDD sub pch_lvt width=4.05U length=500n as=1.944p ad=1.944p
++ ps=5.01u pd=5.01u m=1
+XMm7 z net64 VDD VDD sub pch_lvt width=4.05U length=500n as=1.944p ad=1.944p
++ ps=5.01u pd=5.01u m=4
+XMm10 net56 net53 net64 sub nch_lvt width=900N length=500n as=432f ad=432f
++ ps=1.86u pd=1.86u m=1
+XMm11 net59 s net64 sub nch_lvt width=900N length=500n as=432f ad=432f ps=1.86u
++ pd=1.86u m=1
+XMm12 net64 s net56 VDD sub pch_lvt width=1.8U length=500n as=864f ad=864f
++ ps=2.76u pd=2.76u m=1
+XMm13 net64 net53 net59 VDD sub pch_lvt width=1.8U length=500n as=864f ad=864f
++ ps=2.76u pd=2.76u m=1
+.ENDS v5_mx2d4
+
+* End of the netlist

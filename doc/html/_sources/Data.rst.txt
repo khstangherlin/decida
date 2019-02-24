@@ -1,0 +1,6 @@
+Data
+----
+.. autoclass:: decida.Data.Data
+    :members:
+    :undoc-members:
+    :show-inheritance:

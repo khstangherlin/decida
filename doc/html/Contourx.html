@@ -1,0 +1,298 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Contourx &#8212; decida 1.1.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.1.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Data" href="Data.html" />
+    <link rel="prev" title="CanvasIdentify" href="CanvasIdentify.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="Data.html" title="Data"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="CanvasIdentify.html" title="CanvasIdentify"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">decida 1.1.3 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="decida_classes.html" accesskey="U"><strong>DeCiDa classes</strong></a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="contourx">
+<h1>Contourx<a class="headerlink" href="#contourx" title="Permalink to this headline">¶</a></h1>
+<img alt="_images/Contourx.jpg" src="_images/Contourx.jpg" />
+<dl class="class">
+<dt id="decida.Contourx.Contourx">
+<em class="property">class </em><code class="descclassname">decida.Contourx.</code><code class="descname">Contourx</code><span class="sig-paren">(</span><em>parent=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.Contourx.Contourx" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="PlotBasem.html#decida.PlotBasem.PlotBasem" title="decida.PlotBasem.PlotBasem"><code class="xref py py-class docutils literal"><span class="pre">decida.PlotBasem.PlotBasem</span></code></a></p>
+<p><strong>synopsis</strong>:</p>
+<blockquote>
+<div><p>Plot color-band and/or line contours.</p>
+<p>Contourx plots color contour bands and/or contour lines of a
+3-dimensional surface specified on points on a 2-dimensional grid.</p>
+<p>The color bands can be hidden, leaving only the contour lines, or
+contour lines can be hidden, leaving only the color bands.</p>
+<p>The Edit-&gt;Settings dialog can be used to add more (equally-spaced)
+contour values.</p>
+</div></blockquote>
+<p><strong>constructor arguments</strong>:</p>
+<blockquote>
+<div><p><strong>parent</strong> (tk handle, default=None)</p>
+<blockquote>
+<div>handle of frame or other widget to pack plot in.
+if this is not specified, top-level is created.</div></blockquote>
+<p><strong>**kwargs</strong> (dict)</p>
+<blockquote>
+<div>keyword=value specifications:
+<strong>options</strong> or <strong>configuration-options</strong></div></blockquote>
+</div></blockquote>
+<p><strong>options</strong>:</p>
+<blockquote>
+<div><p><strong>xvalues</strong> (list of float)</p>
+<blockquote>
+<div>list of x values. [x[0], ... , x[nx]]</div></blockquote>
+<p><strong>yvalues</strong> (list of float)</p>
+<blockquote>
+<div>list of y values. [y[0], ... , y[ny]]</div></blockquote>
+<p><strong>zvalues</strong> (list of lists of float)</p>
+<blockquote>
+<div>list of z values corresponding x, y points
+[x[0],  y[0], ... , x[0],  y[ny]],
+...           ...   ...
+[x[nx], y[0], ... , x[nx], y[ny]]</div></blockquote>
+</div></blockquote>
+<p><strong>configuration options</strong>:</p>
+<blockquote>
+<div><p><strong>verbose</strong> (bool, default=False)</p>
+<blockquote>
+<div>enable/disable verbose mode</div></blockquote>
+<p><strong>title</strong> (str, default=&#8221;&#8221;)</p>
+<blockquote>
+<div>main title</div></blockquote>
+<p><strong>xtitle</strong> (str, default=&#8221;&#8221;)</p>
+<blockquote>
+<div>x-axis title</div></blockquote>
+<p><strong>ytitle</strong> (str, default=&#8221;&#8221;)</p>
+<blockquote>
+<div>y-axis title</div></blockquote>
+<p><strong>plot_height</strong> (str, default=&#8221;10i&#8221; for MacOS, else &#8220;7i&#8221;)</p>
+<blockquote>
+<div>Height of plot window (Tk inch  or pixelspecification)</div></blockquote>
+<p><strong>plot_width</strong>  (str, default=&#8221;10i&#8221; for MacOS, else &#8220;7i&#8221;)</p>
+<blockquote>
+<div>Width of plot window (Tk inch or pixel specification)</div></blockquote>
+<p><strong>plot_background</strong> (str, default=&#8221;GhostWhite&#8221;)</p>
+<blockquote>
+<div>Background color of plot window.</div></blockquote>
+<p><strong>legend_background</strong> (str, default=&#8221;AntiqueWhite2&#8221;)</p>
+<blockquote>
+<div>Background color of legend.</div></blockquote>
+<p><strong>grid_color</strong> (str, default=&#8221;black&#8221;)</p>
+<blockquote>
+<div>Color of contour grid.</div></blockquote>
+<p><strong>num_contours</strong> (int, default=21)</p>
+<blockquote>
+<div>number of contours.</div></blockquote>
+<p><strong>show_bands</strong> (bool, default=True)</p>
+<blockquote>
+<div>if True, show contour color-bands.</div></blockquote>
+<dl class="docutils">
+<dt><strong>colors</strong> (list of str, default = [&#8220;blue&#8221;, &#8220;red&#8221;, &#8220;green&#8221;,</dt>
+<dd><blockquote class="first">
+<div>&#8220;orange&#8221;, &#8220;cyan&#8221;, &#8220;brown&#8221;,
+&#8220;black&#8221;, &#8220;blue violet&#8221;, &#8220;cadet blue&#8221;, &#8220;dark cyan&#8221;,
+&#8220;dark goldenrod&#8221;, &#8220;dark green&#8221;, &#8220;dark magenta&#8221;,
+&#8220;dark olive green&#8221;, &#8220;dark orange&#8221;, &#8220;dark red&#8221;,
+&#8220;dark slate blue&#8221;, &#8220;dark slate gray&#8221;, &#8220;dodger blue&#8221;,
+&#8220;forest green&#8221;, &#8220;steel blue&#8221;, &#8220;sienna&#8221;])</div></blockquote>
+<p class="last">list of colors for curves.
+Used to populate color menu, and to specify curve colors
+in scripted &#8220;command&#8221; option.</p>
+</dd>
+<dt><strong>symbols</strong> (list of str, default = [&#8220;none&#8221;, &#8220;dot&#8221;, &#8220;square&#8221;,</dt>
+<dd><blockquote class="first">
+<div>&#8220;diamond&#8221;, &#8220;triangle&#8221;, &#8220;itriangle&#8221;,
+&#8220;dash&#8221;, &#8220;pipe&#8221;, &#8220;plus&#8221;, &#8220;cross&#8221;,
+&#8220;spade&#8221;, &#8220;heart&#8221;, &#8220;diam&#8221;, &#8220;club&#8221;, &#8220;shamrock&#8221;,
+&#8220;fleurdelis&#8221;, &#8220;circle&#8221;, &#8220;star&#8221;])</div></blockquote>
+<p class="last">list of symbols for curves.
+Used to populate symbol menu, and to specify curve symbols
+in scripted &#8220;command&#8221; option.</p>
+</dd>
+</dl>
+<p><strong>ssizes</strong> (list of float, default = [0.01])</p>
+<blockquote>
+<div>list of symbol sizes for curves.
+Used to specify curve symbol sizes
+in scripted &#8220;command&#8221; option.</div></blockquote>
+<p><strong>wlines</strong> (list of int, default = [1])</p>
+<blockquote>
+<div>list of line widths for curves.
+Used to specify curve line widths
+in scripted &#8220;command&#8221; option.</div></blockquote>
+<p><strong>traces</strong> (list of str, default = [&#8220;increasing&#8221;])</p>
+<blockquote>
+<div>list of traces for curves.  each trace can be one of:
+&#8220;increasing&#8221;, &#8220;decreasing&#8221;, or &#8220;both&#8221;.
+Used to specify curve trace directions
+in scripted &#8220;command&#8221; option.</div></blockquote>
+<p><strong>xaxis</strong> (str, default=&#8221;lin&#8221;)</p>
+<blockquote>
+<div>linear or logarithmic axis: &#8220;lin&#8221; or &#8220;log&#8221;</div></blockquote>
+<p><strong>yaxis</strong> (str, default=&#8221;lin&#8221;)</p>
+<blockquote>
+<div>linear or logarithmic axis: &#8220;lin&#8221; or &#8220;log&#8221;</div></blockquote>
+<p><strong>xmin</strong>  (float, default=0.0)</p>
+<blockquote>
+<div>xaxis minimum</div></blockquote>
+<p><strong>xmax</strong>  (float, default=0.0)</p>
+<blockquote>
+<div>xaxis maximum</div></blockquote>
+<p><strong>ymin</strong>  (float, default=0.0)</p>
+<blockquote>
+<div>yaxis minimum</div></blockquote>
+<p><strong>ymax</strong>  (float, default=0.0)</p>
+<blockquote>
+<div>yaxis maximum</div></blockquote>
+<p><strong>grid</strong>  (bool, default=True)</p>
+<blockquote>
+<div>if true, show grid on plot</div></blockquote>
+<p><strong>legend</strong>  (bool, default=True)</p>
+<blockquote>
+<div>if true, show legend on plot</div></blockquote>
+<p><strong>postscript</strong>  (bool, default=False)</p>
+<blockquote>
+<div>if true, generate a PostScript file.</div></blockquote>
+<p><strong>postscript_file</strong> (str, default=&#8221;plot.ps&#8221;)</p>
+<blockquote>
+<div>name of PostScript file to plot to</div></blockquote>
+<p><strong>wait</strong> (bool, default=False)</p>
+<blockquote>
+<div>wait in main-loop until window is destroyed.</div></blockquote>
+<p><strong>destroy</strong> (bool, default=False)</p>
+<blockquote>
+<div>destroy main window after it has been displayed.
+useful for displaying, generating PostScript, then
+destroying window.</div></blockquote>
+</div></blockquote>
+<p><strong>example</strong> (from test_Contourx_1):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">decida</span><span class="o">,</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">decida.Contourx</span> <span class="k">import</span> <span class="n">Contourx</span>
+
+<span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span> <span class="n">nx</span><span class="p">,</span> <span class="n">ny</span><span class="p">,</span> <span class="n">nc</span> <span class="o">=</span> <span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="mi">41</span>
+<span class="k">def</span> <span class="nf">zfunction</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span>
+        <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">((</span><span class="n">x</span><span class="o">-</span><span class="mf">10.0</span><span class="p">),</span><span class="mf">2.0</span><span class="p">)</span><span class="o">+</span><span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="mf">2.0</span><span class="p">))</span><span class="o">*</span>
+        <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">((</span><span class="n">x</span><span class="o">+</span><span class="mf">10.0</span><span class="p">),</span><span class="mf">2.0</span><span class="p">)</span><span class="o">+</span><span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="mf">2.0</span><span class="p">)),</span> <span class="mf">0.25</span>
+    <span class="p">)</span>
+<span class="n">xvalues</span> <span class="o">=</span> <span class="n">decida</span><span class="o">.</span><span class="n">range_sample</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="n">nx</span><span class="p">)</span>
+<span class="n">yvalues</span> <span class="o">=</span> <span class="n">decida</span><span class="o">.</span><span class="n">range_sample</span><span class="p">(</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="n">ny</span><span class="p">)</span>
+<span class="n">zvalues</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xvalues</span> <span class="p">:</span>
+    <span class="n">zx</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">yvalues</span> <span class="p">:</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">zfunction</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="n">zx</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+    <span class="n">zvalues</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">zx</span><span class="p">)</span>
+<span class="n">c</span><span class="o">=</span><span class="n">Contourx</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">xvalues</span><span class="o">=</span><span class="n">xvalues</span><span class="p">,</span> <span class="n">yvalues</span><span class="o">=</span><span class="n">yvalues</span><span class="p">,</span> <span class="n">zvalues</span><span class="o">=</span><span class="n">zvalues</span><span class="p">,</span> <span class="n">num_contours</span><span class="o">=</span><span class="n">nc</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>public methods</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>public methods from <em>PlotBasem</em> (2-dimensinal plot base class)</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="CanvasIdentify.html"
+                        title="previous chapter">CanvasIdentify</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="Data.html"
+                        title="next chapter">Data</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/Contourx.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="Data.html" title="Data"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="CanvasIdentify.html" title="CanvasIdentify"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">decida 1.1.3 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="decida_classes.html" ><strong>DeCiDa classes</strong></a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2013, Richard Booth.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

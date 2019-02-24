@@ -1,0 +1,412 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>DataViewm Equation Set operations (Operations -&gt; Equation Set) &#8212; decida 1.1.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.1.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="XYplotm menus" href="XYplotm_menus.html" />
+    <link rel="prev" title="DataViewm data removal" href="DataViewm_data_removal.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="XYplotm_menus.html" title="XYplotm menus"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="DataViewm_data_removal.html" title="DataViewm data removal"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">decida 1.1.3 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="decida_classes.html" ><strong>DeCiDa classes</strong></a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="DataViewm.html" accesskey="U">DataViewm</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="dataviewm-equation-set-operations-operations-equation-set">
+<h1>DataViewm Equation Set operations (Operations -&gt; Equation Set)<a class="headerlink" href="#dataviewm-equation-set-operations-operations-equation-set" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="32%" />
+<col width="49%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Symbol:</th>
+<th class="head">Description:</th>
+<th class="head">Details:</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td colspan="3"><strong>Constants: (over-ridden by columns with same name)</strong></td>
+</tr>
+<tr class="row-odd"><td>pi</td>
+<td colspan="2">3.14159265 ...</td>
+</tr>
+<tr class="row-even"><td>kb</td>
+<td colspan="2">Boltzmann constant (J/K)</td>
+</tr>
+<tr class="row-odd"><td>kbev</td>
+<td colspan="2">Boltzmann constant (ev/K)</td>
+</tr>
+<tr class="row-even"><td>e0</td>
+<td colspan="2">permittivity of free space (F/cm)</td>
+</tr>
+<tr class="row-odd"><td>qe</td>
+<td colspan="2">electron charge (C)</td>
+</tr>
+<tr class="row-even"><td>tabs</td>
+<td colspan="2">T(0C) (K)</td>
+</tr>
+<tr class="row-odd"><td colspan="3"><strong>Equation Set Unary Operations</strong></td>
+</tr>
+<tr class="row-even"><td>-</td>
+<td>z = -x</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>sign</td>
+<td>z = sign(x)</td>
+<td>x &gt; 0 ? 1 : -1</td>
+</tr>
+<tr class="row-even"><td>reciprocal</td>
+<td>z = reciprocal(x)</td>
+<td>1/x</td>
+</tr>
+<tr class="row-odd"><td>sqrt</td>
+<td>z = sqrt(x)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>square</td>
+<td>z = square(x)</td>
+<td>x^2</td>
+</tr>
+<tr class="row-odd"><td>abs</td>
+<td>z = abs(x)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>sin</td>
+<td>z = sin(x)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>cos</td>
+<td>z = cos(x)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>tan</td>
+<td>z = tan(x)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>asin</td>
+<td>z = asin(x)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>acos</td>
+<td>z = acos(x)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>atan</td>
+<td>z = atan(x)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>exp</td>
+<td>z = exp(x)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>expm1</td>
+<td>z = expm1(x)</td>
+<td>exp(x) - 1</td>
+</tr>
+<tr class="row-even"><td>exp2</td>
+<td>z = exp2(x)</td>
+<td>2^x</td>
+</tr>
+<tr class="row-odd"><td>log</td>
+<td>z = log(x)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>log10</td>
+<td>z = log10(x)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>log2</td>
+<td>z = log2(x)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>log1p</td>
+<td>z = log1p(x)</td>
+<td>ln(x+1)</td>
+</tr>
+<tr class="row-odd"><td>sinh</td>
+<td>z = sinh(x)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>cosh</td>
+<td>z = cosh(x)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>tanh</td>
+<td>z = tanh(x)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>asinh</td>
+<td>z = asinh(x)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>acosh</td>
+<td>z = acosh(x)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>atanh</td>
+<td>z = atanh(x)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>degrees</td>
+<td>z = degrees(x)</td>
+<td>convert radians to degrees</td>
+</tr>
+<tr class="row-even"><td>radians</td>
+<td>z = radians(x)</td>
+<td>convert degrees to radians</td>
+</tr>
+<tr class="row-odd"><td>deg2rad</td>
+<td>z = deg2rad(x)</td>
+<td>convert degrees to radians</td>
+</tr>
+<tr class="row-even"><td>rad2deg</td>
+<td>z = rad2deg(x)</td>
+<td>convert radians to degrees</td>
+</tr>
+<tr class="row-odd"><td>rint</td>
+<td>z = rint(x)</td>
+<td>round to nearest integer</td>
+</tr>
+<tr class="row-even"><td>fix</td>
+<td>z = fix(x)</td>
+<td>round to nearest integer towards 0</td>
+</tr>
+<tr class="row-odd"><td>floor</td>
+<td>z = floor(x)</td>
+<td>round to nearest integer below</td>
+</tr>
+<tr class="row-even"><td>ceil</td>
+<td>z = ceil(x)</td>
+<td>round to nearest integer above</td>
+</tr>
+<tr class="row-odd"><td>trunc</td>
+<td>z = trunc(x)</td>
+<td>truncate</td>
+</tr>
+<tr class="row-even"><td>del</td>
+<td>z = del(x)</td>
+<td>difference between successive values</td>
+</tr>
+<tr class="row-odd"><td>not</td>
+<td>z = not(x)</td>
+<td>logical not</td>
+</tr>
+<tr class="row-even"><td>!</td>
+<td>z = !x</td>
+<td>logical not</td>
+</tr>
+<tr class="row-odd"><td colspan="3"><strong>Equation Set Binary Operations</strong></td>
+</tr>
+<tr class="row-even"><td>+</td>
+<td>z = x + y</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>-</td>
+<td>z = x - y</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>*</td>
+<td>z = x * y</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>/</td>
+<td>z = x / y</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>^</td>
+<td>z = x ^ y</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>true_divide</td>
+<td>z = true_divide(y, x)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>floor_divide</td>
+<td>z = floor_divide(y, x)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>fmod</td>
+<td>z = fmod(y, x)</td>
+<td>remainder of division</td>
+</tr>
+<tr class="row-even"><td>mod</td>
+<td>z = mod(y, x)</td>
+<td>remainder of division</td>
+</tr>
+<tr class="row-odd"><td>rem</td>
+<td>z = rem(y, x)</td>
+<td>remainder of division</td>
+</tr>
+<tr class="row-even"><td>hypot</td>
+<td>z = hypot(y, x)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>atan2</td>
+<td>z = atan2(y, x)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>max</td>
+<td>z = max(x, y)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>min</td>
+<td>z = min(x, y)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>integ</td>
+<td>z = integ(y, x)</td>
+<td>integration</td>
+</tr>
+<tr class="row-odd"><td>dY/dX</td>
+<td>z = dY/dX(y, x)</td>
+<td>derivative</td>
+</tr>
+<tr class="row-even"><td>==</td>
+<td>z = x == y</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>!=</td>
+<td>z = x != y</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>&lt;=</td>
+<td>z = x &lt;= y</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>&gt;=</td>
+<td>z = x &gt;= y</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>&lt;</td>
+<td>z = x &lt; y</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>&gt;</td>
+<td>z = x &gt; y</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>&amp;&amp;</td>
+<td>z = x &amp;&amp; y</td>
+<td>logical and</td>
+</tr>
+<tr class="row-odd"><td>||</td>
+<td>z = x || y</td>
+<td>logical or</td>
+</tr>
+<tr class="row-even"><td>and</td>
+<td>z = and(x, y)</td>
+<td>logical and</td>
+</tr>
+<tr class="row-odd"><td>or</td>
+<td>z = or(x, y)</td>
+<td>logical or</td>
+</tr>
+<tr class="row-even"><td>xor</td>
+<td>z = xor(x, y)</td>
+<td>logical xor</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="DataViewm_data_removal.html"
+                        title="previous chapter">DataViewm data removal</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="XYplotm_menus.html"
+                        title="next chapter">XYplotm menus</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/DataViewm_equationset.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="XYplotm_menus.html" title="XYplotm menus"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="DataViewm_data_removal.html" title="DataViewm data removal"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">decida 1.1.3 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="decida_classes.html" ><strong>DeCiDa classes</strong></a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="DataViewm.html" >DataViewm</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2013, Richard Booth.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

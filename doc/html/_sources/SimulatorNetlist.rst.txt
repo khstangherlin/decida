@@ -1,0 +1,6 @@
+SimulatorNetlist
+----------------
+.. autoclass:: decida.SimulatorNetlist.SimulatorNetlist
+    :members:
+    :undoc-members:
+    :show-inheritance:

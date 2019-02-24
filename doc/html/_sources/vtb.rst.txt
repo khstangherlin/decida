@@ -1,0 +1,3 @@
+vtb
+---
+.. autofunction:: decida.vtb.vtb

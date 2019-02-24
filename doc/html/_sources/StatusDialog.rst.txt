@@ -1,0 +1,6 @@
+StatusDialog
+------------
+.. autoclass:: decida.StatusDialog.StatusDialog
+    :members:
+    :undoc-members:
+    :show-inheritance:

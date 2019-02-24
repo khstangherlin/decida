@@ -1,0 +1,118 @@
+#!/usr/bin/env python
+################################################################################
+# NAME     : simvision_csv2col
+# PURPOSE  : reformat exported simvision csv file to ssv format for dataview
+# AUTHOR   : Richard Booth
+# DATE     : Sat Nov  9 11:13:25 2013
+# -----------------------------------------------------------------------------
+# NOTES    : 
+################################################################################
+from __future__ import print_function
+import sys
+import os.path
+from decida.Data import Data
+from decida.DataViewm import DataViewm
+#-----------------------------------------------------------------------------
+# usage
+#-----------------------------------------------------------------------------
+def usage() :
+    print("""\
+  usage :
+      simvision_csv2col ?options? ?inputfile? ?outputfile?
+  options :
+      -h | -help  print help information
+      -noview don't view file in dataview
+  files:
+    inputfile
+      csv file exported from simvision
+    outputfile
+      column oriented file
+    """)
+    exit()
+#-----------------------------------------------------------------------------
+# command-line arguments
+#-----------------------------------------------------------------------------
+args  = sys.argv[1:]
+ifile = None
+ofile = None
+view = True
+while len(args) > 0 :
+    arg = args.pop(0)
+    if   arg == "-h" or arg == "-help" :
+        usage()
+    elif arg == "-noview" :
+        view = False
+    else :
+        if   not ifile :
+            ifile = arg
+        elif not ofile :
+            ofile = arg
+if not ifile :
+    ifile = "simvision.csv"
+if not ofile :
+    root  = os.path.splitext(os.path.basename(ifile))[0]
+    ofile = root + ".col"
+#-----------------------------------------------------------------------------
+# read csv file
+#-----------------------------------------------------------------------------
+print("reading ", ifile)
+d = Data()
+d.read(ifile)
+#-----------------------------------------------------------------------------
+# re-format data
+#-----------------------------------------------------------------------------
+print("re-formatting data")
+vars = d.names()
+vars.pop(0)  # SimTime
+header = []
+header.append("time")
+header.extend(vars)
+header.append("SimTime")
+olines = []
+olines.append(" ".join(header))
+start = True
+for row in range(0, d.nrows()) :
+    simtime = d.get_entry(row, "SimTime")
+    time    = simtime*1e-15
+    vals    = []
+    for var in vars :
+        vals.append(d.get_entry(row, var))
+    if start :
+        start = False
+        oline   = []
+        oline.append("%s" % (time))
+        for val in vals :
+            oline.append("%s" % (val))
+        oline.append("%s" % (simtime))
+        olines.append(" ".join(oline))
+    else :
+        simtime_n = simtime + 1
+        time_n    = simtime_n*1e-15
+        oline   = []
+        oline.append("%s" % (time))
+        for val in vals_p :
+            oline.append("%s" % (val))
+        oline.append("%s" % (simtime))
+        olines.append(" ".join(oline))
+        oline   = []
+        oline.append("%s" % (time_n))
+        for val in vals :
+            oline.append("%s" % (val))
+        oline.append("%s" % (simtime_n))
+        olines.append(" ".join(oline))
+    time_p = time
+    vals_p = list(vals)
+#-----------------------------------------------------------------------------
+# write col file
+#-----------------------------------------------------------------------------
+print("writing ", ofile)
+f=open(ofile, "w")
+for line in olines :
+    f.write(line + "\n")
+f.close()
+#-----------------------------------------------------------------------------
+# view data
+#-----------------------------------------------------------------------------
+if view :
+    DataViewm(None, data=d)
+exit()

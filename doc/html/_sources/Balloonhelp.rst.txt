@@ -1,0 +1,6 @@
+Balloonhelp
+-----------
+.. autoclass:: decida.Balloonhelp.Balloonhelp
+    :members:
+    :undoc-members:
+    :show-inheritance:

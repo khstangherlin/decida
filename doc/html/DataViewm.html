@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>DataViewm &#8212; decida 1.1.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.1.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="DataViewm menus" href="DataViewm_menus.html" />
+    <link rel="prev" title="Data" href="Data.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="DataViewm_menus.html" title="DataViewm menus"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="Data.html" title="Data"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">decida 1.1.3 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="decida_classes.html" accesskey="U"><strong>DeCiDa classes</strong></a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="dataviewm">
+<h1>DataViewm<a class="headerlink" href="#dataviewm" title="Permalink to this headline">¶</a></h1>
+<img alt="_images/DataViewm.jpg" src="_images/DataViewm.jpg" />
+<dl class="class">
+<dt id="decida.DataViewm.DataViewm">
+<em class="property">class </em><code class="descclassname">decida.DataViewm.</code><code class="descname">DataViewm</code><span class="sig-paren">(</span><em>parent=None</em>, <em>use_matplotlib=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.DataViewm.DataViewm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ItclObjectx.html#decida.ItclObjectx.ItclObjectx" title="decida.ItclObjectx.ItclObjectx"><code class="xref py py-class docutils literal"><span class="pre">decida.ItclObjectx.ItclObjectx</span></code></a>, <code class="xref py py-class docutils literal"><span class="pre">Tkinter.Frame</span></code></p>
+<p><strong>synopsis</strong>:</p>
+<blockquote>
+<div><p>Read, view, manipulate and write data.</p>
+<p><em>DataViewm</em> is used to read data in various formats and provide X and Y
+columns to plot the data using <em>XYplotm</em>.  Any column in the data set
+can be plotted versus any other column.  <em>DataViewm</em> provides many
+data-editing tools, such as data-removal, column operations on the data
+set, FFT, filtering, and reordering.</p>
+<p>The DeCiDa <em>dataview</em> application instantiates a <em>DataViewm</em> object if
+only one data-file is to be read (otherwise, it uses <em>XYplotm</em> to
+display data from two or more files).</p>
+</div></blockquote>
+<dl class="docutils">
+<dt><strong>constructor arguments</strong>:</dt>
+<dd><p class="first"><strong>parent</strong> (tk handle)</p>
+<blockquote>
+<div>handle of frame or other widget to pack plot in.
+if this is not specified, top-level is created.</div></blockquote>
+<p><strong>**kwargs</strong> (dict)</p>
+<blockquote class="last">
+<div>options or configuration-options</div></blockquote>
+</dd>
+</dl>
+<p><strong>options</strong>:</p>
+<blockquote>
+<div><p><strong>data</strong> (data pointer)</p>
+<blockquote>
+<div>data object to view</div></blockquote>
+<p><strong>command</strong> (list)</p>
+<blockquote>
+<div><em>not yet implemented</em></div></blockquote>
+</div></blockquote>
+<p><strong>configuration options</strong>:</p>
+<blockquote>
+<div><p><strong>verbose</strong> (bool, default=False)</p>
+<blockquote>
+<div>enable/disable verbose mode</div></blockquote>
+<p><strong>title</strong> (str, default=&#8221;&#8221;)</p>
+<blockquote>
+<div>specify plot height</div></blockquote>
+<p><strong>plot_width</strong> (str, default=&#8221;6i&#8221;)</p>
+<blockquote>
+<div>specify plot width</div></blockquote>
+<p><strong>plot_height</strong> (str, default=&#8221;6i&#8221;)</p>
+<blockquote>
+<div>specify plot height</div></blockquote>
+<p><strong>wait</strong> (bool, default=False)</p>
+<blockquote>
+<div>wait in main-loop until window is destroyed</div></blockquote>
+<p><strong>destroy</strong> (bool, default=False)</p>
+<blockquote>
+<div>destroy main window after it has been displayed.
+useful for displaying, generating PostScript, then
+destroying window.</div></blockquote>
+</div></blockquote>
+<p><strong>example</strong> (from test_DataViewm_2):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">decida.Data</span> <span class="k">import</span> <span class="n">Data</span>
+<span class="kn">from</span> <span class="nn">decida.DataViewm</span> <span class="k">import</span> <span class="n">DataViewm</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="n">Data</span><span class="p">()</span>
+<span class="n">d</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;LTspice_ac_binary.raw&quot;</span><span class="p">)</span>
+<span class="n">DataViewm</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">d</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="p">[[</span><span class="s2">&quot;frequency DB(V(vout1)) PH(V(vout1))&quot;</span><span class="p">,</span> <span class="s2">&quot;xaxis=&quot;</span><span class="n">log</span><span class="s2">&quot;&quot;</span><span class="p">]])</span>
+</pre></div>
+</div>
+<p><strong>public methods</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>public methods from <em>ItclObjectx</em></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="DataViewm_menus.html">DataViewm menus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DataViewm_mouse.html">DataViewm mouse actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DataViewm_data_removal.html">DataViewm data removal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DataViewm_equationset.html">DataViewm Equation Set operations (Operations -&gt; Equation Set)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="XYplotm_menus.html">XYplotm menus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="XYplotm_line_parameters.html">XYplotm line parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="XYplotm_annotation.html">XYplotm Plot Annotation</a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="Data.html"
+                        title="previous chapter">Data</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="DataViewm_menus.html"
+                        title="next chapter">DataViewm menus</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/DataViewm.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="DataViewm_menus.html" title="DataViewm menus"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="Data.html" title="Data"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">decida 1.1.3 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="decida_classes.html" ><strong>DeCiDa classes</strong></a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2013, Richard Booth.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

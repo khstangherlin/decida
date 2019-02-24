@@ -1,0 +1,50 @@
+#!/usr/bin/env python
+################################################################################
+# NAME     : ngsp
+# PURPOSE  : run NGspice
+# AUTHOR   : Richard Booth
+# DATE     : Sat Nov  9 11:03:57 2013
+# -----------------------------------------------------------------------------
+# NOTES    : 
+################################################################################
+from __future__ import print_function
+import sys
+import decida
+from decida.NGspice import NGspice
+#-----------------------------------------------------------------------------
+# usage
+#-----------------------------------------------------------------------------
+def usage() :
+    print("""\
+  usage :
+      ngsp ?options? ?cktfile?
+  options :
+      -h       print help information
+      -xmat    don't use matplotlib
+      -simulator <simulator> specify simulator
+    """)
+    exit()
+#-----------------------------------------------------------------------------
+# command-line arguments
+#-----------------------------------------------------------------------------
+use_matplotlib = True
+simulator = "hspice"
+cktfile = None
+args   = sys.argv[1:]
+while len(args) > 0 :
+    arg = args.pop(0)
+    if   arg == "-h" or arg == "-help" :
+        usage()
+    elif arg == "-simulator" :
+        simulator = args.pop(0)
+    elif arg == "-xmat" :
+        use_matplotlib = False
+    else :
+        cktfile = arg
+#-----------------------------------------------------------------------------
+# invoke plotter
+#-----------------------------------------------------------------------------
+if cktfile is not None:
+    NGspice(cktfile=cktfile, simulator=simulator, use_matplotlib=use_matplotlib)
+else :
+    NGspice(simulator=simulator, use_matplotlib=use_matplotlib)

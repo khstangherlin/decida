@@ -1,0 +1,14 @@
+**Other DeCiDa functions**
+==========================
+importing::
+
+   import decida.<function>
+   from decida.<function> import <function>
+
+.. toctree::
+   :maxdepth: 2
+
+   entry_emacs_bindings
+   grep
+   pattern_alignment
+   vtb

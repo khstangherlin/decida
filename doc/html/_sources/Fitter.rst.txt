@@ -1,0 +1,6 @@
+Fitter
+------
+.. autoclass:: decida.Fitter.Fitter
+    :members:
+    :undoc-members:
+    :show-inheritance:

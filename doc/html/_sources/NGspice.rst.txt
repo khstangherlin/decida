@@ -1,0 +1,7 @@
+NGspice
+-------
+.. image:: _static/NGspice.jpg
+.. autoclass:: decida.NGspice.NGspice
+    :members:
+    :undoc-members:
+    :show-inheritance:

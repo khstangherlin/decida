@@ -1,0 +1,142 @@
+
+  twin help
+
+  Key Bindings:
+
+* Left / Right (or CTRL-b / CTRL-f):
+  - move insertion cursor one character to the left or right
+  - clear selection
+
+* CTRL-Left / CTRL-Right (or META-b / META-f):
+  - move insertion cursor by words
+
+* SHIFT-Left / SHIFT-Right:
+  - move insertion cursor by characters, extend selection
+
+* CTRL-SHIFT-Left / CTRL-SHIFT-Right
+  - move insertion cursor by words, extend selection
+
+===============================================================================
+* Up / Down (or CTRL-p / CTRL-n):
+  - move insertion cursor one line up or down
+  - clear selection
+
+* CTRL-Up / CTRL-Down:
+  - move insertion cursor by paragraphs (groups of lines separated by
+    blank lines)
+
+* SHIFT-Up / SHIFT-Down:
+  - move insertion cursor, extend selection
+
+* CTRL-SHIFT-Up / CTRL-SHIFT-Down:
+  - move insertion cursor by paragraphs (groups of lines separated by
+    blank lines), extend selection
+
+===============================================================================
+* CTRL-v:
+  - move view down one screen
+
+* Next / Prior:
+  - move insertion cursor forward or backwards by one screen
+  - clear selection
+
+* SHIFT-Next / SHIFT-Prior:
+  - extend selection by character
+
+* CTRL-Next / CTRL-Prior:
+  - scroll view right or left by one page
+
+* Home (or CTRL-a):
+  - move insertion cursor to beginning of its line
+  - clear selection
+
+* SHIFT-Home:
+  - moves insertion cursor to beginning of line
+  - extend selection to beginning of line
+
+* End (or CTRL-e):
+  - move insertion cursor to end of line
+  - clear selection
+  
+* SHIFT-End:
+  - move cursor to end of line
+  - extend selection to end of line
+
+* CTRL-Home and META-<:
+  - move insertion cursor to beginning of text
+  - clear selection
+
+* CTRL-SHIFT-Home:
+  - move insertion cursor to beginning of text
+  - extend selection to beginning of text
+
+* CTRL-End and Meta->:
+  - move insertion cursor to end of text
+  - clear selection
+
+* CTRL-SHIFT-End:
+  - move cursor to end of text
+  - extend selection to end of text
+
+===============================================================================
+* Select (or CTRL-Space):
+  - set selection anchor to position of insertion cursor
+
+* SHIFT-Select (or CTRL-SHIFT-Space):
+  - adjust selection to current position of insertion cursor
+   (select from anchor to insertion cursor if no previous selection)
+
+* CTRL-/:
+  - select all
+
+* CTRL-\:
+  - clear selection
+
+* META-w (or F16, labelled Copy on many Sun workstations):
+  - copy selection to clipboard
+ 
+* CTRL-w (or F20, labelled Cut on many Sun workstations):
+  - copy selection to clipboard
+  - delete selection
+
+* CTRL-y (or F18, labelled Paste on many Sun workstations):
+  - insert contents of clipboard at position of insertion cursor
+
+* Delete:
+  - delete selection
+    (if no selection, delete character to right of insertion cursor)
+
+* Backspace (or CTRL-h):
+  - delete selection
+    (if no selection, delete character to left of insertion cursor)
+
+* CTRL-d:
+  - delete character to right of insertion cursor
+
+* META-d:
+  - delete word to right of insertion cursor
+
+* CTRL-k:
+  - delete from insertion cursor to end of its line
+    (if insertion cursor is at end of line, delete newline character)
+  - place deleted text in clipboard
+
+* CTRL-o
+  - open new line
+
+* META-Backspace (or META-Delete)
+  - delete word to left of insertion cursor
+
+* CTRL-x
+  - delete selected text
+  - place deleted text in clipboard
+
+* CTRL-t
+  - reverse order of two characters to right of insertion cursor
+
+* CTRL-z (or CTRL-_ on UNIX when tk_strictMotif is true)
+  - undo last edit action
+
+* CTRL-Z (or CTRL-y on Windows)
+  - redo last undone edit action
+

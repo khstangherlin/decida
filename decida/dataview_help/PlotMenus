@@ -1,0 +1,57 @@
+
+  dataview help
+
+  Plot Menus:
+
+  File MENU:
+   % Write PostScript File
+       Display FileSpecify dialog. Write current plot to file specified.
+   % Write and print PostScript File
+       Prints current plot to printer specified by LPRINTER
+         environment parameter.  Print command is a Decida/Tk option.
+   % Write and print PostScript File (specify print command)
+   % Quit
+
+  Edit MENU:
+   % Settings
+       Display dialog for specifying various plot settings, including titles.
+   % Trace increasing
+       specify curve trace orientation:
+         XCOL increasing is solid, XCOL decreasing is invisible
+   % Trace decreasing
+       specify curve trace orientation:
+         XCOL increasing is invisible, XCOL decreasing is solid
+   % Trace both
+       specify curve trace orientation:
+         XCOL increasing is solid,     XCOL decreasing is solid
+   % All dots
+       curve is plotted with dots only
+   % All small squares
+       curve is plotted with small squares only
+   % All medium squares
+       curve is plotted with medium squares only
+   % All large squares
+       curve is plotted with large squares only
+   % All narrow lines
+       curve is plotted with narrow lines only
+   % All medium lines
+       curve is plotted with medium lines only
+   % All wide lines
+       curve is plotted with wide lines only
+   % Autoscale x
+       autoscale in x-direction only
+   % Autoscale y
+       autoscale in y-direction only
+   % Autoscale both
+       autoscale in both x- and y-directions
+   % Delete current curve
+       remove the current curve from the plot
+
+  Symbol MENU:
+   % specify symbol for current curve
+
+  Color MENU:
+   % specify color  for current curve
+
+  Curve MENU:
+   % specify current curve

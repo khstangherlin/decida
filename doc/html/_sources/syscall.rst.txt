@@ -1,0 +1,3 @@
+syscall
+-------
+.. autofunction:: decida.syscall

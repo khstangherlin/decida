@@ -1,0 +1,33 @@
+**DeCiDa Screen Snapshots**
+===========================
+
+.. image:: _static/XYplotm.jpg
+
+.. image:: _static/Contourx.jpg
+
+.. image:: _static/Histogramx.jpg
+
+.. image:: _static/SmithChartx.jpg
+
+.. image:: _static/DataViewm.jpg
+
+.. image:: _static/NGspice.jpg
+
+.. image:: _static/PLL.jpg
+
+.. image:: _static/PLLphaseNoise.jpg
+
+.. image:: _static/Plotterm.jpg
+
+.. image:: _static/TextWindow.jpg
+
+.. image:: _static/surveycourse2vector.jpg
+
+.. image:: _static/FrameNotebook.jpg
+
+.. image:: _static/MessageDialog.jpg
+
+.. image:: _static/Calc.jpg
+
+.. image:: _static/SelectionDialog.jpg
+

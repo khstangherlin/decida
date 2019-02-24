@@ -1,0 +1,671 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>TextWindow &#8212; decida 1.1.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.1.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="XYplotm" href="XYplotm.html" />
+    <link rel="prev" title="Tckt" href="Tckt.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="XYplotm.html" title="XYplotm"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="Tckt.html" title="Tckt"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">decida 1.1.3 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="decida_classes.html" accesskey="U"><strong>DeCiDa classes</strong></a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="textwindow">
+<h1>TextWindow<a class="headerlink" href="#textwindow" title="Permalink to this headline">¶</a></h1>
+<img alt="_images/TextWindow.jpg" src="_images/TextWindow.jpg" />
+<dl class="class">
+<dt id="decida.TextWindow.TextWindow">
+<em class="property">class </em><code class="descclassname">decida.TextWindow.</code><code class="descname">TextWindow</code><span class="sig-paren">(</span><em>parent=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.TextWindow.TextWindow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ItclObjectx.html#decida.ItclObjectx.ItclObjectx" title="decida.ItclObjectx.ItclObjectx"><code class="xref py py-class docutils literal"><span class="pre">decida.ItclObjectx.ItclObjectx</span></code></a>, <code class="xref py py-class docutils literal"><span class="pre">Tkinter.Frame</span></code></p>
+<p><strong>synopsis</strong>:</p>
+<blockquote>
+<div><p>Text window graphical user-interface.</p>
+<p><em>TextWindow</em> is a graphical user-interface wrapper around the tk
+<em>Text</em> widget.  On menus, it provides several ways to reformat the
+displayed text, such as lining up rows, (true) wrapping text, piping
+the text through sort, awk, or some other command.  <em>TextWindow</em> also
+has text searching and text highlighting.  And there are many other
+tools.</p>
+<p>The DeCiDa application <em>twin</em> simply instantiates one <em>TextWindow</em>
+object.</p>
+</div></blockquote>
+<p><strong>constructor arguments</strong>:</p>
+<blockquote>
+<div><p><strong>parent</strong> (tk handle, default=None)</p>
+<blockquote>
+<div>handle of frame or other widget to pack text-window in.
+If this is not specified, top-level is created.</div></blockquote>
+<p><strong>**kwargs</strong> (dict)</p>
+<blockquote>
+<div>configuration-options or option</div></blockquote>
+</div></blockquote>
+<p><strong>options</strong>:</p>
+<blockquote>
+<div><p><strong>file</strong> (str)</p>
+<blockquote>
+<div>name of file to read into text-window</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Sets up text window with menu at top.</li>
+<li><dl class="first docutils">
+<dt>Configures binding for sending commands to program when user types</dt>
+<dd>return.</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<p><strong>configuration options</strong>:</p>
+<blockquote>
+<div><p><strong>verbose</strong> (bool, default=False)</p>
+<blockquote>
+<div>enable verbose mode</div></blockquote>
+<p><strong>text_height</strong> (int, default=24)</p>
+<blockquote>
+<div>Height of TextWindow window in chars</div></blockquote>
+<p><strong>text_width</strong> (int, default=80)</p>
+<blockquote>
+<div>Width of TextWindow window in chars</div></blockquote>
+<p><strong>text_background</strong> (str, default=&#8221;GhostWhite&#8221;)</p>
+<blockquote>
+<div>Background of TextWindow window</div></blockquote>
+<p><strong>text_foreground</strong> (str, default=&#8221;blue&#8221;)</p>
+<blockquote>
+<div>Foreground of TextWindow window</div></blockquote>
+<p><strong>progcmd</strong> (str, default=&#8221;&#8221;)</p>
+<blockquote>
+<div>Prefix of command to send user-input to program.
+<strong>The progcmd capability is not yet implemented.</strong></div></blockquote>
+<p><strong>prompt</strong> (str, default=&#8221;&gt;&#8221;)</p>
+<blockquote>
+<div>Prompt to place in text window.
+<strong>The progcmd capability is not yet implemented.</strong></div></blockquote>
+<p><strong>wait</strong> (bool, default=False)</p>
+<blockquote>
+<div>wait in main-loop until window is destroyed</div></blockquote>
+<p><strong>destroy</strong> (bool, default=False)</p>
+<blockquote>
+<div>destroy main window</div></blockquote>
+</div></blockquote>
+<p><strong>example</strong>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">twin</span> <span class="o">=</span> <span class="n">TextWindow</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">twin</span><span class="o">.</span><span class="n">enter</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">twin</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>public methods</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>public methods from <em>ItclObjectx</em></li>
+</ul>
+</div></blockquote>
+<dl class="method">
+<dt id="decida.TextWindow.TextWindow.choose_color">
+<code class="descname">choose_color</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.TextWindow.TextWindow.choose_color" title="Permalink to this definition">¶</a></dt>
+<dd><p>set highlight color using color dialog.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Display Tk color dialog (depends on the system)</li>
+<li>Set the color which is to be used to highlight lines of
+the <em>Text</em> window.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.TextWindow.TextWindow.choose_comment_char">
+<code class="descname">choose_comment_char</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.TextWindow.TextWindow.choose_comment_char" title="Permalink to this definition">¶</a></dt>
+<dd><p>set comment character.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Display dialog to choose a comment character.</li>
+<li>Type in the comment character, which is used by some of the
+Edit tools.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.TextWindow.TextWindow.clear">
+<code class="descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.TextWindow.TextWindow.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>delete all text.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>The <em>Text</em> window is cleared of all text.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.TextWindow.TextWindow.delete_lines">
+<code class="descname">delete_lines</code><span class="sig-paren">(</span><em>highlightedflag=False</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.TextWindow.TextWindow.delete_lines" title="Permalink to this definition">¶</a></dt>
+<dd><p>delete lines of text.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>highlightedflag</strong> (bool, default=False)</p>
+<blockquote>
+<div>If True, delete highlighted lines, else delete unhighlighted
+lines.</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><em>Text</em> window lines are deleted: if highlightedflag is True,
+delete only highlighted lines, otherwise delete unhighlighted
+lines.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.TextWindow.TextWindow.enter">
+<code class="descname">enter</code><span class="sig-paren">(</span><em>input_text</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.TextWindow.TextWindow.enter" title="Permalink to this definition">¶</a></dt>
+<dd><p>enter text.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>input_text</strong> (str, default=None)</p>
+<blockquote>
+<div>Lines of text to enter into the <em>Text</em> window.</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>The input lines are entered into the <em>Text</em> window.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.TextWindow.TextWindow.fileread">
+<code class="descname">fileread</code><span class="sig-paren">(</span><em>filename=None</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.TextWindow.TextWindow.fileread" title="Permalink to this definition">¶</a></dt>
+<dd><p>read file.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>filename</strong> (str, default=None)</p>
+<blockquote>
+<div>Name of a file to read and display/edit.
+If <em>filename</em> is not specified, then a file dialog is used to
+find a file to read in.</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Once a file name is found, and it is a valid file, then it
+is read in and displayed in the <em>Text</em> window.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.TextWindow.TextWindow.filesave">
+<code class="descname">filesave</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.TextWindow.TextWindow.filesave" title="Permalink to this definition">¶</a></dt>
+<dd><p>save file using current file name.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Save the contents of the <em>Text</em> window to the current
+file name, which is established when a file is read-in,
+or a file is specified to write to.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.TextWindow.TextWindow.filesaveas">
+<code class="descname">filesaveas</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.TextWindow.TextWindow.filesaveas" title="Permalink to this definition">¶</a></dt>
+<dd><p>save file using filesave dialog.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>file</strong> (str, default=None)</p>
+<blockquote>
+<div>Name of a file to save the <em>Text</em> contents to.
+If <em>file</em> is not specified, then a file dialog is used to
+find a file name to create or over-write.</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Once a file name is found, and it is a valid file, then it
+is written or over-written with the contents of the <em>Text</em>
+window.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.TextWindow.TextWindow.find">
+<code class="descname">find</code><span class="sig-paren">(</span><em>texttofind</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.TextWindow.TextWindow.find" title="Permalink to this definition">¶</a></dt>
+<dd><p>find text.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>texttofine</strong> (str)</p>
+<blockquote>
+<div>Text to locate in the <em>Text</em> window.</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>If text is found, the <em>Text</em> window view is shifted to the
+line where the found text resides and the text is highlighted
+in red foreground.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.TextWindow.TextWindow.get">
+<code class="descname">get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.TextWindow.TextWindow.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>return text from begtext to endtext marks.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Return text between begtext and endtext marks, including
+newlines.  The begtext and endtext marks are
+established by (text) highlighting a region of the <em>Text</em>
+window contents.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.TextWindow.TextWindow.getall">
+<code class="descname">getall</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.TextWindow.TextWindow.getall" title="Permalink to this definition">¶</a></dt>
+<dd><p>return all text.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Return all of the <em>Text</em> window contents, including newlines.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.TextWindow.TextWindow.gethighlightedlinelist">
+<code class="descname">gethighlightedlinelist</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.TextWindow.TextWindow.gethighlightedlinelist" title="Permalink to this definition">¶</a></dt>
+<dd><p>get highlighted lines of text as a list.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Return list of lines of text which are highlighted.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.TextWindow.TextWindow.getlinelist">
+<code class="descname">getlinelist</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.TextWindow.TextWindow.getlinelist" title="Permalink to this definition">¶</a></dt>
+<dd><p>return lines of text as a list.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Return all of the <em>Text</em> window contents, split into a list
+by newlines.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.TextWindow.TextWindow.help">
+<code class="descname">help</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.TextWindow.TextWindow.help" title="Permalink to this definition">¶</a></dt>
+<dd><p>help callback.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Help FrameNotebook is displayed.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.TextWindow.TextWindow.highlight_clear">
+<code class="descname">highlight_clear</code><span class="sig-paren">(</span><em>lineno=None</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.TextWindow.TextWindow.highlight_clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>clear highlighting.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>lineno</strong> (int, default=None)</p>
+<blockquote>
+<div>line number to clear highlighting.</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Clear highlighting from specified line (lineno).</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.TextWindow.TextWindow.highlight_line">
+<code class="descname">highlight_line</code><span class="sig-paren">(</span><em>lineno</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.TextWindow.TextWindow.highlight_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>highlight a line of text.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>lineno</strong> (int, default=None)</p>
+<blockquote>
+<div>line number to highlight.</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Highlight specified line.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.TextWindow.TextWindow.highlight_lines">
+<code class="descname">highlight_lines</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.TextWindow.TextWindow.highlight_lines" title="Permalink to this definition">¶</a></dt>
+<dd><p>highlight lines of text.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Highlight lines where text is selected, or insert cursor
+is placed.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="decida.TextWindow.TextWindow.is_commented">
+<em class="property">static </em><code class="descname">is_commented</code><span class="sig-paren">(</span><em>s</em>, <em>comment_char='#'</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.TextWindow.TextWindow.is_commented" title="Permalink to this definition">¶</a></dt>
+<dd><p>return true if line begins with a comment character.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>s</strong> (str)</p>
+<blockquote>
+<div>A line of text</div></blockquote>
+<p><strong>comment_char</strong> (str, default=&#8221;#&#8221;)</p>
+<blockquote>
+<div>The specified comment character</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>If the specified comment character is the first character
+in s, return True, else False.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.TextWindow.TextWindow.join_spectre">
+<code class="descname">join_spectre</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.TextWindow.TextWindow.join_spectre" title="Permalink to this definition">¶</a></dt>
+<dd><p>join spectre netlist continued lines.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.TextWindow.TextWindow.join_spice">
+<code class="descname">join_spice</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.TextWindow.TextWindow.join_spice" title="Permalink to this definition">¶</a></dt>
+<dd><p>join spice netlist continued lines.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="decida.TextWindow.TextWindow.linecol">
+<em class="property">static </em><code class="descname">linecol</code><span class="sig-paren">(</span><em>linespec</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.TextWindow.TextWindow.linecol" title="Permalink to this definition">¶</a></dt>
+<dd><p>convert a linespec into line and column</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>linespec</strong> (str)</p>
+<blockquote>
+<div>Tk line-specification string in the format line.col</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>returns the line, col where line and col are integers</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.TextWindow.TextWindow.lineup">
+<code class="descname">lineup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.TextWindow.TextWindow.lineup" title="Permalink to this definition">¶</a></dt>
+<dd><p>line up all un-commented lines.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.TextWindow.TextWindow.lineupcsv">
+<code class="descname">lineupcsv</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.TextWindow.TextWindow.lineupcsv" title="Permalink to this definition">¶</a></dt>
+<dd><p>line up all un-commented lines.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.TextWindow.TextWindow.pipethrough">
+<code class="descname">pipethrough</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.TextWindow.TextWindow.pipethrough" title="Permalink to this definition">¶</a></dt>
+<dd><p>pipe text lines through command.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.TextWindow.TextWindow.pipethrough_awk">
+<code class="descname">pipethrough_awk</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.TextWindow.TextWindow.pipethrough_awk" title="Permalink to this definition">¶</a></dt>
+<dd><p>pipe text lines through command.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.TextWindow.TextWindow.pipethrough_sort">
+<code class="descname">pipethrough_sort</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.TextWindow.TextWindow.pipethrough_sort" title="Permalink to this definition">¶</a></dt>
+<dd><p>pipe text lines through command.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.TextWindow.TextWindow.redo">
+<code class="descname">redo</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.TextWindow.TextWindow.redo" title="Permalink to this definition">¶</a></dt>
+<dd><p>redo last change.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Last <em>Text</em> window editing change which was undone is redone.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.TextWindow.TextWindow.shift_highlighted_lines">
+<code class="descname">shift_highlighted_lines</code><span class="sig-paren">(</span><em>shift_left=False</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.TextWindow.TextWindow.shift_highlighted_lines" title="Permalink to this definition">¶</a></dt>
+<dd><p>shift highlighted lines right or left.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>shift_left</strong> (bool, default=False)</p>
+<blockquote>
+<div>If True, shift left, otherwise shift right.</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Highlighted text is shifted right or left by 4 characters.
+For left-shift, only lines that have 4 spaces to spare at the
+beginning of the line are shifted.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.TextWindow.TextWindow.splitup">
+<code class="descname">splitup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.TextWindow.TextWindow.splitup" title="Permalink to this definition">¶</a></dt>
+<dd><p>split up text lines.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.TextWindow.TextWindow.tbprint">
+<code class="descname">tbprint</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.TextWindow.TextWindow.tbprint" title="Permalink to this definition">¶</a></dt>
+<dd><p>print.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>print <em>Text</em> window contents, using the current print command.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.TextWindow.TextWindow.trimlines">
+<code class="descname">trimlines</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.TextWindow.TextWindow.trimlines" title="Permalink to this definition">¶</a></dt>
+<dd><p>trim lines of text.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.TextWindow.TextWindow.truewrap">
+<code class="descname">truewrap</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.TextWindow.TextWindow.truewrap" title="Permalink to this definition">¶</a></dt>
+<dd><p>wrap text lines by modifying text.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>The contents of the <em>Text</em> display are modified such that
+each line of text is limited to 80 characters or less.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.TextWindow.TextWindow.undo">
+<code class="descname">undo</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.TextWindow.TextWindow.undo" title="Permalink to this definition">¶</a></dt>
+<dd><p>undo last change.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Last <em>Text</em> window editing change is undone.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.TextWindow.TextWindow.wait">
+<code class="descname">wait</code><span class="sig-paren">(</span><em>text=None</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.TextWindow.TextWindow.wait" title="Permalink to this definition">¶</a></dt>
+<dd><p>wait in main-loop until main window is destroyed.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>text</strong> (str, default=None)</p>
+<blockquote>
+<div>If text is specified, a button is displayed with the text
+in the button.  Clicking the button releases the application
+from the main event-loop.</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>If no text is displayed, then the application waits for the
+TextWindow instance to somehow be destroyed.  If text was
+specified, then the application waits until the button is
+clicked.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.TextWindow.TextWindow.wrap">
+<code class="descname">wrap</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.TextWindow.TextWindow.wrap" title="Permalink to this definition">¶</a></dt>
+<dd><p>wrap text.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>The <em>Text</em> window wrap display is toggled.  The actual contents
+of the <em>Text</em> window are not changed.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="Tckt.html"
+                        title="previous chapter">Tckt</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="XYplotm.html"
+                        title="next chapter">XYplotm</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/TextWindow.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="XYplotm.html" title="XYplotm"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="Tckt.html" title="Tckt"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">decida 1.1.3 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="decida_classes.html" ><strong>DeCiDa classes</strong></a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2013, Richard Booth.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

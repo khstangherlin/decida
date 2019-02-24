@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Plotterm &#8212; decida 1.1.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.1.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Report" href="Report.html" />
+    <link rel="prev" title="PlotBasem" href="PlotBasem.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="Report.html" title="Report"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="PlotBasem.html" title="PlotBasem"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">decida 1.1.3 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="decida_classes.html" accesskey="U"><strong>DeCiDa classes</strong></a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="plotterm">
+<h1>Plotterm<a class="headerlink" href="#plotterm" title="Permalink to this headline">¶</a></h1>
+<img alt="_images/Plotterm.jpg" src="_images/Plotterm.jpg" />
+<dl class="class">
+<dt id="decida.Plotterm.Plotterm">
+<em class="property">class </em><code class="descclassname">decida.Plotterm.</code><code class="descname">Plotterm</code><span class="sig-paren">(</span><em>parent=None</em>, <em>use_matplotlib=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.Plotterm.Plotterm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ItclObjectx.html#decida.ItclObjectx.ItclObjectx" title="decida.ItclObjectx.ItclObjectx"><code class="xref py py-class docutils literal"><span class="pre">decida.ItclObjectx.ItclObjectx</span></code></a>, <code class="xref py py-class docutils literal"><span class="pre">Tkinter.Frame</span></code></p>
+<p><strong>synopsis</strong>:</p>
+<blockquote>
+<div><p>Graphical user-interface to plot equation sets.</p>
+<p><em>Plotterm</em> is a graphical user-interface to plot the left-hand-side
+variables of a set of equations, specified in a text-window in the
+panel.</p>
+<p>Cartesian, parametric, polar or polar-parametric curves can be specified
+and plotted.  The equation set and parameters can be saved to a script
+which, when invoked, puts up the same <em>Plotterm</em> window.</p>
+<p>The DeCiDa application <em>plotter</em> simply instantiates one
+<em>Plotterm</em> object.</p>
+</div></blockquote>
+<p><strong>constructor arguments</strong>:</p>
+<blockquote>
+<div><p><strong>parent</strong> (tk handle)</p>
+<blockquote>
+<div>handle of frame or other widget to pack plot in.
+if this is not specified, top-level is created.</div></blockquote>
+<p><strong>**kwargs</strong> (dict)</p>
+<blockquote>
+<div>configuration-options</div></blockquote>
+</div></blockquote>
+<p><strong>configuration options</strong>:</p>
+<blockquote>
+<div><p><strong>verbose</strong> (bool, default=False)</p>
+<blockquote>
+<div>Enable or disable verbose mode</div></blockquote>
+<p><strong>plot_width</strong> (str, default=&#8221;5i&#8221;)</p>
+<blockquote>
+<div>Plot width, specified in Tk inch or pixel units</div></blockquote>
+<p><strong>plot_height</strong> (str, default=&#8221;5i&#8221;)</p>
+<blockquote>
+<div>Plot height, specified in Tk inch or pixel units</div></blockquote>
+<p><strong>plot_type</strong> (str, default=&#8221;cartesian&#8221;)</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Plot type: one of &#8220;cartesian&#8221;, &#8220;cartesian-parametric&#8221;,</dt>
+<dd>&#8220;polar&#8221;, or &#8220;polar-parametric&#8221;</dd>
+</dl>
+<ul class="simple">
+<li>Cartesian plots: y vs x, require specification
+of an x variable to vary, its range,
+and a y variable.</li>
+<li>Parametric plots: y(t) vs x(t), require specification
+of a parameter variable to vary, its range,
+and x and y variables to plot.</li>
+<li>Polar plots: r(a) require specification
+of an angle variable to vary, its range, and a radius variable.
+x(r,a) and y(r,a) are plotted.</li>
+<li>Polar-parametric plots: r(t), a(t), require specification
+of a parameter variable to vary, its range,
+and angle and radius variables.
+x(r,a) and y(r,a) are plotted.</li>
+</ul>
+</div></blockquote>
+<p><strong>sample_type</strong> (str, default=&#8221;linear&#8221;)</p>
+<blockquote>
+<div><p>Sample type: one of &#8220;linear&#8221;, or &#8220;logarithmic&#8221;</p>
+<ul class="simple">
+<li>linear sampling: equally-spaced samples from the minimum
+to maximum values of the varied variable or parameter</li>
+<li>logarithmic sampling: the parameter is varied according to
+(maximum_value/minimum_value)^(i/(number_of_points - 1)),
+for i in range(0, number_of_points)</li>
+</ul>
+</div></blockquote>
+<p><strong>xcol</strong> (str) (default=&#8221;x&#8221;)</p>
+<blockquote>
+<div>x-axis column (sweep for caresian plots)</div></blockquote>
+<p><strong>ycol</strong> (str) (default=&#8221;y&#8221;)</p>
+<blockquote>
+<div>y-axis column</div></blockquote>
+<p><strong>acol</strong> (str) (default=&#8221;a&#8221;)</p>
+<blockquote>
+<div>angle column (sweep for polar plots)</div></blockquote>
+<p><strong>rcol</strong> (str) (default=&#8221;r&#8221;)</p>
+<blockquote>
+<div>radius column (for polar and polar-parametric plots)</div></blockquote>
+<p><strong>tcol</strong> (str) (default=&#8221;t&#8221;)</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>parameter column (sweep for cartesian-parametric and</dt>
+<dd>polar-parametric plots)</dd>
+</dl>
+</div></blockquote>
+<p><strong>npts</strong> (int) (default=1000)</p>
+<blockquote>
+<div>number of sample points</div></blockquote>
+<p><strong>min</strong> (float) (default=0.0)</p>
+<blockquote>
+<div>minimum of sampling</div></blockquote>
+<p><strong>max</strong> (float) (default=5.0)</p>
+<blockquote>
+<div>maximum of sampling</div></blockquote>
+</div></blockquote>
+<p><strong>example</strong>: (from test_Plotterm)</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">decida.Plotterm</span> <span class="k">import</span> <span class="n">Plotterm</span>
+<span class="n">Plotterm</span><span class="p">(</span><span class="n">ycol</span><span class="o">=</span><span class="s2">&quot;v&quot;</span><span class="p">,</span> <span class="n">xcol</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">equations</span><span class="o">=</span><span class="s2">&quot;v=sin(time*3)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>public methods</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>public methods from <em>ItclObjectx</em></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="PlotBasem.html"
+                        title="previous chapter">PlotBasem</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="Report.html"
+                        title="next chapter">Report</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/Plotterm.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="Report.html" title="Report"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="PlotBasem.html" title="PlotBasem"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">decida 1.1.3 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="decida_classes.html" ><strong>DeCiDa classes</strong></a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2013, Richard Booth.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

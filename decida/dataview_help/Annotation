@@ -1,0 +1,21 @@
+
+  dataview help
+
+  Plot annotation:
+
+  % To add a label, pointer, or rectangle to the plot:
+    1. press shift-button-3 down at one corner of the pointer
+       or rectangle to be drawn (or any point if only a label
+       is to be drawn).
+    2. hold button down and move to the opposite corner of the
+       pointer or rectangle.
+    3. release shift-button-3.
+       A dialog box appears with fields to enter label text,
+       and radio boxes to select line-segment, pointer, or rectangle.
+  % To erase a label:
+    1. press shift-button-1 down at one corner of a region surrounding
+       the label to be erased.
+    2. hold button down and move to the opposite corner of the
+       erase region.
+    3. release shift-button-1.
+       after release, any markers within the erase box are removed.

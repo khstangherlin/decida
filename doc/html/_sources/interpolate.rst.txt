@@ -1,0 +1,3 @@
+interpolate
+-----------
+.. autofunction:: decida.interpolate

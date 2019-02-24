@@ -1,0 +1,2 @@
+TECH  = ptm_130nm
+VLLIB = ~/.DeCiDa/stdcell/$(TECH)

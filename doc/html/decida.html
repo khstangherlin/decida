@@ -1,0 +1,404 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>DeCiDa Data Analysis and Procedural Simulation Python Library &#8212; decida 1.1.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.1.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="DeCiDa Screen Snapshots" href="decida_screen.html" />
+    <link rel="prev" title="DeCiDa Procedural Simulation Python library" href="index.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="decida_screen.html" title="DeCiDa Screen Snapshots"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="DeCiDa Procedural Simulation Python library"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">decida 1.1.3 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="decida-data-analysis-and-procedural-simulation-python-library">
+<h1><strong>DeCiDa Data Analysis and Procedural Simulation Python Library</strong><a class="headerlink" href="#decida-data-analysis-and-procedural-simulation-python-library" title="Permalink to this headline">¶</a></h1>
+<p>DeCiDa == Device and Circuit Data Analysis.
+<a class="reference external" href="http://www.decida.org/PyDeCiDa_man_pages">DeCiDa man pages</a></p>
+<p>DeCiDa is a Python Library of functions and classes for
+device characterization, circuit design and data analysis.</p>
+<p>DeCida is written in pure Python (2.7, and 3), and requires no code-compilation.
+It is portable to any operating system where Python is installed, and runs
+under MacOS, Windows, Cygwin, and Linux.  Many DeCiDa classes and functions
+require the numpy and Tkinter packages.</p>
+<p>This version of DeCiDa provides support for Python 3 and can be run under
+a Python 3 environment, as well as a Python 2.7 environment.
+The following packages are now required: future, six, numpy and matplotlib.
+Please let me know if there are any issues that you find.</p>
+<p>DeCiDa uses matplotlib XY-plot rendering by default.
+To use the former XY-plot rendering, add the option -xmat
+to dataview, plotter, pllss, and pll_phase_noise.</p>
+<p>For circuit analysis, DeCiDa provides a flexible scripting class for
+performing simulations with various circuit simulation tools, such as
+(Synopsys) HSpice, (Cadence) Spectre, (Silvaco) SmartSpice,
+(UC Berkeley) NGspice and others.
+The Tckt class is used to provide a database of process corners for
+each project, and to provide netlist templating for performing procedural
+simulations and post-processing.
+Scripts using Tckt access the database to obtain
+the corner conditions, modify the netlist, and allow full Python looping
+structures for running the simulation, viewing and analyzing
+the simulated data.</p>
+<p>For data analysis, DeCiDa provides a Data class for reading-in and
+analyzing data in a number of formats, including nutmeg
+(NGspice, Spectre, LTspice), CSDF (HSpice), CSV (comma-separated value),
+SSV (space-separated value), and others.
+The Data object can be viewed using the XYplotm, Histogramx or DataViewm
+classes.
+DataViewm has commands via menu entries to manipulate and plot the data in
+different ways, including frequency versus time, eye- and scope-diagrams
+and column calculations.</p>
+<p>DeCiDa started out as a Tcl/Tk application for analyzing measurements
+of electron devices for performing routine compact-model parameter extraction.
+To do this fitting, a least-squares optimization algorithm was used.
+This Python version of DeCiDa has a function LevMar (for Levenberg-Marquardt),
+based on the mpfit package.  It is still under development.</p>
+<div class="section" id="what-is-in-the-distribution">
+<h2>What is in the distribution<a class="headerlink" href="#what-is-in-the-distribution" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">The decida Python library of functions and classes (./decida).
+This is installed into the site-packages directory.</p>
+</li>
+<li><p class="first">A test library under decida.test for testing the distribution (./decida/test).
+This is also installed into the site-packages directory.</p>
+</li>
+<li><p class="first">Applications in the distribution bin directory (./bin).
+These are installed into the Python bin directory.</p>
+</li>
+<li><p class="first">Tool-specific scripts (./etc):</p>
+<blockquote>
+<div><ul>
+<li><p class="first">simulation tool wrappers (./etc/wrappers)</p>
+<blockquote>
+<div><p>Circuit simulation tool wrappers that DeCiDa interfaces with.
+These are installed into ~/.DeCiDa/bin</p>
+</div></blockquote>
+</li>
+<li><dl class="first docutils">
+<dt>HTML documentation of the functions and classes (./doc/html).</dt>
+<dd><p class="first last">This is installed into ~/.DeCiDa/doc</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">cython (./etc/cython)</p>
+<blockquote>
+<div><p>Setup scripts for using cython to compile the Data and XYplotm classes.
+These are installed into ~/.DeCiDa/cython</p>
+</div></blockquote>
+</li>
+<li><p class="first">dot files (./etc/dot)</p>
+<blockquote>
+<div><p>Several resource files to be placed in user home directory
+for Cadence and Python.
+These are installed into ~/.DeCiDa/dot</p>
+</div></blockquote>
+</li>
+<li><p class="first">user local lib directory (./etc/lib)</p>
+<blockquote>
+<div><p>A place to put user Python code.
+This is set up as ~/.DeCiDa/lib</p>
+</div></blockquote>
+</li>
+<li><p class="first">models (./etc/models)</p>
+<blockquote>
+<div><p>Case-corners and models for two example technologies from
+the Predictive Technology Models web-site.
+These are installed into ~/.DeCiDa/models</p>
+</div></blockquote>
+</li>
+<li><p class="first">projects (./etc/projects)</p>
+<blockquote>
+<div><p>Two example project simulation directories (bird and trane).
+These are installed into ~/.DeCiDa/projects</p>
+</div></blockquote>
+</li>
+<li><p class="first">Cadence skill files (./etc/skill)</p>
+<blockquote>
+<div><p>Several scripts for automatically generating DeCiDa Python
+procedural simulation scripts,
+and verilog test-bench environments.
+These are installed into ~/.DeCiDa/skill</p>
+</div></blockquote>
+</li>
+<li><p class="first">stdcell (./etc/stdcell)</p>
+<blockquote>
+<div><p>Two example standard cell libraries for the two example
+PTM technologies, from the NangateOpenCell Library.
+These are installed into ~/.DeCiDa/stdcell</p>
+</div></blockquote>
+</li>
+<li><p class="first">verilog (./etc/verilog)</p>
+<blockquote>
+<div><p>Files for running Cadence NCsim and viewing the results using SimVision.
+These are installed into ~/.DeCiDa/verilog</p>
+</div></blockquote>
+</li>
+<li><p class="first">matlab (./etc/matlab)</p>
+<blockquote>
+<div><p>Matlab file to implement a Data object with a demo.
+These are installed into ~/.DeCiDa/matlab</p>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="decida-applications">
+<h2>DeCiDa applications<a class="headerlink" href="#decida-applications" title="Permalink to this headline">¶</a></h2>
+<p>All of these should be in the path after installation:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="81%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">application:</th>
+<th class="head">description:</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>calc</td>
+<td>scientific calculator</td>
+</tr>
+<tr class="row-odd"><td>dataview</td>
+<td>read, plot and analyze data</td>
+</tr>
+<tr class="row-even"><td>plotter</td>
+<td>plot Cartesian, Parametric, or Polar functions</td>
+</tr>
+<tr class="row-odd"><td>twin</td>
+<td>text editor, with additional capability</td>
+</tr>
+<tr class="row-even"><td>gifimg</td>
+<td>create embedded GIF image Python class from a GIF image</td>
+</tr>
+<tr class="row-odd"><td>pllss</td>
+<td>plot PLL small-signal transfer functions, S-domain and Z-domain</td>
+</tr>
+<tr class="row-even"><td>pll_phase_noise</td>
+<td>plot PLL phase noise components and total phase noise</td>
+</tr>
+<tr class="row-odd"><td>ngsp</td>
+<td>UC Berkeley NGspice gui</td>
+</tr>
+<tr class="row-even"><td>op</td>
+<td>read Cadence Spectre operating-point analysis, display node voltages and operating points</td>
+</tr>
+<tr class="row-odd"><td>simvision_csv2col</td>
+<td>convert exported Cadence SimVision csv data to column data</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="simulation-tool-wrapper-scripts">
+<h2>Simulation tool wrapper scripts<a class="headerlink" href="#simulation-tool-wrapper-scripts" title="Permalink to this headline">¶</a></h2>
+<p>These scripts are installed in ~/.DeCiDa/bin</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="66%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">wrapper script:</th>
+<th class="head">description:</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>run_hspice</td>
+<td>wrapper to run Synopsys HSpice</td>
+</tr>
+<tr class="row-odd"><td>run_ngspice</td>
+<td>wrapper to run UC Berkeley NGspice</td>
+</tr>
+<tr class="row-even"><td>run_sspice</td>
+<td>wrapper to run Silvaco SmartSpice</td>
+</tr>
+<tr class="row-odd"><td>run_spectre</td>
+<td>wrapper to run Cadence Spectre</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="thanks-to">
+<h2>Thanks to<a class="headerlink" href="#thanks-to" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first"><a class="reference external" href="http://docs.python.org/2/distutils/index.html">Python distribution documentation</a> .</p>
+</li>
+<li><p class="first"><a class="reference external" href="https://support.enthought.com/entries/23389761-Installing-packages-into-Canopy-User-Python-from-the-command-line">Canopy installation documentation</a> .</p>
+</li>
+<li><p class="first">decida/ItclObjectx:</p>
+<p>Concepts from [incr Tcl], described in chapter 2, &#8220;Object-Oriented
+Programming with [incr Tcl],&#8221; by Michael McLennan, of &#8220;Tcl/Tk Tools,&#8221;
+Mark Harrision, 1997, O&#8217;Reilly.</p>
+</li>
+<li><p class="first">decida/FrameNotebook and decida/Balloonhelp:</p>
+<p>Adapted from the Tcl/Tk examples in
+Mark Harrison and Michael McLennan, &#8220;Effective Tcl/Tk Programming&#8221;,
+1997, Addison-Wesley.</p>
+</li>
+<li><p class="first">decida/Data.read_nutmeg method:</p>
+<p>Modified from the
+<a class="reference external" href="http://www.h-renrew.de/h/python_spice/spicedata.html">read_spice module</a>
+from Werner Hoch (python_spice-0.0.3).</p>
+</li>
+<li><p class="first">decida/LevMar:</p>
+<p>Modified from the
+<a class="reference external" href="https://code.google.com/p/astrolibpy">mpfit module</a>
+from Sergey Koposov, Craig Markwardt and Mark Rivers (mpfit_2013).</p>
+</li>
+<li><p class="first">bin/gifimg:</p>
+<p>Modified from the
+<a class="reference external" href="http://www.3dartist.com/WP/python/code/img2pytk.py">img2pytk module</a>
+from Bill Allen (imageEmbedder-1.0).</p>
+</li>
+<li><p class="first">Example model files:</p>
+<p>From <a class="reference external" href="http://ptm.asu.edu">Predictive Technology Model</a> from the
+Nanoscale Integration and Modeling (NIMO) group at Arizona State University.</p>
+</li>
+<li><p class="first">Example standard cell libraries:</p>
+<p>From <a class="reference external" href="https://www.si2.org">Si2</a> openEDA project, Nangate 45nm
+Open Cell Library, a generic open-source, non-manufacturable
+standard-cell library.</p>
+</li>
+<li><p class="first">George Howlett, Michael McLennan, Sani Nassif, Mike Toth and others
+for developing many of the original concepts which are incorporated in
+DeCiDa.</p>
+</li>
+<li><p class="first">Dean Gonzales, Sanquan Song and Phillip Johnson for supplying test
+data files and test-driving DeCiDa.</p>
+</li>
+<li><p class="first"><a class="reference external" href="https://matplotlib.org">MatPlotLib</a> matplotlib.</p>
+</li>
+<li><p class="first">Barry J. Muldrey, for testing and helping to port to Python 3.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="known-problems">
+<h2>Known Problems<a class="headerlink" href="#known-problems" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">FrameNotebook: (test_FrameNotebook_2)</p>
+<p>XYplotm window doesn&#8217;t display at first</p>
+<p>solution: frame_notebook.lift_tab(tab_name), shown in the test</p>
+</li>
+<li><p class="first">LevMar:</p>
+<p>still under development</p>
+</li>
+<li><p class="first">MatPlotLib rendering (dataview and plotter):</p>
+<p>may run out of memory when plotting with many flyback line removals.</p>
+<p>solution: use dataview or plotter with -xmat option (old plotting routine)</p>
+</li>
+<li><p class="first">If plotting on Macbook screen in multiple-monitor environment, the
+window may shrink to a small size.</p>
+<p>solution: make another monitor the primary screen.</p>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#"><strong>DeCiDa Data Analysis and Procedural Simulation Python Library</strong></a><ul>
+<li><a class="reference internal" href="#what-is-in-the-distribution">What is in the distribution</a></li>
+<li><a class="reference internal" href="#decida-applications">DeCiDa applications</a></li>
+<li><a class="reference internal" href="#simulation-tool-wrapper-scripts">Simulation tool wrapper scripts</a></li>
+<li><a class="reference internal" href="#thanks-to">Thanks to</a></li>
+<li><a class="reference internal" href="#known-problems">Known Problems</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">DeCiDa Procedural Simulation Python library</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="decida_screen.html"
+                        title="next chapter"><strong>DeCiDa Screen Snapshots</strong></a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/decida.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="decida_screen.html" title="DeCiDa Screen Snapshots"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="DeCiDa Procedural Simulation Python library"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">decida 1.1.3 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2013, Richard Booth.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

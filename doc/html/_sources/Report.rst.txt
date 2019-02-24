@@ -1,0 +1,6 @@
+Report
+------
+.. autoclass:: decida.Report.Report
+    :members:
+    :undoc-members:
+    :show-inheritance:

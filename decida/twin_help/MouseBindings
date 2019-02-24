@@ -1,0 +1,45 @@
+
+  twin help
+
+  Mouse Binidings:
+
+* Button-1
+  - position insertion cursor just before character under (mouse) cursor
+  - set input focus to text widget
+  - clear selection
+
+* Button-1-motion
+  - stroke out selection between insertion cursor and character under
+    (mouse) cursor
+
+* double-Button-1 
+  - select word under (mouse) cursor
+  - position insertion cursor at end of word
+
+* double-Button-1 motion
+  - stroke out selection consisting of whole words
+
+* triple-Button-1
+  - select line under (mouse) cursor
+  - position insertion cursor at end of line
+
+* triple-Button-1-motion
+  - stroke out selection consisting of whole lines
+
+Ends of selection can be adjusted by dragging with mouse button 1
+while the Shift key is down.
+This will adjust the end of the selection that was nearest to the
+mouse cursor when button 1 was pressed
+If the button is double-clicked before dragging then the selection
+will be adjusted in units of whole words.
+If it is triple-clicked then selection will be adjusted in units of
+ whole lines.
+
+* CTRL-Button-1
+  - reposition insertion cursor without affecting selection
+
+* Button-2
+  - copy selection into the text at position of mouse cursor
+
+* Button-2-motion
+  - adjust text view

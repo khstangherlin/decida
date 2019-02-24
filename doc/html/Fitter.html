@@ -1,0 +1,263 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Fitter &#8212; decida 1.1.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.1.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="FormulaCalculator" href="FormulaCalculator.html" />
+    <link rel="prev" title="EquationParser" href="EquationParser.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="FormulaCalculator.html" title="FormulaCalculator"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="EquationParser.html" title="EquationParser"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">decida 1.1.3 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="decida_classes.html" accesskey="U"><strong>DeCiDa classes</strong></a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="fitter">
+<h1>Fitter<a class="headerlink" href="#fitter" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="decida.Fitter.Fitter">
+<em class="property">class </em><code class="descclassname">decida.Fitter.</code><code class="descname">Fitter</code><span class="sig-paren">(</span><em>model_eqns</em>, <em>par_specs</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.Fitter.Fitter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ItclObjectx.html#decida.ItclObjectx.ItclObjectx" title="decida.ItclObjectx.ItclObjectx"><code class="xref py py-class docutils literal"><span class="pre">decida.ItclObjectx.ItclObjectx</span></code></a></p>
+<p><strong>synopsis</strong>:</p>
+<blockquote>
+<div><p>Fit parameterized equation set to data.</p>
+<p><em>Fitter</em> is a wrapper around the Levenberg-Marquardt least-squares
+optimization class <em>LevMar</em>.  One model equation set is specified,
+and one parameter set is specified when the instance is created.</p>
+</div></blockquote>
+<p><strong>constructor arguments</strong>:</p>
+<blockquote>
+<div><p><strong>model_eqns</strong> (str)</p>
+<blockquote>
+<div>Set of equations involving data columns, and specified parameters
+equation set produces one data column, specified by the
+model_col configuration option.</div></blockquote>
+<p><strong>par_specs</strong> (str)</p>
+<blockquote>
+<div>Set of specifications for a set of model parameters.  The
+specifications are parameter name, initial value, the keyword
+<em>include</em> if the parameter is to be included in the optimization,
+lower_limit=value and upper_limit=value.  The last two
+specifications are optional, and if not specified the parameter
+is unbounded on the respective end.</div></blockquote>
+<p><strong>**kwargs</strong> (dict)</p>
+<blockquote>
+<div>keyword=value specifications:
+configuration-options</div></blockquote>
+</div></blockquote>
+<p><strong>configuration options</strong>:</p>
+<blockquote>
+<div><p><strong>data</strong> (Data object handle, default=None)</p>
+<blockquote>
+<div>Data object which contains data to be fitted to the model equations.
+Model and residual columns are created in the Data object.</div></blockquote>
+<p><strong>meast_col</strong> (str, default=&#8221;&#8221;)</p>
+<blockquote>
+<div>The data column which contains the data to be fitted.</div></blockquote>
+<p><strong>model_col</strong> (str, default=&#8221;&#8221;)</p>
+<blockquote>
+<div>The data column which is to be created to fit the meast_col data.</div></blockquote>
+<p><strong>error_col</strong> (str, default=&#8221;&#8221;)</p>
+<blockquote>
+<div>The relative or absolute error between the model_col
+and meast_col data</div></blockquote>
+<p><strong>residual</strong>  (str, default=&#8221;relative&#8221;)</p>
+<blockquote>
+<div>Specify whether residual is relative or absolute.  It must
+be one of these two values.</div></blockquote>
+<p><strong>quiet</strong> (bool, default=False)</p>
+<blockquote>
+<div>If True, do not print as much information from the LevMar class
+instance.</div></blockquote>
+</div></blockquote>
+<p><strong>example</strong> (from test_Fitter):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">d</span><span class="o">=</span><span class="n">Data</span><span class="p">()</span>
+<span class="n">d</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;icp_tr_diff.report&quot;</span><span class="p">)</span>
+<span class="n">ftr</span><span class="o">=</span><span class="n">Fitter</span><span class="p">(</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        dicp_mod = a0 + a1*sign(dt)*(1-(1+(abs(dt/u0))^x0)/(1+(abs(dt/u1))^x1))</span>
+<span class="sd">    &quot;&quot;&quot;</span><span class="p">,</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        a0 0       include lower_limit=-1   upper_limit=1</span>
+<span class="sd">        a1 6e-3    include lower_limit=1e-8 upper_limit=1</span>
+<span class="sd">        u0 2.3e-10 include lower_limit=1e-12</span>
+<span class="sd">        u1 2.3e-10 include lower_limit=1e-12</span>
+<span class="sd">        x0 1.05    include lower_limit=1</span>
+<span class="sd">        x1 1.05    include lower_limit=1</span>
+<span class="sd">    &quot;&quot;&quot;</span><span class="p">,</span>
+    <span class="n">meast_col</span><span class="o">=</span><span class="s2">&quot;dicp&quot;</span><span class="p">,</span>
+    <span class="n">model_col</span><span class="o">=</span><span class="s2">&quot;dicp_mod&quot;</span><span class="p">,</span>
+    <span class="n">error_col</span><span class="o">=</span><span class="s2">&quot;residual&quot;</span><span class="p">,</span>
+    <span class="n">residual</span><span class="o">=</span><span class="s2">&quot;relative&quot;</span><span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">d</span>
+<span class="p">)</span>
+<span class="n">ftr</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ftr</span><span class="o">.</span><span class="n">par_values</span><span class="p">())</span>
+<span class="n">DataViewm</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">d</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="p">[[</span><span class="s2">&quot;dt residual&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;dt dicp dicp_mod&quot;</span><span class="p">]])</span>
+</pre></div>
+</div>
+<p><strong>public methods</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>public methods from <em>ItclObjectx</em></li>
+</ul>
+</div></blockquote>
+<dl class="method">
+<dt id="decida.Fitter.Fitter.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.Fitter.Fitter.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>fit the meast_col data to model equations.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>A LevMar instance is created and used to fit the meast_col
+data to the specified model equations.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Fitter.Fitter.model_function">
+<code class="descname">model_function</code><span class="sig-paren">(</span><em>parobj</em>, <em>datobj</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.Fitter.Fitter.model_function" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="decida.Fitter.Fitter.par_name_values">
+<code class="descname">par_name_values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.Fitter.Fitter.par_name_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>return array of parameter name, value</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>An array of the values of the parameters is returned.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Fitter.Fitter.par_object">
+<code class="descname">par_object</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.Fitter.Fitter.par_object" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="decida.Fitter.Fitter.par_reset">
+<code class="descname">par_reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.Fitter.Fitter.par_reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>reset parameter values to initial values</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>parameters are set to initial values</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Fitter.Fitter.par_values">
+<code class="descname">par_values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.Fitter.Fitter.par_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>return the current model parameter values.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>A list of the values of the parameters is returned.  The
+parameter values are in the same order as they were specified.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="EquationParser.html"
+                        title="previous chapter">EquationParser</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="FormulaCalculator.html"
+                        title="next chapter">FormulaCalculator</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/Fitter.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="FormulaCalculator.html" title="FormulaCalculator"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="EquationParser.html" title="EquationParser"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">decida 1.1.3 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="decida_classes.html" ><strong>DeCiDa classes</strong></a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2013, Richard Booth.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

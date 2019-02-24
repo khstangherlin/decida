@@ -1,0 +1,21 @@
+* hartley oscillator
+
+q1  c b e nq
+r1  vcc b 100k
+r2  b   0 10k
+l3  vcc c 0.25m
+r4  e   0 0.5k
+ce  e   0 100u
+
+cb  z   b 1u
+cc  x   c 1u
+cf  x   z 0.2u
+lt  x   0 50u
+lb  0   z 50u
+k1  lt  lb 0.99
+vcc vcc 0 10 pulse 15 10 0 0 0 1
+
+.model nq npn is=1e-16 bf=100 rc=10
+.tran 150n 2000u
+
+.end

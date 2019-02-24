@@ -1,0 +1,18 @@
+**Basic DeCiDa functions**
+==========================
+importing::
+
+   import decida
+   from decida import *
+
+.. toctree::
+   :maxdepth: 2
+
+   baseconvert
+   interpolate
+   multiline
+   range_sample
+   readfile2list
+   spice_value
+   syscall
+   writelist2file

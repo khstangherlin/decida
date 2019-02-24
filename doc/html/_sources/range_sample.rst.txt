@@ -1,0 +1,3 @@
+range_sample
+------------
+.. autofunction:: decida.range_sample

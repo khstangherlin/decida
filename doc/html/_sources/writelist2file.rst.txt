@@ -1,0 +1,3 @@
+writelist2file
+--------------
+.. autofunction:: decida.writelist2file

@@ -1,0 +1,36 @@
+**Setting-up and using DeCiDa (UC Berkeley NGspice Users)**
+===========================================================
+
+First-time setup for UC Berkeley NGspice Users
+----------------------------------------------
+
+The application are found in the python bin directory, after 
+installation (which or whence python to find the bin directory).
+These should be in the path so that simply typing an appication name,
+(calc, for example) should run the application.
+
+The pre-installed tool wrappers are in the distribution
+./etc/wrappers directory.  These are installed to ~/.DeCiDa/bin
+
+These are the two example projects.  The project drive is where NGspice is launched.  The scratch drive
+is where DeCiDa writes simulation data.
+
++-----------+--------------+-------------+--------------------------------+------------------------------------+
+| project:  | technology:  | simulator:  | project_drive:                 | scratch_drive:                     |
++===========+==============+=============+================================+====================================+
+| bird      | ptm_130nm    | NGspice     | ~/.DeCiDa/projects/bird        | ~/.DeCiDa/projects/bird/scratch    |
++-----------+--------------+-------------+--------------------------------+------------------------------------+
+| trane     | ptm_45nm     | NGspice     | ~/.DeCiDa/projects/trane       | ~/.DeCiDa/projects/trane/scratch   |
++-----------+--------------+-------------+--------------------------------+------------------------------------+
+
+Generate a netlist and run simulation
+-------------------------------------
+
+* Generate a spice netlist manually.
+
+* Run ngsp (NGspice GUI)
+
+* File->Read NGspice circuit file
+
+* Simulate/Plot
+   

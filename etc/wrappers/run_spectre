@@ -1,0 +1,27 @@
+#!/bin/bash
+################################################################################
+# NAME     : run_spectre
+# PURPOSE  : spectre wrapper script
+# AUTHOR   : Richard Booth
+# DATE     : Sat Nov  9 11:11:32 2013
+# -----------------------------------------------------------------------------
+# NOTES    : 
+################################################################################
+spectre=/tools/cds/bin/spectre
+project=generic
+quiet=0
+arglist=""
+while [ $# -gt 0 ]; do
+    arg=$1; shift 1
+    case $arg in
+        -project) project=$1; shift 1;;
+        -quiet)   quiet=1;;
+        -verbose) quiet=0;;
+        *) arglist="$arglist $arg";;
+    esac
+done
+if [ $quiet = 1 ]; then
+    nohup nice $spectre $arglist > /dev/null
+else
+    nice $spectre $arglist
+fi

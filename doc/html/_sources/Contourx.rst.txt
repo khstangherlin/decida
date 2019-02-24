@@ -1,0 +1,7 @@
+Contourx
+--------
+.. image:: _static/Contourx.jpg
+.. autoclass:: decida.Contourx.Contourx
+    :members:
+    :undoc-members:
+    :show-inheritance:

@@ -1,0 +1,15 @@
+* test
+v1 1 0 sin 0.5 0.5 4e9
+r1 1 2 1
+r2 2 3 1
+r3 3 4 1
+r4 4 5 1
+r5 5 6 1
+r6 6 7 1
+r7 7 8 1
+r8 8 9 1
+r9 9 0 1
+.tran 0.1n 1n
+.probe tran v(1) v(2) v(3) v(4) v(5) v(6) v(7) v(8) v(9) i(v1) 
+.option probe post=2
+.end

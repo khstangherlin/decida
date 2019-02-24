@@ -1,0 +1,636 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Document string from the mpfit module &#8212; decida 1.1.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.1.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Original FORTRAN documentation" href="LevMar_minpack.html" />
+    <link rel="prev" title="LevMar" href="LevMar.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="LevMar_minpack.html" title="Original FORTRAN documentation"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="LevMar.html" title="LevMar"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">decida 1.1.3 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="decida_classes.html" ><strong>DeCiDa classes</strong></a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="LevMar.html" accesskey="U">LevMar</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="document-string-from-the-mpfit-module">
+<h1>Document string from the <em>mpfit</em> module<a class="headerlink" href="#document-string-from-the-mpfit-module" title="Permalink to this headline">¶</a></h1>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">Perform Levenberg-Marquardt least-squares minimization, based on MINPACK-1.</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line-block">
+<div class="line">AUTHORS</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">The original version of this software, called LMFIT, was written in FORTRAN</div>
+<div class="line">as part of the MINPACK-1 package by XXX.</div>
+<div class="line"><br /></div>
+<div class="line">Craig Markwardt converted the FORTRAN code to IDL.  The information for the</div>
+<div class="line">IDL version is:</div>
+<div class="line-block">
+<div class="line">Craig B. Markwardt, NASA/GSFC Code 662, Greenbelt, MD 20770</div>
+<div class="line"><a class="reference external" href="mailto:craigm&#37;&#52;&#48;lheamail&#46;gsfc&#46;nasa&#46;gov">craigm<span>&#64;</span>lheamail<span>&#46;</span>gsfc<span>&#46;</span>nasa<span>&#46;</span>gov</a></div>
+<div class="line">UPDATED VERSIONs can be found on my WEB PAGE:</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://cow.physics.wisc.edu/~craigm/idl/idl.html">http://cow.physics.wisc.edu/~craigm/idl/idl.html</a></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="line">Mark Rivers created this Python version from Craig&#8217;s IDL version.</div>
+<div class="line-block">
+<div class="line">Mark Rivers, University of Chicago</div>
+<div class="line">Building 434A, Argonne National Laboratory</div>
+<div class="line">9700 South Cass Avenue, Argonne, IL 60439</div>
+<div class="line"><a class="reference external" href="mailto:rivers&#37;&#52;&#48;cars&#46;uchicago&#46;edu">rivers<span>&#64;</span>cars<span>&#46;</span>uchicago<span>&#46;</span>edu</a></div>
+<div class="line">Updated versions can be found at <a class="reference external" href="http://cars.uchicago.edu/software">http://cars.uchicago.edu/software</a></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="line">Sergey Koposov converted the Mark&#8217;s Python version from Numeric to numpy</div>
+<div class="line-block">
+<div class="line">Sergey Koposov, Max Planck Institute for Astronomy</div>
+<div class="line">Heidelberg, Germany, D-69117</div>
+<div class="line"><a class="reference external" href="mailto:koposov&#37;&#52;&#48;mpia&#46;de">koposov<span>&#64;</span>mpia<span>&#46;</span>de</a></div>
+<div class="line">Updated versions can be found at <a class="reference external" href="http://code.google.com/p/astrolibpy/source/browse/trunk/">http://code.google.com/p/astrolibpy/source/browse/trunk/</a></div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">DESCRIPTION</div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="line">MPFIT uses the Levenberg-Marquardt technique to solve the</div>
+<div class="line">least-squares problem.  In its typical use, MPFIT will be used to</div>
+<div class="line">fit a user-supplied function (the &#8220;model&#8221;) to user-supplied data</div>
+<div class="line">points (the &#8220;data&#8221;) by adjusting a set of parameters.  MPFIT is</div>
+<div class="line">based upon MINPACK-1 (LMDIF.F) by More&#8217; and collaborators.</div>
+<div class="line"><br /></div>
+<div class="line">For example, a researcher may think that a set of observed data</div>
+<div class="line">points is best modelled with a Gaussian curve.  A Gaussian curve is</div>
+<div class="line">parameterized by its mean, standard deviation and normalization.</div>
+<div class="line">MPFIT will, within certain constraints, find the set of parameters</div>
+<div class="line">which best fits the data.  The fit is &#8220;best&#8221; in the least-squares</div>
+<div class="line">sense; that is, the sum of the weighted squared differences between</div>
+<div class="line">the model and data is minimized.</div>
+<div class="line"><br /></div>
+<div class="line">The Levenberg-Marquardt technique is a particular strategy for</div>
+<div class="line">iteratively searching for the best fit.  This particular</div>
+<div class="line">implementation is drawn from MINPACK-1 (see NETLIB), and is much faster</div>
+<div class="line">and more accurate than the version provided in the Scientific Python package</div>
+<div class="line">in Scientific.Functions.LeastSquares.</div>
+<div class="line">This version allows upper and lower bounding constraints to be placed on each</div>
+<div class="line">parameter, or the parameter can be held fixed.</div>
+<div class="line"><br /></div>
+<div class="line">The user-supplied Python function should return an array of weighted</div>
+<div class="line">deviations between model and data.  In a typical scientific problem</div>
+<div class="line">the residuals should be weighted so that each deviate has a</div>
+<div class="line">gaussian sigma of 1.0.  If X represents values of the independent</div>
+<div class="line">variable, Y represents a measurement for each value of X, and ERR</div>
+<div class="line">represents the error in the measurements, then the deviates could</div>
+<div class="line">be calculated as follows:</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">DEVIATES = (Y - F(X)) / ERR</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">where F is the analytical function representing the model.  You are</div>
+<div class="line">recommended to use the convenience functions MPFITFUN and</div>
+<div class="line">MPFITEXPR, which are driver functions that calculate the deviates</div>
+<div class="line">for you.  If ERR are the 1-sigma uncertainties in Y, then</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">TOTAL( DEVIATES^2 )</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">will be the total chi-squared value.  MPFIT will minimize the</div>
+<div class="line">chi-square value.  The values of X, Y and ERR are passed through</div>
+<div class="line">MPFIT to the user-supplied function via the FUNCTKW keyword.</div>
+<div class="line"><br /></div>
+<div class="line">Simple constraints can be placed on parameter values by using the</div>
+<div class="line">PARINFO keyword to MPFIT.  See below for a description of this</div>
+<div class="line">keyword.</div>
+<div class="line"><br /></div>
+<div class="line">MPFIT does not perform more general optimization tasks.  See TNMIN</div>
+<div class="line">instead.  MPFIT is customized, based on MINPACK-1, to the</div>
+<div class="line">least-squares minimization problem.</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">USER FUNCTION</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">The user must define a function which returns the appropriate</div>
+<div class="line">values as specified above.  The function should return the weighted</div>
+<div class="line">deviations between the model and the data.  It should also return a status</div>
+<div class="line">flag and an optional partial derivative array.  For applications which</div>
+<div class="line">use finite-difference derivatives &#8211; the default &#8211; the user</div>
+<div class="line">function should be declared in the following way:</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">def myfunct(p, fjac=None, x=None, y=None, err=None)</div>
+<div class="line-block">
+<div class="line"># Parameter values are passed in &#8220;p&#8221;</div>
+<div class="line"># If fjac==None then partial derivatives should not be</div>
+<div class="line"># computed.  It will always be None if MPFIT is called with default</div>
+<div class="line"># flag.</div>
+<div class="line">model = F(x, p)</div>
+<div class="line"># Non-negative status value means MPFIT should continue, negative means</div>
+<div class="line"># stop the calculation.</div>
+<div class="line">status = 0</div>
+<div class="line">return([status, (y-model)/err]</div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="line">See below for applications with analytical derivatives.</div>
+<div class="line"><br /></div>
+<div class="line">The keyword parameters X, Y, and ERR in the example above are</div>
+<div class="line">suggestive but not required.  Any parameters can be passed to</div>
+<div class="line">MYFUNCT by using the functkw keyword to MPFIT.  Use MPFITFUN and</div>
+<div class="line">MPFITEXPR if you need ideas on how to do that.  The function <em>must</em></div>
+<div class="line">accept a parameter list, P.</div>
+<div class="line"><br /></div>
+<div class="line">In general there are no restrictions on the number of dimensions in</div>
+<div class="line">X, Y or ERR.  However the deviates <em>must</em> be returned in a</div>
+<div class="line">one-dimensional Numeric array of type Float.</div>
+<div class="line"><br /></div>
+<div class="line">User functions may also indicate a fatal error condition using the</div>
+<div class="line">status return described above. If status is set to a number between</div>
+<div class="line">-15 and -1 then MPFIT will stop the calculation and return to the caller.</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">ANALYTIC DERIVATIVES</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">In the search for the best-fit solution, MPFIT by default</div>
+<div class="line">calculates derivatives numerically via a finite difference</div>
+<div class="line">approximation.  The user-supplied function need not calculate the</div>
+<div class="line">derivatives explicitly.  However, if you desire to compute them</div>
+<div class="line">analytically, then the AUTODERIVATIVE=0 keyword must be passed to MPFIT.</div>
+<div class="line">As a practical matter, it is often sufficient and even faster to allow</div>
+<div class="line">MPFIT to calculate the derivatives numerically, and so</div>
+<div class="line">AUTODERIVATIVE=0 is not necessary.</div>
+<div class="line"><br /></div>
+<div class="line">If AUTODERIVATIVE=0 is used then the user function must check the parameter</div>
+<div class="line">FJAC, and if FJAC!=None then return the partial derivative array in the</div>
+<div class="line">return list.</div>
+<div class="line-block">
+<div class="line">def myfunct(p, fjac=None, x=None, y=None, err=None)</div>
+<div class="line-block">
+<div class="line"># Parameter values are passed in &#8220;p&#8221;</div>
+<div class="line"># If FJAC!=None then partial derivatives must be comptuer.</div>
+<div class="line"># FJAC contains an array of len(p), where each entry</div>
+<div class="line"># is 1 if that parameter is free and 0 if it is fixed.</div>
+<div class="line">model = F(x, p)</div>
+<div class="line">Non-negative status value means MPFIT should continue, negative means</div>
+<div class="line"># stop the calculation.</div>
+<div class="line">status = 0</div>
+<div class="line">if (dojac):</div>
+<div class="line-block">
+<div class="line">pderiv = zeros([len(x), len(p)], Float)</div>
+<div class="line">for j in range(len(p)):</div>
+<div class="line-block">
+<div class="line">pderiv[:,j] = FGRAD(x, p, j)</div>
+</div>
+</div>
+<div class="line">else:</div>
+<div class="line-block">
+<div class="line">pderiv = None</div>
+</div>
+<div class="line">return([status, (y-model)/err, pderiv]</div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="line">where FGRAD(x, p, i) is a user function which must compute the</div>
+<div class="line">derivative of the model with respect to parameter P[i] at X.  When</div>
+<div class="line">finite differencing is used for computing derivatives (ie, when</div>
+<div class="line">AUTODERIVATIVE=1), or when MPFIT needs only the errors but not the</div>
+<div class="line">derivatives the parameter FJAC=None.</div>
+<div class="line"><br /></div>
+<div class="line">Derivatives should be returned in the PDERIV array. PDERIV should be an m x</div>
+<div class="line">n array, where m is the number of data points and n is the number</div>
+<div class="line">of parameters.  dp[i,j] is the derivative at the ith point with</div>
+<div class="line">respect to the jth parameter.</div>
+<div class="line"><br /></div>
+<div class="line">The derivatives with respect to fixed parameters are ignored; zero</div>
+<div class="line">is an appropriate value to insert for those derivatives.  Upon</div>
+<div class="line">input to the user function, FJAC is set to a vector with the same</div>
+<div class="line">length as P, with a value of 1 for a parameter which is free, and a</div>
+<div class="line">value of zero for a parameter which is fixed (and hence no</div>
+<div class="line">derivative needs to be calculated).</div>
+<div class="line"><br /></div>
+<div class="line">If the data is higher than one dimensional, then the <em>last</em></div>
+<div class="line">dimension should be the parameter dimension.  Example: fitting a</div>
+<div class="line">50x50 image, &#8220;dp&#8221; should be 50x50xNPAR.</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">CONSTRAINING PARAMETER VALUES WITH THE PARINFO KEYWORD</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">The behavior of MPFIT can be modified with respect to each</div>
+<div class="line">parameter to be fitted.  A parameter value can be fixed; simple</div>
+<div class="line">boundary constraints can be imposed; limitations on the parameter</div>
+<div class="line">changes can be imposed; properties of the automatic derivative can</div>
+<div class="line">be modified; and parameters can be tied to one another.</div>
+<div class="line"><br /></div>
+<div class="line">These properties are governed by the PARINFO structure, which is</div>
+<div class="line">passed as a keyword parameter to MPFIT.</div>
+<div class="line"><br /></div>
+<div class="line">PARINFO should be a list of dictionaries, one list entry for each parameter.</div>
+<div class="line">Each parameter is associated with one element of the array, in</div>
+<div class="line">numerical order.  The dictionary can have the following keys</div>
+<div class="line">(none are required, keys are case insensitive):</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">&#8216;value&#8217; - the starting parameter value (but see the START_PARAMS</div>
+<div class="line-block">
+<div class="line">parameter for more information).</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">&#8216;fixed&#8217; - a boolean value, whether the parameter is to be held</div>
+<div class="line-block">
+<div class="line">fixed or not.  Fixed parameters are not varied by</div>
+<div class="line">MPFIT, but are passed on to MYFUNCT for evaluation.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">&#8216;limited&#8217; - a two-element boolean array.  If the first/second</div>
+<div class="line-block">
+<div class="line">element is set, then the parameter is bounded on the</div>
+<div class="line">lower/upper side.  A parameter can be bounded on both</div>
+<div class="line">sides.  Both LIMITED and LIMITS must be given</div>
+<div class="line">together.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">&#8216;limits&#8217; - a two-element float array.  Gives the</div>
+<div class="line-block">
+<div class="line">parameter limits on the lower and upper sides,</div>
+<div class="line">respectively.  Zero, one or two of these values can be</div>
+<div class="line">set, depending on the values of LIMITED.  Both LIMITED</div>
+<div class="line">and LIMITS must be given together.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">&#8216;parname&#8217; - a string, giving the name of the parameter.  The</div>
+<div class="line-block">
+<div class="line">fitting code of MPFIT does not use this tag in any</div>
+<div class="line">way.  However, the default iterfunct will print the</div>
+<div class="line">parameter name if available.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">&#8216;step&#8217; - the step size to be used in calculating the numerical</div>
+<div class="line-block">
+<div class="line">derivatives.  If set to zero, then the step size is</div>
+<div class="line">computed automatically.  Ignored when AUTODERIVATIVE=0.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">&#8216;mpside&#8217; - the sidedness of the finite difference when computing</div>
+<div class="line-block">
+<div class="line-block">
+<div class="line">numerical derivatives.  This field can take four</div>
+<div class="line">values:</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line-block">
+<div class="line">0 - one-sided derivative computed automatically</div>
+<div class="line">1 - one-sided derivative (f(x+h) - f(x)  )/h</div>
+</div>
+<div class="line">-1 - one-sided derivative (f(x)   - f(x-h))/h</div>
+<div class="line-block">
+<div class="line">2 - two-sided derivative (f(x+h) - f(x-h))/(2*h)</div>
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="line">Where H is the STEP parameter described above.  The</div>
+<div class="line">&#8220;automatic&#8221; one-sided derivative method will chose a</div>
+<div class="line">direction for the finite difference which does not</div>
+<div class="line">violate any constraints.  The other methods do not</div>
+<div class="line">perform this check.  The two-sided method is in</div>
+<div class="line">principle more precise, but requires twice as many</div>
+<div class="line">function evaluations.  Default: 0.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">&#8216;mpmaxstep&#8217; - the maximum change to be made in the parameter</div>
+<div class="line-block">
+<div class="line">value.  During the fitting process, the parameter</div>
+<div class="line">will never be changed by more than this value in</div>
+<div class="line">one iteration.</div>
+<div class="line"><br /></div>
+<div class="line">A value of 0 indicates no maximum.  Default: 0.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">&#8216;tied&#8217; - a string expression which &#8220;ties&#8221; the parameter to other</div>
+<div class="line-block">
+<div class="line">free or fixed parameters.  Any expression involving</div>
+<div class="line">constants and the parameter array P are permitted.</div>
+<div class="line">Example: if parameter 2 is always to be twice parameter</div>
+<div class="line">1 then use the following: parinfo(2).tied = &#8216;2 * p(1)&#8217;.</div>
+<div class="line">Since they are totally constrained, tied parameters are</div>
+<div class="line">considered to be fixed; no errors are computed for them.</div>
+<div class="line">[ NOTE: the PARNAME can&#8217;t be used in expressions. ]</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">&#8216;mpprint&#8217; - if set to 1, then the default iterfunct will print the</div>
+<div class="line-block">
+<div class="line">parameter value.  If set to 0, the parameter value</div>
+<div class="line">will not be printed.  This tag can be used to</div>
+<div class="line">selectively print only a few parameter values out of</div>
+<div class="line">many.  Default: 1 (all parameters printed)</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="line">Future modifications to the PARINFO structure, if any, will involve</div>
+<div class="line">adding dictionary tags beginning with the two letters &#8220;MP&#8221;.</div>
+<div class="line">Therefore programmers are urged to avoid using tags starting with</div>
+<div class="line">the same letters; otherwise they are free to include their own</div>
+<div class="line">fields within the PARINFO structure, and they will be ignored.</div>
+<div class="line"><br /></div>
+<div class="line">PARINFO Example:</div>
+<div class="line">parinfo = [{&#8216;value&#8217;:0., &#8216;fixed&#8217;:0, &#8216;limited&#8217;:[0,0], &#8216;limits&#8217;:[0.,0.]}</div>
+<div class="line-block">
+<div class="line">for i in range(5)]</div>
+</div>
+<div class="line">parinfo[0][&#8216;fixed&#8217;] = 1</div>
+<div class="line">parinfo[4][&#8216;limited&#8217;][0] = 1</div>
+<div class="line">parinfo[4][&#8216;limits&#8217;][0]  = 50.</div>
+<div class="line">values = [5.7, 2.2, 500., 1.5, 2000.]</div>
+<div class="line">for i in range(5): parinfo[i][&#8216;value&#8217;]=values[i]</div>
+<div class="line"><br /></div>
+<div class="line">A total of 5 parameters, with starting values of 5.7,</div>
+<div class="line">2.2, 500, 1.5, and 2000 are given.  The first parameter</div>
+<div class="line">is fixed at a value of 5.7, and the last parameter is</div>
+<div class="line">constrained to be above 50.</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line-block">
+<div class="line">EXAMPLE</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">import mpfit</div>
+<div class="line">import numpy.oldnumeric as Numeric</div>
+<div class="line">x = arange(100, float)</div>
+<div class="line">p0 = [5.7, 2.2, 500., 1.5, 2000.]</div>
+<div class="line">y = ( p[0] + p[1]*[x] + p[2]*[x**2] + p[3]*sqrt(x) +</div>
+<div class="line-block">
+<div class="line">p[4]*log(x))</div>
+</div>
+<div class="line">fa = {&#8216;x&#8217;:x, &#8216;y&#8217;:y, &#8216;err&#8217;:err}</div>
+<div class="line">m = mpfit(&#8216;myfunct&#8217;, p0, functkw=fa)</div>
+<div class="line">print &#8216;status = &#8216;, m.status</div>
+<div class="line">if (m.status &lt;= 0): print &#8216;error message = &#8216;, m.errmsg</div>
+<div class="line">print &#8216;parameters = &#8216;, m.params</div>
+<div class="line"><br /></div>
+<div class="line">Minimizes sum of squares of MYFUNCT.  MYFUNCT is called with the X,</div>
+<div class="line">Y, and ERR keyword parameters that are given by FUNCTKW.  The</div>
+<div class="line">results can be obtained from the returned object m.</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">THEORY OF OPERATION</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">There are many specific strategies for function minimization.  One</div>
+<div class="line">very popular technique is to use function gradient information to</div>
+<div class="line">realize the local structure of the function.  Near a local minimum</div>
+<div class="line">the function value can be taylor expanded about x0 as follows:</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line-block">
+<div class="line">f(x) = f(x0) + f&#8217;(x0) . (x-x0) + (1/2) (x-x0) . f&#8217;&#8216;(x0) . (x-x0)</div>
+<div class="line-block">
+<div class="line">&#8212;&#8211;   &#8212;&#8212;&#8212;&#8212;&#8212;   &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-  (1)</div>
+</div>
+</div>
+<div class="line">Order  0th       1st                     2nd</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">Here f&#8217;(x) is the gradient vector of f at x, and f&#8217;&#8216;(x) is the</div>
+<div class="line">Hessian matrix of second derivatives of f at x.  The vector x is</div>
+<div class="line">the set of function parameters, not the measured data vector.  One</div>
+<div class="line">can find the minimum of f, f(xm) using Newton&#8217;s method, and</div>
+<div class="line">arrives at the following linear equation:</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">f&#8217;&#8216;(x0) . (xm-x0) = - f&#8217;(x0)                          (2)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">If an inverse can be found for f&#8217;&#8216;(x0) then one can solve for</div>
+<div class="line">(xm-x0), the step vector from the current position x0 to the new</div>
+<div class="line">projected minimum.  Here the problem has been linearized (ie, the</div>
+<div class="line">gradient information is known to first order).  f&#8217;&#8216;(x0) is</div>
+<div class="line">symmetric n x n matrix, and should be positive definite.</div>
+<div class="line"><br /></div>
+<div class="line">The Levenberg - Marquardt technique is a variation on this theme.</div>
+<div class="line">It adds an additional diagonal term to the equation which may aid the</div>
+<div class="line">convergence properties:</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">(f&#8217;&#8216;(x0) + nu I) . (xm-x0) = -f&#8217;(x0)                (2a)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">where I is the identity matrix.  When nu is large, the overall</div>
+<div class="line">matrix is diagonally dominant, and the iterations follow steepest</div>
+<div class="line">descent.  When nu is small, the iterations are quadratically</div>
+<div class="line">convergent.</div>
+<div class="line"><br /></div>
+<div class="line">In principle, if f&#8217;&#8216;(x0) and f&#8217;(x0) are known then xm-x0 can be</div>
+<div class="line">determined.  However the Hessian matrix is often difficult or</div>
+<div class="line">impossible to compute.  The gradient f&#8217;(x0) may be easier to</div>
+<div class="line">compute, if even by finite difference techniques.  So-called</div>
+<div class="line">quasi-Newton techniques attempt to successively estimate f&#8217;&#8216;(x0)</div>
+<div class="line">by building up gradient information as the iterations proceed.</div>
+<div class="line"><br /></div>
+<div class="line">In the least squares problem there are further simplifications</div>
+<div class="line">which assist in solving eqn (2).  The function to be minimized is</div>
+<div class="line">a sum of squares:</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">f = Sum(hi^2)                                         (3)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">where hi is the ith residual out of m residuals as described</div>
+<div class="line">above.  This can be substituted back into eqn (2) after computing</div>
+<div class="line">the derivatives:</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">f&#8217;  = 2 Sum(hi  hi&#8217;)</div>
+<div class="line">f&#8217;&#8217; = 2 Sum(hi&#8217; hj&#8217;) + 2 Sum(hi hi&#8217;&#8216;)                (4)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">If one assumes that the parameters are already close enough to a</div>
+<div class="line">minimum, then one typically finds that the second term in f&#8217;&#8217; is</div>
+<div class="line">negligible [or, in any case, is too difficult to compute].  Thus,</div>
+<div class="line">equation (2) can be solved, at least approximately, using only</div>
+<div class="line">gradient information.</div>
+<div class="line"><br /></div>
+<div class="line">In matrix notation, the combination of eqns (2) and (4) becomes:</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">hT&#8217; . h&#8217; . dx = - hT&#8217; . h                         (5)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">Where h is the residual vector (length m), hT is its transpose, h&#8217;</div>
+<div class="line">is the Jacobian matrix (dimensions n x m), and dx is (xm-x0).  The</div>
+<div class="line">user function supplies the residual vector h, and in some cases h&#8217;</div>
+<div class="line">when it is not found by finite differences (see MPFIT_FDJAC2,</div>
+<div class="line">which finds h and hT&#8217;).  Even if dx is not the best absolute step</div>
+<div class="line">to take, it does provide a good estimate of the best <em>direction</em>,</div>
+<div class="line">so often a line minimization will occur along the dx vector</div>
+<div class="line">direction.</div>
+<div class="line"><br /></div>
+<div class="line">The method of solution employed by MINPACK is to form the Q . R</div>
+<div class="line">factorization of h&#8217;, where Q is an orthogonal matrix such that QT .</div>
+<div class="line">Q = I, and R is upper right triangular.  Using h&#8217; = Q . R and the</div>
+<div class="line">ortogonality of Q, eqn (5) becomes</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">(RT . QT) . (Q . R) . dx = - (RT . QT) . h</div>
+<div class="line-block">
+<div class="line">RT . R . dx = - RT . QT . h         (6)</div>
+<div class="line-block">
+<div class="line">R . dx = - QT . h</div>
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="line">where the last statement follows because R is upper triangular.</div>
+<div class="line">Here, R, QT and h are known so this is a matter of solving for dx.</div>
+<div class="line">The routine MPFIT_QRFAC provides the QR factorization of h, with</div>
+<div class="line">pivoting, and MPFIT_QRSOLV provides the solution for dx.</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">REFERENCES</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">MINPACK-1, Jorge More&#8217;, available from netlib (www.netlib.org).</div>
+<div class="line">&#8220;Optimization Software Guide,&#8221; Jorge More&#8217; and Stephen Wright,</div>
+<div class="line-block">
+<div class="line">SIAM, <em>Frontiers in Applied Mathematics</em>, Number 14.</div>
+</div>
+<div class="line">More&#8217;, Jorge J., &#8220;The Levenberg-Marquardt Algorithm:</div>
+<div class="line-block">
+<div class="line">Implementation and Theory,&#8221; in <em>Numerical Analysis</em>, ed. Watson,</div>
+<div class="line">G. A., Lecture Notes in Mathematics 630, Springer-Verlag, 1977.</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">MODIFICATION HISTORY</div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="line">Translated from MINPACK-1 in FORTRAN, Apr-Jul 1998, CM</div>
+</div>
+<div class="line">Copyright (C) 1997-2002, Craig Markwardt</div>
+<div class="line">This software is provided as is without any warranty whatsoever.</div>
+<div class="line">Permission to use, copy, modify, and distribute modified or</div>
+<div class="line">unmodified copies is granted, provided this copyright and disclaimer</div>
+<div class="line">are included unchanged.</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">Translated from MPFIT (Craig Markwardt&#8217;s IDL package) to Python,</div>
+<div class="line">August, 2002.  Mark Rivers</div>
+<div class="line">Converted from Numeric to numpy (Sergey Koposov, July 2008)</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="LevMar.html"
+                        title="previous chapter">LevMar</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="LevMar_minpack.html"
+                        title="next chapter">Original FORTRAN documentation</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/LevMar_mpfit.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="LevMar_minpack.html" title="Original FORTRAN documentation"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="LevMar.html" title="LevMar"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">decida 1.1.3 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="decida_classes.html" ><strong>DeCiDa classes</strong></a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="LevMar.html" >LevMar</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2013, Richard Booth.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

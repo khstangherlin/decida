@@ -1,0 +1,6 @@
+Itemizer
+--------
+.. autoclass:: decida.Itemizer.Itemizer
+    :members:
+    :undoc-members:
+    :show-inheritance:

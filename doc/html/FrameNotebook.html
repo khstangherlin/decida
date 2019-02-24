@@ -1,0 +1,316 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>FrameNotebook &#8212; decida 1.1.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.1.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="GetEntryDialog" href="GetEntryDialog.html" />
+    <link rel="prev" title="FormulaCalculator" href="FormulaCalculator.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="GetEntryDialog.html" title="GetEntryDialog"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="FormulaCalculator.html" title="FormulaCalculator"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">decida 1.1.3 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="decida_classes.html" accesskey="U"><strong>DeCiDa classes</strong></a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="framenotebook">
+<h1>FrameNotebook<a class="headerlink" href="#framenotebook" title="Permalink to this headline">¶</a></h1>
+<img alt="_images/FrameNotebook.jpg" src="_images/FrameNotebook.jpg" />
+<dl class="class">
+<dt id="decida.FrameNotebook.FrameNotebook">
+<em class="property">class </em><code class="descclassname">decida.FrameNotebook.</code><code class="descname">FrameNotebook</code><span class="sig-paren">(</span><em>parent=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.FrameNotebook.FrameNotebook" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ItclObjectx.html#decida.ItclObjectx.ItclObjectx" title="decida.ItclObjectx.ItclObjectx"><code class="xref py py-class docutils literal"><span class="pre">decida.ItclObjectx.ItclObjectx</span></code></a>, <code class="xref py py-class docutils literal"><span class="pre">Tkinter.Frame</span></code></p>
+<p><strong>synopsis</strong>:</p>
+<blockquote>
+<div><p>Tab-notebook widget.</p>
+<p><em>FrameNotebook</em> is a widget for packing other frames containing content
+in a tabbed-notebook.  Tabs and associated frames can be added
+after the notebook has been created.</p>
+<p><em>FrameNotebook</em> is used by <em>DataViewm</em> to organize the plots in a
+tabbed-notebook format.  It is also used to display <em>TextWindow</em> and
+<em>DataViewm</em> help information.</p>
+</div></blockquote>
+<p><strong>constructor arguments</strong>:</p>
+<blockquote>
+<div><p><strong>parent</strong> (tk handle, default=None)</p>
+<blockquote>
+<div>handle of frame or other widget to pack frame notebook in.
+if this is not specified, top-level is created.</div></blockquote>
+<p><strong>header</strong> (bool, default=True)</p>
+<blockquote>
+<div>if True, add quit/status line</div></blockquote>
+<p><strong>**kwargs</strong> (dict)</p>
+<blockquote>
+<div>configuration-options</div></blockquote>
+</div></blockquote>
+<p><strong>configuration options</strong>:</p>
+<blockquote>
+<div><p><strong>verbose</strong> (bool, default=False)</p>
+<blockquote>
+<div>enable/disable verbose mode</div></blockquote>
+<p><strong>tab_location</strong> (str, default=&#8221;top&#8221;)</p>
+<blockquote>
+<div>notebook tab location = top or right</div></blockquote>
+<p><strong>wait</strong> (bool, default=False)</p>
+<blockquote>
+<div>wait in main-loop until window is destroyed</div></blockquote>
+<p><strong>wait_to_display</strong> (bool, default=False)</p>
+<blockquote>
+<div>display only after wait (for help windows)</div></blockquote>
+</div></blockquote>
+<p><strong>example</strong>: (from test_FrameNotebook_1)</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">decida.FrameNotebook</span> <span class="k">import</span> <span class="n">FrameNotebook</span>
+<span class="kn">from</span> <span class="nn">decida.TextWindow</span> <span class="k">import</span> <span class="n">TextWindow</span>
+<span class="kn">from</span> <span class="nn">decida.XYplotm</span> <span class="k">import</span> <span class="n">XYplotm</span>
+<span class="kn">from</span> <span class="nn">decida.Data</span> <span class="k">import</span> <span class="n">Data</span>
+
+<span class="n">fn</span> <span class="o">=</span> <span class="n">FrameNotebook</span><span class="p">(</span><span class="n">tab_location</span><span class="o">=</span><span class="s2">&quot;top&quot;</span><span class="p">,</span> <span class="n">destroy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">tw</span> <span class="o">=</span> <span class="n">TextWindow</span><span class="p">(</span><span class="n">fn</span><span class="o">.</span><span class="n">new_page</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">))</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">Data</span><span class="p">()</span>
+<span class="n">d</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;LTspice_ac_ascii.raw&quot;</span><span class="p">)</span>
+<span class="n">XYplotm</span><span class="p">(</span><span class="n">fn</span><span class="o">.</span><span class="n">new_page</span><span class="p">(</span><span class="s2">&quot;plot&quot;</span><span class="p">),</span> <span class="n">command</span><span class="o">=</span><span class="p">[</span><span class="n">d</span><span class="p">,</span> <span class="s2">&quot;frequency DB(V(vout1)) PH(V(vout1))&quot;</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;AC analysis&quot;</span><span class="p">,</span> <span class="n">xaxis</span><span class="o">=</span><span class="s2">&quot;log&quot;</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=-</span><span class="mf">60.0</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">wait</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">fn</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="s2">&quot;waiting to add new page&quot;</span><span class="p">)</span>
+<span class="n">fn</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="s2">&quot;continue&quot;</span><span class="p">)</span>
+<span class="n">fn</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>public methods</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>public methods from <em>ItclObjectx</em></li>
+</ul>
+</div></blockquote>
+<dl class="method">
+<dt id="decida.FrameNotebook.FrameNotebook.current_tab">
+<code class="descname">current_tab</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.FrameNotebook.FrameNotebook.current_tab" title="Permalink to this definition">¶</a></dt>
+<dd><p>return current unique tabid.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>The current (visible) page tabid is returned.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.FrameNotebook.FrameNotebook.del_page">
+<code class="descname">del_page</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.FrameNotebook.FrameNotebook.del_page" title="Permalink to this definition">¶</a></dt>
+<dd><p>delete current page.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>The current page (tab/frame pair) are removed from the
+notebook.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.FrameNotebook.FrameNotebook.lift_tab">
+<code class="descname">lift_tab</code><span class="sig-paren">(</span><em>tabid</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.FrameNotebook.FrameNotebook.lift_tab" title="Permalink to this definition">¶</a></dt>
+<dd><p>display tab/page in the notebook.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>tabid</strong> (str)</p>
+<blockquote>
+<div>A unique tabid associated with a particular page.</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>The page associated with the tabid is raised (made visible).</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.FrameNotebook.FrameNotebook.new_page">
+<code class="descname">new_page</code><span class="sig-paren">(</span><em>name</em>, <em>lift=True</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.FrameNotebook.FrameNotebook.new_page" title="Permalink to this definition">¶</a></dt>
+<dd><p>return a new page frame, make new notebook tab.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>lift</strong> (bool, default=True)</p>
+<blockquote>
+<div>If lift is True, raise tab/frame after it is created.</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>A new page (tab/frame pair) is created and the handle to the
+associated tk Frame is returned.  This is used as a
+parent to pack new content in.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.FrameNotebook.FrameNotebook.relabel_current_tab">
+<code class="descname">relabel_current_tab</code><span class="sig-paren">(</span><em>label</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.FrameNotebook.FrameNotebook.relabel_current_tab" title="Permalink to this definition">¶</a></dt>
+<dd><p>set current tab label.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>label</strong> (str)</p>
+<blockquote>
+<div>text to re-label the current tab</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>The current tab is relabled with label.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.FrameNotebook.FrameNotebook.status">
+<code class="descname">status</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.FrameNotebook.FrameNotebook.status" title="Permalink to this definition">¶</a></dt>
+<dd><p>display status message.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>message</strong> (str)</p>
+<blockquote>
+<div>status message to display</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>message is displayed in the status bar of the FrameNotebook</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.FrameNotebook.FrameNotebook.tabs">
+<code class="descname">tabs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.FrameNotebook.FrameNotebook.tabs" title="Permalink to this definition">¶</a></dt>
+<dd><p>return list of tabids.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>list of existing tabids is returned.  A tabid can be used
+to refer to a particular tab/Frame pair.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.FrameNotebook.FrameNotebook.wait">
+<code class="descname">wait</code><span class="sig-paren">(</span><em>text=None</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.FrameNotebook.FrameNotebook.wait" title="Permalink to this definition">¶</a></dt>
+<dd><p>wait in main-loop until main window is destroyed.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>text</strong> (str, default=None)</p>
+<blockquote>
+<div>If text is specified, a button is displayed with the text
+in the button.  Clicking the button releases the application
+from the main event-loop.</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>If no text is displayed, then the application waits for the
+TextWindow instance to somehow be destroyed.  If text was
+specified, then the application waits until the button is
+clicked.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="FormulaCalculator.html"
+                        title="previous chapter">FormulaCalculator</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="GetEntryDialog.html"
+                        title="next chapter">GetEntryDialog</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/FrameNotebook.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="GetEntryDialog.html" title="GetEntryDialog"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="FormulaCalculator.html" title="FormulaCalculator"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">decida 1.1.3 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="decida_classes.html" ><strong>DeCiDa classes</strong></a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2013, Richard Booth.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

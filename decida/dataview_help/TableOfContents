@@ -1,0 +1,16 @@
+
+  dataview help
+
+  Table Of Contents:
+
+%% hyperhelp_link_frame {
+  {"Usage" Usage}
+  {"Menus and Buttons" DataviewMenus}
+  {"Plot Menus" PlotMenus}
+  {"Mouse Bindings" Mouse}
+  {"Zooming" Zoom}
+  {"Annotating Plot" Annotation}
+  {"Data Removal" DataRemoval}
+  {"Scripting Example" ScriptExample}
+  {"Equation Set" EquationSet}
+}%%

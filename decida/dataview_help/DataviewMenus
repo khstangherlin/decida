@@ -1,0 +1,127 @@
+
+  dataview help
+ 
+  dataview Menus and Buttons:
+
+  File MENU:
+   % Read Data File
+       display file browser to select data file to read
+   % Accept Data
+       working data set copied to main data set
+   % Restore Data
+       main data set copied to working data set
+   % Write column format
+       writes current working data set to a file in 
+       column-oriented (space-separated value) format
+   % Write comma-separated-value (csv) format
+       writes current working data set to a file in
+       comma-separated value format
+   % Write piece-wise-linear (pwl) format
+       writes current working data set to a file in piecewise-linear format
+   % Write VCSV-format
+       V comma-separated value format
+   % Re-order data
+       specify list of columns for re-ordering data set
+         in order of sorted first, sorted next, ...
+   % TextWindow
+       open a TextWindow to view the working data set
+   % Rename columns
+       rename some or all of the data columns
+   % Overlay all
+       (under development)
+   % Close Window
+       close dataview window, do not exit decida
+   % Exit Decida
+       exit decida
+
+  Analysis MENU:
+   % Statistics
+       print time,signal statistics
+   % Frequency/Duty-cycle
+       open new dataview window with duty-cycle, frequency, period
+       versus time.
+   % Edges: Rise/Fall/Slew
+       open new dataview window with edge statistics of current
+       signal.
+   % Periodic Time Average
+       average a signal over a specified period
+       can also use a triggering column to specify the periods
+   % FFT
+       Fourier transform.
+   % THD
+       Total Harmonic Distortion analysis
+   % Jitter
+       clock jitter calculation and dataview window with jitter vs time, etc.
+   % INL/DNL
+       Analog to Digital converter linearity analysis
+   % Eye-diagram
+       generate eye-diagram plot.
+   % Oscilloscope
+       generate oscilloscope plot.
+   % Low-Pass Filter
+       filter the current signal with a (single-pole) low-pass
+       filter.
+   % Moving Average Filter
+       filter the current signal with a moving-average filter.
+   % Linear Regression
+       generate a linear regression line of the current signal.
+   % Quadradic Regression
+       generate a quadradic regression line of the current signal.
+   % Exponential Regression
+       (under development)
+   % Fourier Expansion
+       calculate a Fourier expansion up to specified order and
+       generate the fitting curve.
+   % Histogram
+       plot a histogram of the current x-column.
+   % generate WAV file
+       generate a sound file in WAV format using the current signal.
+            
+  Operations MENU:
+   % Equation-Set
+       specify equation for old or new data column
+   % Analog to Digital
+       bus value column from of bus bit columns
+   % Add Delineator
+       delineator toggles value when other column changes value
+   % -x
+       negate x-column
+   % -y
+       negate y-column
+   % abs(x)
+       absolute value of x-column
+   % abs(y)
+       absolute value of y-column
+   % 1/y
+       inverse of y-column
+   % delta(x)
+       difference between adjacent x-column values
+   % dy/dx
+       differentiate y-column with respect to x-column
+   % integ(y dx)
+       integrate y-column with respect to x-column
+   % rescale/overlay
+       rescale the selected y-column and overlay on the current plot
+   % advance/delay
+       generate an advanced or delayed (in x-column) y-column
+ 
+  X: Y:
+   % select current x-column, XCOL and current y-column, YCOL
+
+  RED BUTTONS:
+   % Start
+       plots YCOL_vs_XCOL curve
+   % Overlay
+       plots YCOL_vs_XCOL curve on current plot, overlayed
+   % Stack
+       plots YCOL_vs_XCOL curve on current plot, stacked above last curve
+   % Next
+       starts new notebook page and plots YCOL_vs_XCOL curve
+   % Delete
+       deletes current notebook page
+
+  Calc Button:
+   % tk calculator
+
+  Help Button:
+   % opens help table of contents

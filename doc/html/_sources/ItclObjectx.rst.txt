@@ -1,0 +1,6 @@
+ItclObjectx
+-----------
+.. autoclass:: decida.ItclObjectx.ItclObjectx
+    :members:
+    :undoc-members:
+    :show-inheritance:

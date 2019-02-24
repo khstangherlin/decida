@@ -1,0 +1,7 @@
+FormulaCalculator
+-----------------
+.. image:: _static/FormulaCalculator.jpg
+.. autoclass:: decida.FormulaCalculator.FormulaCalculator
+    :members:
+    :undoc-members:
+    :show-inheritance:

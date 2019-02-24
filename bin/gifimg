@@ -1,0 +1,74 @@
+#!/usr/bin/env python
+###############################################################################
+# NAME     : gifimg
+# PURPOSE  : create embedded gif image class
+# AUTHOR   : Richard Booth, modified from script by Bill Allen
+# DATE     : Sat Feb  2 15:35:30 2013
+# ----------------------------------------------------------------------------
+# NOTES    : 
+#   * modified from img2pytk.py - imageEmbedder 1.0 - 26 Feb 01
+#     Update at http://www.3dartist.com/WP/python/pynotes.htm#img2pytk
+#     Created by Bill Allen <dempy@3dartist.com>
+#     For more about Tkinter scripting, visit
+#     http://www.3dartist.com/WP/python/pynotes.htm#tkint
+###############################################################################
+import sys
+import os
+import os.path
+import binascii
+import stat
+import tkinter as tk
+import decida
+
+template = """#!/usr/bin/env python
+import tkinter as tk
+class $CLASS(tk.Frame) :
+    def __init__(self, master=None) :
+        tk.Frame.__init__(self, master=master, class_ = "$CLASS")
+        self.img=tk.PhotoImage(format='$FORMAT')
+        self.lab=tk.Label(self, image=self.img, bd=2, relief="raised")
+        self.lab.pack()
+        self.img["data"] = (
+            $DATA
+        )
+if __name__ == "__main__" :
+    root = tk.Tk()
+    img = $CLASS()
+    img.pack()
+    root.mainloop()
+"""
+#-------------------------------------------------------------------------------
+# NAME : MakeImage
+#-------------------------------------------------------------------------------
+def makeImage(gif_file):
+    root, ext = os.path.splitext(os.path.basename(gif_file))
+    ext = ext.lower()
+    if not ext in (".gif") :
+        print "makeImage requires .gif format file"
+        exit()
+    outFile = "Img_%s.py" % root
+    f = open(gif_file,'rb')
+    lines = []
+    while 1:
+        b = f.read(45)
+        if not b:
+            break
+        lines.append("\"%s\"" % (binascii.b2a_base64(b)[0:-1]))
+    f.close()
+    CLASS   = "Img_%s" % (root)
+    FORMAT  = ext[1:]
+    DATA    = "\n            ".join(lines)
+    olines  = decida.interpolate(template)
+    outfile = "%s.py" % (CLASS)
+    f = open(outfile,'w')
+    f.write("%s" % (olines))
+    f.close()
+    os.chmod(outfile, stat.S_IXUSR | stat.S_IRUSR | stat.S_IWUSR)
+#-------------------------------------------------------------------------------
+# MAIN :
+#-------------------------------------------------------------------------------
+if len(sys.argv) < 2 :
+    print "usage: gifimg <gif_file>"
+    exit()
+gif_file = sys.argv[1]
+makeImage(gif_file)

@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>spice_value &#8212; decida 1.1.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.1.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="syscall" href="syscall.html" />
+    <link rel="prev" title="readfile2list" href="readfile2list.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="syscall.html" title="syscall"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="readfile2list.html" title="readfile2list"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">decida 1.1.3 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="decida_basic.html" accesskey="U"><strong>Basic DeCiDa functions</strong></a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="spice-value">
+<h1>spice_value<a class="headerlink" href="#spice-value" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="decida.spice_value">
+<code class="descclassname">decida.</code><code class="descname">spice_value</code><span class="sig-paren">(</span><em>val</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.spice_value" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>synopsis</strong>:</p>
+<blockquote>
+<div>Return a numeric value, given a &#8220;Spice&#8221; value.</div></blockquote>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>val</strong> (str)</p>
+<blockquote>
+<div>number in &#8220;Spice&#8221; format
+(t, g, meg, k, m, u, n, p, f, a are scale factors)</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>return string in normal number format</li>
+<li>for parameterized values, no change</li>
+</ul>
+</div></blockquote>
+<p><strong>example</strong>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">decida</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;1.23GHz&quot;</span><span class="p">,</span> <span class="s2">&quot;1AC&quot;</span><span class="p">,</span> <span class="s2">&quot;1FF&quot;</span><span class="p">,</span> <span class="s2">&quot;1MEGOHM&quot;</span><span class="p">,</span> <span class="s2">&quot;1.2MV&quot;</span><span class="p">,</span> <span class="s2">&quot;23KOHM&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nb">print</span> <span class="n">num</span><span class="p">,</span> <span class="n">decida</span><span class="o">.</span><span class="n">spice_value</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+<span class="go">1.23GHz 1230000000.0</span>
+<span class="go">1AC 1e-18</span>
+<span class="go">1FF 1e-15</span>
+<span class="go">1MEGOHM 1000000.0</span>
+<span class="go">1.2MV 0.0012</span>
+<span class="go">23KOHM 23000.0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="readfile2list.html"
+                        title="previous chapter">readfile2list</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="syscall.html"
+                        title="next chapter">syscall</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/spice_value.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="syscall.html" title="syscall"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="readfile2list.html" title="readfile2list"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">decida 1.1.3 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="decida_basic.html" ><strong>Basic DeCiDa functions</strong></a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2013, Richard Booth.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,183 @@
+##############################################################################
+# NAME    : Makefile body
+# PURPOSE : Makefile body for synthesis project
+# AUTHOR  : Richard Booth
+# DATE    : Mon Oct 16 09:47:36 EDT 2006
+# ---------------------------------------------------------------------------
+# NOTES :
+#   * Makefile should first define:
+#     project-specific definitions:
+#       PROJ : project name
+#       CELL : synthesize cell name
+#       DEFS : specific verilog compiler defines (ex +define+OUTPUT)
+#     technology-specific definitions:
+#       TECH : technology name
+#       VLLIB: standard-cell library 
+##############################################################################
+#=============================================================================
+# tools and libraries:
+#=============================================================================
+.IGNORE:
+.INIT:
+.DONE:
+.FAILED:
+SHELL  = /bin/ksh
+RM     = /bin/rm -rf
+LESS   = /usr/bin/less
+CDSBIN = /tools/cds/bin
+NCS    = $(CDSBIN)/ncverilog +nc64bit +access+w -ams
+NCVLOG = $(CDSBIN)/ncvlog
+NCELAB = $(CDSBIN)/ncelab
+NCSIM  = $(CDSBIN)/ncsim
+NCSIMV = $(CDSBIN)/simvision
+#=============================================================================
+# files:
+#=============================================================================
+TB  = tb_$(CELL).v
+TBV = tb_$(CELL)
+NTCL= tb_$(CELL).ntcl
+PRE = $(CELL).v
+SYN = $(CELL).syn
+DC_TCL = $(CELL)_dc.tcl
+PT_TCL = $(CELL)_pt.tcl
+FM_TCL = $(CELL)_fm.tcl
+CCD_TCL= $(CELL)_ccd.tcl
+
+DC_INI = .synopsys_dc.setup
+PT_INI = .synopsys_pt.setup
+#=============================================================================
+# default target:
+#=============================================================================
+default:
+	@echo "usage: make <target>"
+	@echo " targets:"
+	@echo "   synth-init:  create synthesis script"
+	@echo "   synth:       perform synthesis"
+	@echo "   primetime-init:     create primetime script"
+	@echo "   primetime-compile:  sdf compile"
+	@echo "   primetime:   perform primetime analysis"
+	@echo "   formality:   perform formality analysis"
+	@echo "   spyglass:    perform spyglass  analysis"
+	@echo "   ncs-help:    NC-sim help"
+	@echo "   ncs-pre:     NC-sim RTL simulation"
+	@echo "   ncs-post:    NC-sim post-synthesis simulation"
+	@echo "   ncs-pre-t:   NC-sim RTL simulation (non-gui mode)"
+	@echo "   ncs-post-t:  NC-sim post-synthesis simulation (non-gui mode)"
+	@echo "   ncs-view:    NC-sim view waveforms"
+	@echo "   clean:       clean (level 1)"
+	@echo "   cleaner:     clean (level 2)"
+	@echo "   cleanest:    clean (level 3)"
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+# SYNTHESIS
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+#=============================================================================
+# scripts for design_compiler, primetime, formality
+#=============================================================================
+$(DC_INI) $(PT_INI):
+	touch $@
+_design_compiler _primetime _formality _spyglass:
+	mkdir $@
+#=============================================================================
+# synthesis:
+#=============================================================================
+synth: _design_compiler $(SYN)
+synth-init: $(DC_INI) $(DC_TCL)
+$(SYN): $(DC_INI) $(DC_TCL) $(PRE)
+	$(DCS) -f $(DC_TCL) | tee _design_compiler/synth.log
+#=============================================================================
+# primetime:
+# NOTE: removed $(SYN) dependence (using for final place and route only)
+#=============================================================================
+primetime-init: $(PT_INI) $(PT_TCL)
+primetime: _primetime $(PT_INI) $(PT_TCL)
+	$(PTS) -f $(PT_TCL) | tee _primetime/primetime.log
+primetime-compile:
+	$(ENCS);\
+	  ncsdfc _primetime/SLOW.sdf   -OUTPUT _primetime/SLOW.sdf.X ;\
+	  ncsdfc _primetime/SLOW.sdfRC -OUTPUT _primetime/SLOW.sdfRC.X ;\
+	  ncsdfc _primetime/FAST.sdf   -OUTPUT _primetime/FAST.sdf.X ;\
+	  ncsdfc _primetime/FAST.sdfRC -OUTPUT _primetime/FAST.sdfRC.X ;\
+	  ncsdfc _primetime/NOM.sdf    -OUTPUT _primetime/NOM.sdf.X ;\
+	  ncsdfc _primetime/NOM.sdfRC  -OUTPUT _primetime/NOM.sdfRC.X
+#=============================================================================
+# formality:
+#=============================================================================
+formality: _formality $(FM_TCL) $(PRE) $(SYN)
+	$(FMS) -f $(FM_TCL) | tee _formality/formality.log
+#=============================================================================
+# spyglass:
+#  -sgdc spy/Qualify/design_constraints.sgdc \
+#  -sgdc spy/Qualify/waivers.sgw \
+#=============================================================================
+spyglass: _spyglass $(PRE)
+	$(SPY) -verilog $(PRE) | tee _spyglass/spyglass.log
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+# SIMULATION
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+#=============================================================================
+# ncsim-simulation:
+#=============================================================================
+ncs-help:
+	$(NCS) -h +helpverbose | $(LESS)
+ncs-pre:
+	$(NCS) +access+rc $(PRE) $(TB) -y $(VLLIB) +libext+.v $(DEFS) \
+	  +nctimescale+10ps/1ps   +gui +tcl+$(NTCL) &
+ncs-post: $(SYN)
+	$(NCS) +access+rc $(SYN) $(TB) -y $(VLLIB) +libext+.v $(DEFS) \
+	  +nctimescale+10ps/1ps   +gui +tcl+$(NTCL) &
+ncs-pre-t:
+	$(NCS) +access+rc $(PRE) $(TB) -y $(VLLIB) +libext+.v $(DEFS) \
+	  +nctimescale+10ps/1ps &
+ncs-post-t: $(SYN)
+	$(NCS) +access+rc $(SYN) $(TB) -y $(VLLIB) +libext+.v $(DEFS) \
+	  +nctimescale+10ps/1ps &
+ncs-view:
+	$(NCSIMV) -WAVES -SCHEMATIC waves.shm \
+	  +nctimescale+10ps/1ps &
+#=============================================================================
+# ncsim-simulation (in steps):
+#=============================================================================
+ncvlog:
+	$(RM) INCA_libs/worklib/*
+	$(NCVLOG) -update -NOWARN MACNDF -log ./logs/ncvlog.log \
+	  $(PRE) $(TB) -f maco_hs.lib
+ncelab:
+	$(NCELAB) -NOWARN CUVWSP -ACCESS RWC $(TBV)
+ncsim:
+	$(NCSIM) $(TBV)
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+# OTHER
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+#=============================================================================
+# to make patch files
+# run adv2veri on original celerity netlist:
+# copy *.adv.v to *_adv.v
+# manually make changes to *_adv.v
+# make patch-diff
+#=============================================================================
+patch-diff:
+	set +e;\
+	orig=`basename $(CELL) _adv`.adv.v ;\
+	diff -C6 $$orig $(CELL).v > $$orig.patch
+patch:
+	orig=`basename $(CELL) _adv`.adv.v ;\
+	cp $$orig $(CELL).v ;\
+	patch -i $$orig.patch $(CELL).v
+#=============================================================================
+# clean
+#=============================================================================
+clean:    ncs-clean vcs-clean vsim-clean dan-clean
+cleaner:  clean   dan-cleaner
+cleanest: cleaner dan-cleanest
+ncs-clean:
+	$(RM) ncverilog.key ncverilog.log waves.shm INCA_libs .simvision
+vcs-clean:
+	$(RM) simv simv.daidir vcs.key vcdplus.vpd
+vsim-clean:
+	$(RM) work syn trn transcript vsim.wlf
+dan-clean:
+	$(RM) command.log view_command.log filenames.log
+dan-cleaner:
+	$(RM) *.area *.check *.timing *.violations
+dan-cleanest:
+	$(RM) *.syn *.db $(DC_INI) $(PT_INI) $(DC_TCL) $(PT_TCL) *.rpt *.ps

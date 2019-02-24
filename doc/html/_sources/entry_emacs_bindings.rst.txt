@@ -1,0 +1,3 @@
+entry_emacs_bindings
+--------------------
+.. autofunction:: decida.entry_emacs_bindings.entry_emacs_bindings

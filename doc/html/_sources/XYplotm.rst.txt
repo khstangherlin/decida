@@ -1,0 +1,14 @@
+XYplotm
+-------
+.. image:: _static/XYplotm.jpg
+.. autoclass:: decida.XYplotm.XYplotm
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+.. toctree::
+
+    XYplotm_menus
+    XYplotm_mouse
+    XYplotm_line_parameters
+    XYplotm_annotation

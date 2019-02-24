@@ -1,0 +1,32 @@
+
+  dataview help
+
+  Usage:
+
+      dataview data-file ?options? ?data-file2? ?options?
+
+  Options :
+      -h       print help information
+      -xmat    use non-matplotlib rendering for XY plots
+      -ssv     format is ssv
+      -csv     format is csv
+      -csdf    format is csdf
+      -nutmeg  format is nutmeg
+      -hspice  format is hspice
+      -info    show information about data-file
+      -show    show data in data-file
+      -twin    text-window data
+      -block  <block>   use block number <block> in data-file
+      -cols   <cols>    column list to plot (x, y1, ?y2 ...?)
+
+  Files:
+    data-file:
+      column-oriented, space-separated value file: (*.ssv), or
+      column-oriented, comma-separated value file: (*.csv), or
+      csdf-format, or
+      nutmeg-format, or
+      hspice-format
+
+  Notes:
+    if more than one data-file is specified, overlay in XYplot,
+    otherwise, use DataView

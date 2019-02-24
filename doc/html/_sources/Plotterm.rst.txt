@@ -1,0 +1,7 @@
+Plotterm
+--------
+.. image:: _static/Plotterm.jpg
+.. autoclass:: decida.Plotterm.Plotterm
+    :members:
+    :undoc-members:
+    :show-inheritance:

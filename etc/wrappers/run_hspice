@@ -1,0 +1,27 @@
+#!/bin/bash
+################################################################################
+# NAME     : run_hspice
+# PURPOSE  : HSpice wrapper script
+# AUTHOR   : Richard Booth
+# DATE     : Sat Nov  9 11:08:25 2013
+# -----------------------------------------------------------------------------
+# NOTES    : 
+################################################################################
+hspice=/tools/hspice/bin/hspice
+project=generic
+quiet=0
+arglist=""
+while [ $# -gt 0 ]; do
+    arg=$1; shift 1
+    case $arg in
+        -project) project=$1; shift 1;;
+        -quiet)   quiet=1;;
+        -verbose) quiet=0;;
+        *) arglist="$arglist $arg";;
+    esac
+done
+if [ $quiet = 1 ]; then
+    nohup nice $hspice $arglist > /dev/null
+else
+    nice $hspice $arglist
+fi

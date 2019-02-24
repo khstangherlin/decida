@@ -1,0 +1,306 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Calc &#8212; decida 1.1.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.1.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="CanvasIdentify" href="CanvasIdentify.html" />
+    <link rel="prev" title="BinarySearch" href="BinarySearch.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="CanvasIdentify.html" title="CanvasIdentify"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="BinarySearch.html" title="BinarySearch"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">decida 1.1.3 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="decida_classes.html" accesskey="U"><strong>DeCiDa classes</strong></a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="calc">
+<h1>Calc<a class="headerlink" href="#calc" title="Permalink to this headline">¶</a></h1>
+<img alt="_images/Calc.jpg" src="_images/Calc.jpg" />
+<dl class="class">
+<dt id="decida.Calc.Calc">
+<em class="property">class </em><code class="descclassname">decida.Calc.</code><code class="descname">Calc</code><span class="sig-paren">(</span><em>parent=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.Calc.Calc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ItclObjectx.html#decida.ItclObjectx.ItclObjectx" title="decida.ItclObjectx.ItclObjectx"><code class="xref py py-class docutils literal"><span class="pre">decida.ItclObjectx.ItclObjectx</span></code></a>, <code class="xref py py-class docutils literal"><span class="pre">Tkinter.Frame</span></code></p>
+<p><strong>synopsis</strong>:</p>
+<blockquote>
+<div>Scientific calculator.</div></blockquote>
+<p><em>Calc</em> is an algebraic-mode calculator with 50 buttons, a small
+menu of additional functions, a menu of constants, and a help display.
+<em>Calc</em> instances can be embedded in other tk windows.  The calculators
+can be operated with mouse or keyboard entry.</p>
+<p>The DeCiDa application <em>calc</em> simply instantiates one <em>Calc</em> object.</p>
+<p><strong>constructor arguments</strong>:</p>
+<blockquote>
+<div><p><strong>parent</strong> (tk handle, default=None)</p>
+<blockquote>
+<div>handle of frame or other widget to pack plot in.
+if this is not specified, top-level is created.</div></blockquote>
+<p><strong>**kwargs</strong> (dict)</p>
+<blockquote>
+<div>keyword=value specifications:
+options or configuration-options</div></blockquote>
+</div></blockquote>
+<p><strong>options</strong>:</p>
+<blockquote>
+<div><p><strong>wait</strong> (bool, default=True)</p>
+<blockquote>
+<div>If True, wait in main-loop until window is destroyed.</div></blockquote>
+</div></blockquote>
+<p><strong>configuration options</strong>:</p>
+<blockquote>
+<div><p><strong>verbose</strong> (bool, default=False)</p>
+<blockquote>
+<div>Enable/disable verbose mode.  (Not currently used.)</div></blockquote>
+</div></blockquote>
+<p><strong>example</strong>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">decida.Calc</span> <span class="k">import</span> <span class="n">Calc</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Calc</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>buttons</strong>:</p>
+<blockquote>
+<div><p><strong>OFF</strong></p>
+<blockquote>
+<div>Dismiss the calculator.  Shuts down the main-loop.</div></blockquote>
+<p><strong>AC</strong></p>
+<blockquote>
+<div>All clear: clear display accumulator, memory accumulator,
+and calculator stack.</div></blockquote>
+<p><strong>CE</strong></p>
+<blockquote>
+<div>Clear entry: clear display accumulator.</div></blockquote>
+<p><strong>HELP</strong></p>
+<blockquote>
+<div>Display help window: button / keystroke map.</div></blockquote>
+<p><strong>MENU</strong></p>
+<blockquote>
+<div><p>Menu of additional functions.  Currently these are:</p>
+<ul>
+<li><p class="first">random number:</p>
+<blockquote>
+<div><p>Enter a random number between 0 and 1 into the
+display accumulator.</p>
+</div></blockquote>
+</li>
+<li><p class="first">random seed:</p>
+<blockquote>
+<div><p>Use the display accumulator value as a random seed.</p>
+</div></blockquote>
+</li>
+<li><p class="first">list stack:</p>
+<blockquote>
+<div><p>Display the calculator stack.</p>
+</div></blockquote>
+</li>
+<li><p class="first">set precision:</p>
+<blockquote>
+<div><p>Use the display accumulator value as a number of digits
+of precision in calculator evaluations.</p>
+</div></blockquote>
+</li>
+<li><p class="first">logging:</p>
+<blockquote>
+<div><p>Open a file to log the calculator evaluations.</p>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+<p><strong>const</strong></p>
+<blockquote>
+<div>Display constant dialog.  Double click on a constant to enter it
+into the display accumulator.</div></blockquote>
+<p><strong>put</strong></p>
+<blockquote>
+<div>Put the current display accumulator number into constant memory.
+The const button can then be used to access its value.</div></blockquote>
+<p><strong>pi</strong></p>
+<blockquote>
+<div>Enter pi into the display accumulator.</div></blockquote>
+<p><strong>e</strong></p>
+<blockquote>
+<div>Enter e into the display accumulator.</div></blockquote>
+<p><strong>DRG</strong></p>
+<blockquote>
+<div>Change from degrees to radians to grads for trigonometric functions.</div></blockquote>
+<p><strong>HYP</strong></p>
+<blockquote>
+<div>Toggle hyperbolic mode.
+If sin, cos, or tan buttons are then
+invoked, the evaluation is of sinh, cosh, or tanh.
+If arc and hyperbolic mode are both on, then
+evaluation is of asinh, acosh, or atanh.</div></blockquote>
+<p><strong>ARC</strong></p>
+<blockquote>
+<div>Toggle arc mode.
+If sin, cos, or tan buttons are then
+invoked, the evaluation is of asin, acos, or atan.
+If arc and hyperbolic mode are both on, then
+evaluation is of asinh, acosh, or atanh.</div></blockquote>
+<p><strong>sin cos tan</strong></p>
+<blockquote>
+<div>Trigonometric, inverse-trigonometric (arc mode on),
+hyperbolic (hyperbolic mode on), or inverse-hyperbolic
+(arc and hyperbolic modes both on).</div></blockquote>
+<p><strong>sqrt</strong></p>
+<blockquote>
+<div>Square root of the display accumulator.</div></blockquote>
+<p><strong>x!</strong></p>
+<blockquote>
+<div>Factorial of the (integer value of the) display accumulator.</div></blockquote>
+<p><strong>10^x</strong></p>
+<blockquote>
+<div>10 to the power of the display accumulator.</div></blockquote>
+<p><strong>exp</strong></p>
+<blockquote>
+<div>e to the power of the display accumulator.</div></blockquote>
+<p><strong>x^2</strong></p>
+<blockquote>
+<div>Square of the display accumulator.</div></blockquote>
+<p><strong>1/x</strong></p>
+<blockquote>
+<div>Inverse of the display accumulator.</div></blockquote>
+<p><strong>log</strong></p>
+<blockquote>
+<div>Logarithm to the base ten of the display accumulator.</div></blockquote>
+<p><strong>ln</strong></p>
+<blockquote>
+<div>Natural logarithm of the display accumulator.</div></blockquote>
+<p><strong>y^x</strong></p>
+<blockquote>
+<div>Push the current display accumulator value onto the stack,
+evaluate the stack value raised to the power of the display
+accumulator value.</div></blockquote>
+<p><strong>M+</strong></p>
+<blockquote>
+<div>Add the display accumulator to the memory accumulator.</div></blockquote>
+<p><strong>M-</strong></p>
+<blockquote>
+<div>Subtract the display accumulator from the memory accumulator.</div></blockquote>
+<p><strong>STO</strong></p>
+<blockquote>
+<div>Store the display accumulator to the memory accumulator.</div></blockquote>
+<p><strong>RCL</strong></p>
+<blockquote>
+<div>Recall the memory accumulator to the display accumulator.</div></blockquote>
+<p><strong>XCH</strong></p>
+<blockquote>
+<div>Exchange the memory accumulator with the display accumulator.</div></blockquote>
+<p><strong>CLR</strong></p>
+<blockquote>
+<div>Clear the memory accumulator.</div></blockquote>
+<p><strong>(</strong> <strong>)</strong></p>
+<blockquote>
+<div>Algebraic parentheses.</div></blockquote>
+<p><strong>0 1 2 3 4 5 6 7 8 9 EE +/-</strong></p>
+<blockquote>
+<div>Numerical entry.</div></blockquote>
+<p><strong>+ - * /</strong></p>
+<blockquote>
+<div>Binary arithmetic operations.</div></blockquote>
+<p><strong>=</strong></p>
+<blockquote>
+<div>Evaluate the calculator stack.</div></blockquote>
+</div></blockquote>
+<p><strong>public methods</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>public methods from <em>ItclObjectx</em></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="BinarySearch.html"
+                        title="previous chapter">BinarySearch</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="CanvasIdentify.html"
+                        title="next chapter">CanvasIdentify</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/Calc.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="CanvasIdentify.html" title="CanvasIdentify"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="BinarySearch.html" title="BinarySearch"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">decida 1.1.3 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="decida_classes.html" ><strong>DeCiDa classes</strong></a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2013, Richard Booth.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

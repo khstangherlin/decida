@@ -1,0 +1,13 @@
+LevMar
+------
+.. autoclass:: decida.LevMar.LevMar
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+**more documentation**:
+
+.. toctree::
+
+    LevMar_mpfit
+    LevMar_minpack

@@ -1,0 +1,6 @@
+Pattern
+-------
+.. autoclass:: decida.Pattern.Pattern
+    :members:
+    :undoc-members:
+    :show-inheritance:

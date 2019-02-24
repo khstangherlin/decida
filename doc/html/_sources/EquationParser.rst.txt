@@ -1,0 +1,6 @@
+EquationParser
+--------------
+.. autoclass:: decida.EquationParser.EquationParser
+    :members: parse, ivars
+    :undoc-members:
+    :show-inheritance:

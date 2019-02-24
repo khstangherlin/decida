@@ -1,0 +1,627 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Parameters &#8212; decida 1.1.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.1.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Pattern" href="Pattern.html" />
+    <link rel="prev" title="Parameter" href="Parameter.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="Pattern.html" title="Pattern"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="Parameter.html" title="Parameter"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">decida 1.1.3 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="decida_classes.html" accesskey="U"><strong>DeCiDa classes</strong></a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="parameters">
+<h1>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="decida.Parameters.Parameters">
+<em class="property">class </em><code class="descclassname">decida.Parameters.</code><code class="descname">Parameters</code><span class="sig-paren">(</span><em>parent=None</em>, <em>specs=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.Parameters.Parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ItclObjectx.html#decida.ItclObjectx.ItclObjectx" title="decida.ItclObjectx.ItclObjectx"><code class="xref py py-class docutils literal"><span class="pre">decida.ItclObjectx.ItclObjectx</span></code></a></p>
+<p><strong>synopsis</strong>:</p>
+<blockquote>
+<div><p>Parameter set manager class.</p>
+<p><em>Parameters</em> manages a set of instances of the <em>Parameter</em> class.
+Each <em>Parameter</em> instance has associated current value and ranges.</p>
+<p><em>LevMar</em> and <em>Fitter</em> use the <em>Parameters</em> instance to manage
+the optimization.</p>
+</div></blockquote>
+<p><strong>constructor arguments</strong>:</p>
+<blockquote>
+<div><p><strong>**kwargs</strong> (dict)</p>
+<blockquote>
+<div>keyword=value specifications:
+configuration-options</div></blockquote>
+</div></blockquote>
+<p><strong>configuration options</strong>:</p>
+<blockquote>
+<div><p><strong>verbose</strong> (bool, default=False)</p>
+<blockquote>
+<div>If verbose is True, print more information if available.</div></blockquote>
+<p><strong>gui</strong> (bool, default=True)</p>
+<blockquote>
+<div>flag to indicate that a <em>Parameters</em> graphical user-interface
+should be displayed. <strong>Not currently implemented</strong></div></blockquote>
+</div></blockquote>
+<p><strong>example</strong> (from test_Parameters):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">decida.Parameters</span> <span class="k">import</span> <span class="n">Parameters</span>
+<span class="c1">#-----------------------------------------------------------------</span>
+<span class="c1"># specs:</span>
+<span class="c1"># name, initial_value, include,</span>
+<span class="c1">#     lower_limited, upper_limited, lower_limit, upper_limit</span>
+<span class="c1">#-----------------------------------------------------------------</span>
+<span class="n">parobj</span> <span class="o">=</span> <span class="n">Parameters</span><span class="p">(</span><span class="n">specs</span><span class="o">=</span><span class="p">(</span>
+   <span class="p">(</span><span class="s2">&quot;L&quot;</span> <span class="p">,</span> <span class="mi">150</span><span class="n">e</span><span class="o">-</span><span class="mi">12</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
+   <span class="p">(</span><span class="s2">&quot;Co&quot;</span><span class="p">,</span> <span class="mi">250</span><span class="n">e</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
+   <span class="p">(</span><span class="s2">&quot;Cu&quot;</span><span class="p">,</span> <span class="mi">120</span><span class="n">e</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
+   <span class="p">(</span><span class="s2">&quot;C1&quot;</span><span class="p">,</span>  <span class="mi">25</span><span class="n">e</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
+   <span class="p">(</span><span class="s2">&quot;C2&quot;</span><span class="p">,</span>  <span class="mi">30</span><span class="n">e</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
+<span class="p">))</span>
+<span class="n">parobj</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s2">&quot;L&quot;</span><span class="p">)</span>
+<span class="n">parobj</span><span class="o">.</span><span class="n">modify</span><span class="p">(</span><span class="s2">&quot;L&quot;</span><span class="p">,</span> <span class="n">tied</span><span class="o">=</span><span class="s2">&quot;1.0/(math.pow(2*math.pi*10e9,2)*Co)&quot;</span><span class="p">)</span>
+<span class="n">parobj</span><span class="o">.</span><span class="n">values</span><span class="p">([</span><span class="n">L</span><span class="p">,</span><span class="n">Co</span><span class="p">,</span><span class="n">Cu</span><span class="p">,</span><span class="n">C1</span><span class="p">,</span><span class="n">C2</span><span class="p">])</span>
+<span class="n">parobj</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s2">&quot;L&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>public methods</strong>:</p>
+<blockquote>
+<div><ul>
+<li><p class="first">public methods from <em>ItclObjectx</em></p>
+</li>
+<li><p class="first">indexing:</p>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>&lt;parameters_object&gt;[&#8220;&lt;parameter_name&gt;&#8221;] returns the</dt>
+<dd>current value of the parameter named &lt;parameter_name&gt;</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>&lt;parameters_object&gt;[&#8220;&lt;config_option&gt;&#8221;] returns the</dt>
+<dd>value of the configuration option named &lt;config_option&gt;</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>&lt;parameters_object&gt;[&#8220;&lt;parameter_name&gt;&#8221;]=&lt;value&gt; sets the</dt>
+<dd>current value of the parameter named &lt;parameter_name&gt; to &lt;value&gt;</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>&lt;parameters_object&gt;[&#8220;&lt;config_option&gt;&#8221;]=&lt;value&gt; sets the</dt>
+<dd>value of the configuration option named &lt;config_option&gt; to &lt;value&gt;</dd>
+</dl>
+</li>
+</ul>
+</li>
+<li><p class="first">length:</p>
+<ul class="simple">
+<li>len(&lt;parameters_object&gt;) returns the number of parameters
+in the parameter set.</li>
+</ul>
+</li>
+<li><p class="first">parameter-attributes :</p>
+<ul>
+<li><p class="first">each parameter instance has the following attributes, many which
+pertain only to Levenberg-Marquardt optimization:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="17%" />
+<col width="56%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">attribute:</th>
+<th class="head">default
+value:</th>
+<th class="head">description:</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>initial_value</td>
+<td>0.0</td>
+<td>first value of parameter</td>
+</tr>
+<tr class="row-odd"><td>current_value</td>
+<td>0.0</td>
+<td>current value of parameter</td>
+</tr>
+<tr class="row-even"><td>include</td>
+<td>True</td>
+<td>parameter is not fixed</td>
+</tr>
+<tr class="row-odd"><td>lower_limited</td>
+<td>True</td>
+<td>parameter has a lower-limit</td>
+</tr>
+<tr class="row-even"><td>lower_limit</td>
+<td>0.0</td>
+<td>the lower-limit</td>
+</tr>
+<tr class="row-odd"><td>upper_limited</td>
+<td>False</td>
+<td>parameter has an upper-limit</td>
+</tr>
+<tr class="row-even"><td>upper_limit</td>
+<td>0.0</td>
+<td>the upper-limit</td>
+</tr>
+<tr class="row-odd"><td>step</td>
+<td>0.0</td>
+<td>absolute step for derivatives</td>
+</tr>
+<tr class="row-even"><td>relative_step</td>
+<td>0.0</td>
+<td>relative step for derivatives</td>
+</tr>
+<tr class="row-odd"><td>side</td>
+<td>1</td>
+<td>side to take derivatives:
+1=forward, -1=reverse
+2=two-sided</td>
+</tr>
+<tr class="row-even"><td>minstep</td>
+<td>0.0</td>
+<td>minimum iteration step
+(not used)</td>
+</tr>
+<tr class="row-odd"><td>maxstep</td>
+<td>0.0</td>
+<td>maximum iteration step</td>
+</tr>
+<tr class="row-even"><td>tied</td>
+<td>&#8220;&#8221;</td>
+<td>expression to tie parameter
+with other parameters</td>
+</tr>
+<tr class="row-odd"><td>print</td>
+<td>True</td>
+<td>print parameter value at
+each iteration</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+<li><p class="first">parameter-conditions:</p>
+<ul class="simple">
+<li>parameters can be checked for the following conditions:</li>
+</ul>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">condition:</th>
+<th class="head">description:</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>fixed</td>
+<td>parameter is not allowed to vary</td>
+</tr>
+<tr class="row-odd"><td>included</td>
+<td>parameter is allowed to vary (free or tied)</td>
+</tr>
+<tr class="row-even"><td>tied</td>
+<td>parameter is tied others by an expression</td>
+</tr>
+<tr class="row-odd"><td>untied</td>
+<td>not tied</td>
+</tr>
+<tr class="row-even"><td>free</td>
+<td>parameter is allowed to vary</td>
+</tr>
+<tr class="row-odd"><td>limited</td>
+<td>parameter is limited (upper or lower)</td>
+</tr>
+<tr class="row-even"><td>step_limited</td>
+<td>value of parameter change for one
+iteration is limited</td>
+</tr>
+<tr class="row-odd"><td>at_upper_limit</td>
+<td>parameter current value is at upper-limit</td>
+</tr>
+<tr class="row-even"><td>at_lower_limit</td>
+<td>parameter current value is at lower-limit</td>
+</tr>
+<tr class="row-odd"><td>within_limits</td>
+<td>parameter current value is within limits</td>
+</tr>
+<tr class="row-even"><td>correct_limits</td>
+<td>parameter upper_limit &gt; lower_limit</td>
+</tr>
+<tr class="row-odd"><td>correct_step_limits</td>
+<td>parameter maxstep &gt; minstep</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+<dl class="method">
+<dt id="decida.Parameters.Parameters.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>par</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.Parameters.Parameters.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>add a parameter and specifications to the parameter set.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>par</strong> (str)</p>
+<blockquote>
+<div>parameter name to add.</div></blockquote>
+<p><strong>**kwargs</strong> (dict):</p>
+<blockquote>
+<div>&lt;attribute&gt;=&lt;value&gt; specifications for the parameter</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>The parameter set is appended with par.</li>
+<li>The attributes of the parameter are set to specified values.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Parameters.Parameters.check">
+<code class="descname">check</code><span class="sig-paren">(</span><em>par</em>, <em>condition</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.Parameters.Parameters.check" title="Permalink to this definition">¶</a></dt>
+<dd><p>check a parameter condition.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>par</strong> (str)</p>
+<blockquote>
+<div>parameter to check</div></blockquote>
+<p><strong>condition</strong> (str)</p>
+<blockquote>
+<div>parameter condition to check</div></blockquote>
+<p><strong>verbose</strong> (bool, default=False)</p>
+<blockquote>
+<div>enable or disable verbose mode.</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>if condition is True for parameter <em>par</em>, return True, else False.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Parameters.Parameters.check_any_free_limited">
+<code class="descname">check_any_free_limited</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.Parameters.Parameters.check_any_free_limited" title="Permalink to this definition">¶</a></dt>
+<dd><p>check whether any free parameters are limited.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Check to see if any free parameters are limited.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Parameters.Parameters.check_any_free_step_limited">
+<code class="descname">check_any_free_step_limited</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.Parameters.Parameters.check_any_free_step_limited" title="Permalink to this definition">¶</a></dt>
+<dd><p>check whether any free parameters are step limited.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Check to see if any free parameters are step limited.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Parameters.Parameters.check_correct_limits">
+<code class="descname">check_correct_limits</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.Parameters.Parameters.check_correct_limits" title="Permalink to this definition">¶</a></dt>
+<dd><p>check whether parameter limits are consistent.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Check to see if all parameters have attributes
+lower_limit &lt; upper_limit.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Parameters.Parameters.check_correct_step_limits">
+<code class="descname">check_correct_step_limits</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.Parameters.Parameters.check_correct_step_limits" title="Permalink to this definition">¶</a></dt>
+<dd><p>check whether parameter step limits are consistent.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Check to see if all parameters have attributes
+minstep &lt; maxstep.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Parameters.Parameters.check_within_limits">
+<code class="descname">check_within_limits</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.Parameters.Parameters.check_within_limits" title="Permalink to this definition">¶</a></dt>
+<dd><p>check whether parameter current value is within limits.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Check to see if all parameters have current value within
+the range lower_limit, upper_limit, if the parameter is limited.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Parameters.Parameters.free_indices">
+<code class="descname">free_indices</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.Parameters.Parameters.free_indices" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>return list of parameter indices for paramteres that</dt>
+<dd>are free to vary.</dd>
+</dl>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Returns a list of indices (within the parameter set) of
+parameters that have the attribute &#8220;free&#8221;.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Parameters.Parameters.free_pars">
+<code class="descname">free_pars</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.Parameters.Parameters.free_pars" title="Permalink to this definition">¶</a></dt>
+<dd><p>return list of parameters that are free to vary.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Returns a list of parameters that have the attribute &#8220;free&#8221;.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Parameters.Parameters.free_values">
+<code class="descname">free_values</code><span class="sig-paren">(</span><em>values=None</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.Parameters.Parameters.free_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>set or return free parameter values.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>values</strong> (list or tuple, default=None)</p>
+<blockquote>
+<div>list of values to set free parameters current value attribute.
+if values is not specified, return a list of free parameter
+current values.</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Every free parameter current value is set to a value in the value
+list, if values is specified.</li>
+<li>If values is not specified, return the list of free parameter
+current values.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Parameters.Parameters.list_of_attr">
+<code class="descname">list_of_attr</code><span class="sig-paren">(</span><em>condition</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.Parameters.Parameters.list_of_attr" title="Permalink to this definition">¶</a></dt>
+<dd><p>return bool list of checked condition for each parameter.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>condition</strong> (str)</p>
+<blockquote>
+<div>condition string for checking parameter set.</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Returns list of boolean values for whether or not the condition
+is met by each parameter.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Parameters.Parameters.list_of_pars">
+<code class="descname">list_of_pars</code><span class="sig-paren">(</span><em>condition</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.Parameters.Parameters.list_of_pars" title="Permalink to this definition">¶</a></dt>
+<dd><p>return list of parameters with condition.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>condition</strong> (str)</p>
+<blockquote>
+<div>condition string for filtering parameter set.</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>parameter list is returned with pars with condition True.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Parameters.Parameters.modify">
+<code class="descname">modify</code><span class="sig-paren">(</span><em>par</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.Parameters.Parameters.modify" title="Permalink to this definition">¶</a></dt>
+<dd><p>modify a parameter&#8217;s attributes</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>par</strong> (str)</p>
+<blockquote>
+<div>parameter name to modify.</div></blockquote>
+<p><strong>**kwargs</strong> (dict)</p>
+<blockquote>
+<div>&lt;attribute&gt;=&lt;value&gt; specifications for the parameter</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>The attributes of the parameter are modified.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Parameters.Parameters.pars">
+<code class="descname">pars</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.Parameters.Parameters.pars" title="Permalink to this definition">¶</a></dt>
+<dd><p>return parameter names.</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>list of parameter names in the parameter set is returned.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Parameters.Parameters.reset">
+<code class="descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decida.Parameters.Parameters.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>reset all parameters to initial values</p>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>parameters are reset to initial values.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Parameters.Parameters.show">
+<code class="descname">show</code><span class="sig-paren">(</span><em>par=None</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.Parameters.Parameters.show" title="Permalink to this definition">¶</a></dt>
+<dd><p>show parameters and attributes.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>par</strong> (str, default=None)</p>
+<blockquote>
+<div>parameter name to show.  If not specified, all parameters are
+shown.</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>parameter name and attributes of the specified parameter, or
+all parameters if par is not specified, are displayed.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="decida.Parameters.Parameters.values">
+<code class="descname">values</code><span class="sig-paren">(</span><em>values=None</em><span class="sig-paren">)</span><a class="headerlink" href="#decida.Parameters.Parameters.values" title="Permalink to this definition">¶</a></dt>
+<dd><p>set or return parameter values.</p>
+<p><strong>arguments</strong>:</p>
+<blockquote>
+<div><p><strong>values</strong> (list or tuple, default=None)</p>
+<blockquote>
+<div>list of values to set parameters current value attribute.
+if values is not specified, return a list of parameter
+current values.</div></blockquote>
+</div></blockquote>
+<p><strong>results</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Every parameter current value is set to a value in the value
+list, if values is specified.</li>
+<li>If values is not specified, return the list of parameter
+current values.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="Parameter.html"
+                        title="previous chapter">Parameter</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="Pattern.html"
+                        title="next chapter">Pattern</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/Parameters.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="Pattern.html" title="Pattern"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="Parameter.html" title="Parameter"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">decida 1.1.3 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="decida_classes.html" ><strong>DeCiDa classes</strong></a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2013, Richard Booth.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

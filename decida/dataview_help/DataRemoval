@@ -1,0 +1,19 @@
+
+  dataview help
+ 
+  Data Removal
+
+  % To eliminate data from the working data set:
+    1. press control-button-3 at one corner of the region to eliminate.
+    2. hold the button down and move to the opposite corner of the
+       erase region.
+    3. release control-button-3.
+       data points within the erase region are eliminated from the
+       working data set.
+    * NOTE: the x- and y-columns must be selected to correspond to
+      the curve which is used for the removal operation.
+  % To restore the data eliminated by erase operation(s).
+    1. File->Restore Data
+  % To accept the data eliminated by erase operation(s) into the backup
+    data set.
+    1. File->Accept Data

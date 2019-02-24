@@ -1,0 +1,6 @@
+
+This directory is for user python code that can be imported into python
+applications
+
+install .pythonrc.py in your home directory
+in the script, import user

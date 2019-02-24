@@ -1,0 +1,57 @@
+==============================================================================
+To generate a DeCiDa testpack script:
+==============================================================================
+* This schematic is treated as a top-level testbench circuit.
+* In this schematic, all voltage sources, current sources and input pins 
+  are treated as stimuli that can be changed to any supply type within the
+  script.
+* Generate a netlist from this schematic.
+* Generate a DeCida testpack script using the first --RVB-- menu item.
+* Move the script to the directory where simulations are to be performed.
+* Modify the script:
+    - modify the source/stimuli values on the tckt.element lines
+    - establish the simulation parameters
+      (tstop for tran/.tr/.tran analysis, for example)
+    - several post-processing tests are provided, with default parameters.
+      The signal names and behavior of the tests can be modified.
+==============================================================================
+Using the script:
+==============================================================================
+* to run any test(s), either
+  (1) type the script name as a command and a menu will appear with a
+      checkboxe for each test.  Tests are performed in the same order as
+      they appear in the menu (as they are specified in the script).
+  (2) type the script name followed by a list of tests to be performed.
+      Tests are performed in the same order as they were specified in the
+      script (not in the order on the typed-in command).
+==============================================================================
+Additional script notes (which also appear in the generated script)
+==============================================================================
+* example tckt.monitor() specifications:
+  REF       : monitor voltage of node REF
+  VCD<3:0>  : monitor voltage of nodes VCD_3, ... , VCD_0
+  I(vsc)    : monitor current in voltage source vsc
+  ID(mn1)   : monitor drain current in mosfet mn1
+  IR(res)   : monitor current in resistor res
+  IX(xa1.p) : monitor current in subcircuit xa1, node p
+  PN(mn1-vdsat)  : monitor mosfet mn1 vdsat parameter
+  @gmc:     : following specs are for subcircuit gmc
+  @gmc.q:   : following specs are for subcircuit gmc.q
+  @:        : following specs are for top-level circuit
+* example tckt.element() definitions:
+  vin sin 0.6 0.2 $freq
+  vbg netlist
+  vdd $vdd
+  vsd<3:0> 5'b0011 v0=0.0 v1=$vdd
+  vdac_in<9:0> counter v0=0.0 v1=$vdd edge=$edge hold=$hold
+  vclk clock v0=0.0 v1=$vdd edge=$edge freq=$freq
+  vdat rand v0=0.0 v1=$vdd length=1024 edge=$edge data_rate=$data_rate
+  vdat prbs size=7 v0=0.0 v1=$vdd edge=$edge data_rate=$data_rate
+* example Data commands:
+  d.set("z = OUT*2")
+  d.a2d("z", "SD<3:0>", slice=1.5)
+  x = d.crossings("time", "OUT", level=1.5, edge="rising")
+  period = x[3] - x[2]
+  freq = d.measure_freq("time", "OUT")
+  iavg = d.time_average("time", "vdd:1")
+  d.filter("time > 10e-9")

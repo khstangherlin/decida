@@ -1,0 +1,233 @@
+**Setting-up and using DeCiDa (Cadence Users)**
+===============================================
+
+First-time setup for Cadence Users
+----------------------------------
+
+The applications are found in the python bin directory, after 
+installation (which or whence python to find the bin directory).
+These should be in the path so that simply typing an appication name,
+(calc, for example) should run the application.
+
+The pre-installed tool wrappers are in the distribution
+./etc/wrappers directory.  These are installed to ~/.DeCiDa/bin
+
+./etc/skill files
+-----------------
+
+These skill scripts are used by Cadence Virtuoso users for generating
+starter DeCiDa scripts and verilog test-benches from a test-bench schematic.
+They are installed to ~/.DeCiDa/skill.
+They will be loaded by the user's .cdsinit Cadence startup script.
+The provided example .cdsinit file is in ./etc/dot
+
++-----------------+-------------------------------------------------------+
+| skill script:   | description:                                          |
++=================+=======================================================+
+| RVBmenu.il      | sets up application (schematic) menu                  |
++-----------------+-------------------------------------------------------+
+| RVBdcdlines.il  | (from menu) generates python decida Tckt script       |
++-----------------+-------------------------------------------------------+
+| RVBvtblines.il  | (from menu) generates verilog test-bench directory    |
++-----------------+-------------------------------------------------------+
+| RVBcomp.il      | (from menu) generates list of schematic components    |
++-----------------+-------------------------------------------------------+
+| RVButil.il      | utilities used in other scripts                       |
++-----------------+-------------------------------------------------------+
+| RVBdcd_help.txt | help file for generating python script                |
++-----------------+-------------------------------------------------------+
+| RVBvtb_help.txt | help file for generating verilog testbench            |
++-----------------+-------------------------------------------------------+
+
+These skill scripts also expect that the following files are available in the
+following locations.  Two example projects are included (bird and trane).
+Revise the scripts as appropriate, prior to or after installation to modify the
+directory locations, include different or additional projects/technologies.
+
++-----------------------------------------------+---------------------------------------------------+
+| file:                                         | description:                                      |
++===============================================+===================================================+
+| ~/.DeCiDa/models/ptm_130nm.scs                | case-corner library for Spectre simulations       |
++-----------------------------------------------+---------------------------------------------------+
+| ~/.DeCiDa/models/ptm_130nm_mos.scs            | MOSFET models for Spectre simulations             |
++-----------------------------------------------+---------------------------------------------------+
+| ~/.DeCiDa/models/ptm_45nm.scs                 | case-corner library for Spectre simulations       |
++-----------------------------------------------+---------------------------------------------------+
+| ~/.DeCiDa/models/ptm_45nm_mos.scs             | MOSFET models for Spectre simulations             |
++-----------------------------------------------+---------------------------------------------------+
+| ~/.DeCiDa/stdcell/ptm_130nm/\*.v              | standard cell library for NCsim simulations       |
++-----------------------------------------------+---------------------------------------------------+
+| ~/.DeCiDa/stdcell/ptm_45nm/\*.v               | standard cell library for NCsim simulations       |
++-----------------------------------------------+---------------------------------------------------+
+| ~/.DeCiDa/verilog/make_body                   | make include file for verilog simulations         |
++-----------------------------------------------+---------------------------------------------------+
+| ~/.DeCiDa/verilog/make.bird                   | make include file for the bird project            |
++-----------------------------------------------+---------------------------------------------------+
+| ~/.DeCiDa/verilog/make.trane                  | make include file for the trane project           |
++-----------------------------------------------+---------------------------------------------------+
+
+These are the two example projects.  The project drive is where Cadence tools are launched.  The scratch drive
+is where Cadence tools write netlists and where DeCiDa writes simulation data.
+
++-----------+--------------+-------------+--------------------------------+------------------------------------+
+| project:  | technology:  | simulator:  | project_drive:                 | scratch_drive:                     |
++===========+==============+=============+================================+====================================+
+| bird      | ptm_130nm    | Spectre     | ~/.DeCiDa/projects/bird        | ~/.DeCiDa/projects/bird/scratch    |
++-----------+--------------+-------------+--------------------------------+------------------------------------+
+| trane     | ptm_45nm     | Spectre     | ~/.DeCiDa/projects/trane       | ~/.DeCiDa/projects/trane/scratch   |
++-----------+--------------+-------------+--------------------------------+------------------------------------+
+
+./etc/verilog files
+---------------------
+
+These files are used to run simulations using NCsim/SimVision.  The verilog testbench is generated
+using the skill scripts.
+
++-----------------------------------------------+---------------------------------------------+
++ file :                                        |                                             |
++===============================================+=============================================+
+| Makefile                                      | example Makefile for verilog simulations    |
++-----------------------------------------------+---------------------------------------------+
+| simvision_core.tcl                            | include file for SimVision plot setup       |
++-----------------------------------------------+---------------------------------------------+
+| make_body                                     | make include file for verilog simulations   |
++-----------------------------------------------+---------------------------------------------+
+| make.bird                                     | make include file for the bird project      |
++-----------------------------------------------+---------------------------------------------+
+| make.trane                                    | make include file for the trane project     |
++-----------------------------------------------+---------------------------------------------+
+
+First-time tool resource file setup
+-----------------------------------
+
+1. add or modify your home (~/.cdsinit) file
+
+   if you don't have a ~/.cdsinit::
+
+        cp dot/.cdsinit ~/.
+
+   (which is also installed in ~/.DeCiDa/dot/.cdsinit)
+
+   otherwise add the following lines at the bottom of the file::
+
+        setSkillPath( append( getSkillPath() list( "~/.DeCiDa/skill" )))
+        load("RVButil.il")
+        load("RVBmenu.il")
+        load("RVBdcdlines.il")
+        load("RVBvtblines.il")
+
+2. you might also want to copy over the ocean resource file if you are
+   using ocean::
+
+        cp dot/.oceanrc ~/.
+
+   (which is also installed in ~/.DeCiDa/dot/.oceanrc)
+
+3. modify your project .cdsinit file
+
+   add the following lines at the bottom of the file
+   (modify to project specifics, accordingly)::
+
+        RVBproject="trane"
+        RVBtechnology="ptm_45nm"
+        RVBsimulator="Spectre"
+        RVBscratch="~/.DeCiDa/projects/trane/scratch"
+
+4. Start a cadence session. The .cdsinit files will be sourced.
+   If you're already in a cadence session, type this in the CIW::
+
+        load "~/.cdsinit"
+
+Generate a starter python script for doing spectre simulations
+--------------------------------------------------------------
+
+1. generate a starter python script:
+
+   * open a testbench schematic
+
+   * type y: --RVB-- menu button will appear at the top of the window
+
+   * select "Generate DeCiDa testpack" from the menu
+
+   * project, technology, and simulator are filled in based on the values
+     from First-time setup for cadence users
+
+   * click "OK": starter script is written to ~/. (HOME directory)
+
+2. netlist the testbench schematic:
+
+   * Schematic -> Launch -> ADE L
+
+   * ADE -> Simulation -> Netlist -> Create
+     
+3. make a project subdirectory for running the simulations::
+   
+       mkdir -p ~/.DeCiDa/projects/trane/work/<circuit>
+
+4. move the python script to the subdirectory::
+
+       cd ~/.DeCiDa/projects/trane/work/<circuit>
+       mv ~/<circuit>.py .
+   
+5. modify the test appropriately.
+   Changeing the value of tstop is usually the only change you need to
+   make initially
+
+6. run the python script by typing its name
+
+   if you type only the script name alone, a test selector dialog
+   is displayed with test selection boxes
+
+   if you type the script name followed by a list of tests, the
+   tests are run in the same sequence that they were defined in the script.
+
+Generate a starter verilog testbench for doing verilog simulations
+------------------------------------------------------------------
+
+1. generate a starter verilog testbench:
+
+   **the testbench must be named tb_<DUT>**
+   where "tb" is lower-case and <DUT> is the circuit under test.
+
+   * open a testbench schematic
+
+   * type y: --RVB-- menu button will appear at the top of the window
+
+   * select "Generate verilog testbench" from the menu
+
+   * project, technology, and simulator are filled in based on the values
+     from First-time setup for cadence users
+
+   * if there are any wreals in the top-level testbench, then type them into
+     the "wreals" entry box
+
+   * click "OK": starter testbench directory is written to ~/. (HOME directory)
+
+2. netlist the testbench schematic:
+
+   * Schematic -> Launch -> Simulation/ncVerilog
+
+   * generate run-directory (press 1st icon)
+
+   * netlist (press 2nd icon)
+
+3. make a project subdirectory for running the simulations::
+   
+       mkdir -p ~/.DeCiDa/projects/trane/work/<circuit>
+
+4. move the testbench files to the subdirectory::
+
+       cd ~/.DeCiDa/projects/trane/work/<circuit>
+       mv ~/tb_<circuit> .
+   
+5. change to the tb_<circuit> directory and run the generate_ncsim.py script::
+
+       generate_ncsim.py
+
+   this produces the module library: ncsim_tb_<circuit>/lib_tb_<circuit>
+
+6. modify the automatically-generated testbench tb_<circuit>.v appropriately
+
+7. run ncsim (ncs-pre means ncsim, pre-synthesis, type "make" to find out other options)::
+
+       make ncs-pre

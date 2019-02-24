@@ -1,0 +1,16 @@
+
+  dataview help
+
+  Line Parameters
+
+  % Finding slope, y-intercept and other line-parameters from
+    line drawn on plot.
+    1. press down button-3 at the first corner of a line-segment.
+    2. hold down the button and move to the opposite corner of the 
+       line-segment.   
+    3. release button-3.
+    *  A line-parameter report is printed out to standard output.
+    *  The report gives the line-parameters of the
+         defined line segment: slope, y-intercept, x-intercept and
+         other parameters.
+    *  For a single press and release, only x and y are reported.

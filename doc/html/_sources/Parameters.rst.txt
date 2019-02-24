@@ -1,0 +1,6 @@
+Parameters
+----------
+.. autoclass:: decida.Parameters.Parameters
+    :members:
+    :undoc-members:
+    :show-inheritance:

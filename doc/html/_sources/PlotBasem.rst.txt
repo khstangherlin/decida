@@ -1,0 +1,6 @@
+PlotBasem
+---------
+.. autoclass:: decida.PlotBasem.PlotBasem
+    :members:
+    :undoc-members:
+    :show-inheritance:

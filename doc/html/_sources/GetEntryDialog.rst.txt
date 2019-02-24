@@ -1,0 +1,7 @@
+GetEntryDialog
+--------------
+.. image:: _static/GetEntryDialog.jpg
+.. autoclass:: decida.GetEntryDialog.GetEntryDialog
+    :members:
+    :undoc-members:
+    :show-inheritance:

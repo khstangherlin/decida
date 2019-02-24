@@ -1,0 +1,38 @@
+
+  dataview help
+  
+  Mouse Bindings:
+
+  MOUSE on plot:
+   % button 1: zoom-in
+       Pressing down button 1 starts a zoom-in operation.  Holding button 1 
+       down and moving to new location displays a zoom-in box with endpoints
+       at original location and current location.  Releasing button 1
+       changes axes limits of graph to those of the zoom-in box.
+   % button 2: restore
+       Pressing down button 2 returns axes limits to the original ones.
+   % button 3: line parameter report
+       Pressing down button 3 starts a line-segment operation for reporting
+       slope and intercepts.  Holding down, moving, then releasing define a
+       line-segment.  After release, a report of the line-parameters of the
+       defined line segment: slope, y-intercept, x-intercept.
+       For a single press and release, only x and y are reported.
+   % shift-button 3: curve label operation
+       Pressing down button 3 with shift held down starts a curve-label
+       operation.  Holding down, moving, then releasing defines a
+       line-segment.  After release, prompt for text for the label, and 
+       whether or not to add an arrow.
+   % shift-button 1: delete curve label operation
+       Pressing down button 3 with shift held down starts a delete
+       curve-label operation.  Holding down, moving, then releasing
+       defines a delete box.  After release, any markers within the
+       delete box are removed.
+   % control-button 3: data removal operation
+       Pressing down button 3 with control held down starts a data removal
+       operation.  Holding down, moving, then releasing defines a
+       delete box (red).  After release, any data points (XCOL, YCOL)
+       are deleted from the working data set.
+
+  MOUSE on note-book tab:
+   % button 1: select page
+       Button 1 selects notebook page connected to the tab.
